@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+</head>
+<body>
+<!-- <button onclick="changeURL()">URL</button> -->
+<!-- <div>Teachable Machine Image Model - p5.js and ml5.js</div> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+<script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+<style>body{margin: 15px; text-align: center; background-color: #111;} .p5Canvas{display: inline-block;}</style>
+<script type="text/javascript">
+
+
+  // function changeURL(){
+  //   window.parent.location.href = "https://www.google.com";
+  // }
+
+  var getUrlParameter = function getUrlParameter(sParam) {
+          var sPageURL = window.location.search.substring(1),
+              sURLVariables = sPageURL.split('&'),
+              sParameterName,
+              i;
+
+          for (i = 0; i < sURLVariables.length; i++) {
+              sParameterName = sURLVariables[i].split('=');
+
+              if (sParameterName[0] === sParam) {
+                  return typeof sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+              }
+          }
+          return false;
+      };
+
+        function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+  // Classifier Variable
+  let classifier;
+  // Model URL
+  let filePath = './imgrecog/models/'
+  let imageModelURL = filePath + getUrlParameter("type") + '/';
+
+  
+  // Video
+  let video;
+  let flippedVideo;
+  // To store the classification
+  let label = "";
+
+  // Load the model first
+  function preload() {
+    classifier = ml5.imageClassifier(imageModelURL + 'model.json');
+  }
+
+  function setup() {
+    createCanvas(380, 500);
+    // Create the video
+    video = createCapture({
+    audio: false,
+   // video: true
+    video: {
+      facingMode: {
+        exact: "environment"
+      }
+    }
+  });
+    video.size(380, 500);
+    video.hide();
+
+    flippedVideo = ml5.flipImage(video);
+    // Start classifying
+    classifyVideo();
+  }
+
+  function draw() {
+    background(0);
+    // Draw the video
+   image(video, 0, 0);
+
+    // Draw the label
+    fill(255);
+    textSize(32);
+    textAlign(CENTER);
+    text(label, width / 2, height - 10);
+  }
+
+  // Get a prediction for the current video frame
+  function classifyVideo() {
+    flippedVideo = ml5.flipImage(video)
+    classifier.classify(video, gotResult);
+    video.remove();
+
+  }
+
+
+
+  // When we get a result
+  function gotResult(error, results) {
+    // If there is an error
+    if (error) {
+      console.error(error);
+      return;
+    }
+    //console.log(results);
+    // The results are in an array ordered by confidence.
+    // console.log(results[0]);
+   // label = results[0].label + " " + results[0].confidence.toFixed(2);
+    // Classifiy again!
+
+    
+
+    if(getUrlParameter("mode") === "percent"){
+     // label = "Analyzingg...";
+      //alert(getUrlParameter("mode"))
+      label = results[0].label +" : "+ (results[0].confidence * 100).toFixed(2)+"%";
+    }else{
+      label = "Analyzing...";
+      if(results[0].confidence.toFixed(2) >= .98){
+        alert(results[0].label);
+      }
+    }
+
+   // label = "Analyzingg...";
+
+    if(results[0].confidence.toFixed(2) >= .98){
+    //alert(results[0].label);
+
+    label = capitalizeFirstLetter(results[0].label) + " is detected";
+    }
+
+    classifyVideo();
+  }
+
+//alert("HOLAa");
+
+  /*  ################# ############# */
+
+  // function setup(){
+  //  createCanvas(640, 480);
+  //  background(0);
+  // }
+
+</script>
+
+</body>
+</html>
