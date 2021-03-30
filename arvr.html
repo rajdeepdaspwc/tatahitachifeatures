@@ -14,6 +14,7 @@
   }
   canvas{
   	border:none;
+	  outline: none;
   }
   .sidenav {
     height: 100%;
@@ -62,14 +63,50 @@
     height: 35px;
     display: none;
   }
-
   #VRButton{
     margin-bottom: 70px !important;
   }
+
+  .backbutton{
+	  position: absolute;
+	  left: 20px;
+	  top: 20px;
+	  z-index: 2;
+  }
+  .backbutton img{
+	  opacity: .6;
+  }
+
+  .supportmsg{
+	  position: fixed;
+	  left: 0;
+	  top: 0;
+	  width: 100%;
+	  height: 100%;
+	  background-color: rgba(0,0,0, .5);
+	  z-index: 9999999;
+  }
+  .supportmsg .overlay .message{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	padding: 40px;
+	transform: translate(-50%, -50%);
+	max-width: 400px;
+	width: 100%;
+	background-color: #333;
+	color: #c1c1c1;
+	text-align: center;
+	line-height: 1.2;
+  }
+  .supportmsg .overlay .message a{
+	  color: yellow;
+  }
+
 </style>
 	</head>
 	<body>
-
+		<a class="backbutton" href="viewin360.html?model=car"><img src="assets/icons/360-degree.svg" width="45" alt=""></a>
 		<div id="content">
 			<!-- <div id="mySidenav" class="sidenav">
 				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -84,6 +121,15 @@
 			<!-- <span style="font-size:30px;cursor:pointer;position: absolute;" onclick="openNav()">&#9776; open</span> -->
 		
 			<button type="button" id="place-button">PLACE</button>
+
+			<!-- <div class="supportmsg">
+				<div class="overlay">
+					<div class="message">
+						<img src="assets/icons/alert.png" width="50" alt="!"><br>
+						This feature is only supported in mobile devices where <a href="https://developers.google.com/ar/discover/supported-devices">ARCore Engine</a> is available.
+					</div>
+				</div>
+			</div> -->
 		</div>
 
 		<script>
@@ -100,7 +146,7 @@
 
 			import * as THREE from './build/three.module.js';
 			import { ARButton } from './jsm/webxr/ARButton.js';
-			import { VRButton } from './jsm/webxr/VRButton.js';
+			//import { VRButton } from './jsm/webxr/VRButton.js';
 			//
 			import { OrbitControls } from './jsm/controls/OrbitControls.js';
 			import { GLTFLoader } from './jsm/loaders/GLTFLoader.js';
@@ -185,7 +231,7 @@
 						render();
 
 						var loader = new GLTFLoader().setPath('3d/');
-						 loader.load( /* model */ getUrlParameter('model') + '.' + getUrlParameter('format'), function(glb) {
+						 loader.load( /* model */ getUrlParameter('model') + '.glb', function(glb) {
 							//loader.load( "1.glb", function(glb) {
 
 							current_object = glb.scene;
@@ -209,13 +255,13 @@
 				document.getElementById("container").appendChild( container );
 
 				scene = new THREE.Scene();
-				scene.position.z = -2;
+				//scene.position.z = -2;
 				window.scene = scene;
 
 				camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.001, 200 );
 
 				var directionalLight = new THREE.DirectionalLight(0xdddddd, 1);
-				directionalLight.position.set(1, 1, 1).normalize();
+				directionalLight.position.set(0, 0, 1).normalize();
 				scene.add(directionalLight);
 
 				var ambientLight = new THREE.AmbientLight(0x222222);
