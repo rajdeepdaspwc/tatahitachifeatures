@@ -150,11 +150,13 @@
 	 color: #f1f1f1;
 }
  .sidenav .closebtn {
-	 position: absolute;
-	 top: 0;
-	 right: 25px;
-	 font-size: 36px;
-	 margin-left: 50px;
+	position: absolute;
+    top: -2px;
+    left: 55px;
+    font-size: 36px;
+    margin-left: 50px;
+    padding: 10px;
+    font-size: 40px;
 }
  @media screen and (max-height: 450px) {
 	 .sidenav {
@@ -192,6 +194,97 @@ canvas{
 .viewinar:hover img{
 	transform: scale(1.2);
 }
+.openNav{
+	font-size: 30px;
+    cursor: pointer;
+    position: fixed;
+	z-index: 2;
+	left: 16px;
+    top: 10px;
+	display: none;
+}
+
+@media only screen and (max-width: 768px) {
+	header{
+		padding: 12px 0 8px;
+	}
+	header .logo1{
+		margin-left: 60px;
+	}
+	header .logo2{
+		display: none;
+	}
+	.openNav{
+		display: block;
+	}
+	footer{
+		padding: 0;
+	}
+	footer ul {
+	 padding: 0;
+	 margin: 0;
+	 display: none;
+	}
+	.sidenav ul {
+	 padding: 0;
+	 margin: 0;
+	}
+	.sidenav  ul li {
+		margin: 0 10px;
+		display: block;
+		background-color: #333;
+		margin-bottom: 5px;
+	}
+	.sidenav  ul li a {
+		display: block;
+		padding:17px 10px 10px 70px;
+		width: 70px;
+		height: 70px;
+		background-size: contain;
+		background-position: center center;
+		font-family: 'arial';
+		font-size: 20px;
+		color: #fff;
+		text-decoration: none;
+		opacity: 0.7;
+		position: relative;
+		-webkit-transition: opacity 0.3s ease;
+		transition: opacity 0.3s ease;
+	}
+	.sidenav  ul li a .icon {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -60%);
+		width: 50px;
+		height: 50px;
+		display: block;
+	}
+	.sidenav  ul li a:hover {
+		opacity: 1;
+	}
+	.sidenav  ul li:nth-child(1) .icon {
+		background-image: url('assets/icons/Aesthetics-48x48.svg');
+	}
+	.sidenav  ul li:nth-child(2) .icon {
+		background-image: url('assets/icons/Cabin-48x48.svg');
+	}
+	.sidenav  ul li:nth-child(3) .icon {
+		background-image: url('assets/icons/Durability-48x48.svg');
+	}
+	.sidenav  ul li:nth-child(4) .icon {
+		background-image: url('assets/icons/Engine-48x48.svg');
+	}
+	.sidenav  ul li:nth-child(5) .icon {
+		background-image: url('assets/icons/Hydraulics-48x48.svg');
+	}
+	.sidenav  ul li:nth-child(6) .icon {
+		background-image: url('assets/icons/Maintenance-48x48.svg');
+	}
+	.sidenav  ul li:nth-child(7) .icon {
+		background-image: url('assets/icons/Safety-48x48.svg');
+	}
+}
 	
 </style>
 	</head>
@@ -203,18 +296,41 @@ canvas{
 					<img src="assets/EdostLogoWithoutBorder.svg" alt="" height="40">
 				</div>
 				<div class="logo2">
-					<img src="assets/Tata_Hitachi_logo2.jpg" alt="" height="25">
+					<img src="assets/Tata_Hitachi_logo2.jpg" alt="" height="18">
 				</div>
 			</header>
 			<div id="content">
 				<div id="mySidenav" class="sidenav">
-					<a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
-					<a class="ar-object" id="1" href="#">item_1</a>
+					<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+					<!-- <a class="ar-object" id="1" href="#">item_1</a>
 					<a class="ar-object" id="2" href="#">item_2</a>
 					<a class="ar-object" id="3" href="#">item_3</a>
-					<a class="ar-object" id="4" href="#">item_4</a>
+					<a class="ar-object" id="4" href="#">item_4</a> -->
+					<ul>
+						<li>
+							<a class="ar-object " href="javascript:void(0)" data-model="1"><span class="icon"></span><span>Aesthetics</span></a>
+						</li>
+						<li>
+							<a class="ar-object" href="javascript:void(0)" data-model="2"><span class="icon"></span><span>Cabin</span></a>
+						</li>
+						<li>
+							<a class="ar-object" href="javascript:void(0)" data-model="3"><span class="icon"></span><span>Durability</span></a>
+						</li>
+						<li>
+							<a class="ar-object" href="javascript:void(0)"data-model="4"><span class="icon"></span><span>Engine</span></a>
+						</li>
+						<li>
+							<a class="ar-object" href="javascript:void(0)" data-model="5"><span class="icon"></span><span>Hydraulics</span></a>
+						</li>
+						<li>
+							<a class="ar-object" href="javascript:void(0)" data-model="1"><span class="icon"></span><span>Maintenance</span></a>
+						</li>
+						<li>
+							<a class="ar-object" href="javascript:void(0)" data-model="car"><span class="icon"></span><span>Safety</span></a>
+						</li>
+					</ul>
 				</div>
-		
+				<span class="openNav" onclick="openNav()">&#9776;</span>
 				<div id="container" style="position: fixed;">
 					<h1 class="modelname"></h1>
 				</div>
@@ -282,7 +398,7 @@ canvas{
 
 			var hitTestSource = null;
 			var hitTestSourceRequested = false;
-
+			var currentModel;
 			init();
 			animate();
 
@@ -336,7 +452,9 @@ canvas{
 				}
 			}
 
+			
 			function loadModel(model){
+				currentModel = model;
 				
 				new RGBELoader()
 					.setDataType(THREE.UnsignedByteType)
@@ -375,7 +493,17 @@ canvas{
 				document.getElementById("container").appendChild( container );
 
 				scene = new THREE.Scene();
-				scene.position.z = -2;
+				scene.position.z = -3;
+				// if(getUrlParameter('model') !== currentModel){
+				// 	scene.position.z = -2;
+				// 	console.log(getUrlParameter('model') + currentModel);
+				// }
+				// else{
+				// 	scene.position.z = -3;
+				// 	console.log(getUrlParameter('model') + currentModel);
+				// }
+				
+				
 				window.scene = scene;
 
 				camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.001, 200 );
