@@ -346,6 +346,24 @@ canvas{
 							<a class="ar-object" href="javascript:void(0)" data-model="car"><span class="icon"></span><span>Safety</span></a>
 						</li>
 					</ul>
+					<!-- <div class="copyrights">
+						<div class="row">
+							<div class="col-sm-7 col-md-8">
+								<h5><a href="https://www.tatahitachi.co.in/privacy-policy/" target="_blank">Privacy Policy</a> | <a href="https://www.tatahitachi.co.in/disclaimer/" target="_blank">Disclaimer</a></h5>
+								<h6>© 2018 Tata Hitachi Construction Machinery  |  All rights reserved.</h6>
+							</div>
+							<div class="col-sm-5 col-md-4">
+								<ul class="social-icons">
+										<li><h6>Follow us :</h6></li>
+										<li><a href="https://www.facebook.com/TataHitachiCorporate/" target="_blank" rel="noopener noreferrer"><span class="icon-facebook" title="Facebook" alt="Facebbok"></span></a></li>
+										<li><a href="https://twitter.com/Tata_Hitachi_IN" target="_blank" rel="noopener noreferrer"><span class="icon-twitter" title="Twitter" alt="twitter"></span></a></li>
+										<li><a href="https://www.youtube.com/channel/UCYE6DtE-X3JXinUFzVGsffQ" target="_blank" rel="noopener noreferrer"><span class="icon-youtube-play" title="YouTube" alt="youtube"></span></a></li>
+										<li><a href="https://www.linkedin.com/company/telcon/" target="_blank" rel="noopener noreferrer"><span class="icon-linkedin" title="LinkedIn" alt="linkedin"></span></a></li>
+										<li><a href="https://www.instagram.com/tatahitachicorporate/" target="_blank" rel="noopener noreferrer"><span class="icon-instagram" title="Instagram" alt="Instagram"></span></a></li>
+									</ul>
+							</div>
+						</div>
+					</div> -->
 				</div>
 				<span class="openNav" onclick="openNav()">&#9776;</span>
 				<div id="container" style="position: fixed;">
@@ -387,7 +405,7 @@ canvas{
 					<img src="assets/gif/ajax-loader.gif" alt="Loading ...">
 					<br>
 					<span>
-						Please wait, Loading model ...
+						Please wait, Loading model
 					</span>
 				</div>
 			</div>
@@ -437,6 +455,7 @@ canvas{
 
 				loadModel($(this).attr("data-model"));
 				$(".overlay").fadeIn();
+				closeNav();
 				//alert($(this).attr("data-model"));
 			});
 
@@ -499,7 +518,7 @@ canvas{
 						 loader.load( /* model */ model + '.glb', function(glb) {
 							//loader.load( "1.glb", function(glb) {
 							$(".overlay").fadeOut();
-							closeNav();
+							
 							current_object = glb.scene;
 							current_object.scale.set(1.2,1.2,1.2);
 							scene.add(current_object);
