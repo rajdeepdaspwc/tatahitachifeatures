@@ -130,7 +130,7 @@
 	 height: 100%;
 	 width: 0;
 	 position: fixed;
-	 z-index: 1;
+	 z-index: 5;
 	 top: 0;
 	 left: 0;
 	 background-color: #111;
@@ -152,11 +152,13 @@
  .sidenav .closebtn {
 	position: absolute;
     top: -2px;
-    left: 55px;
+    right: 2px;
     font-size: 36px;
     margin-left: 50px;
     padding: 10px;
     font-size: 40px;
+	color:#f37435 !important;
+	cursor: pointer;
 }
  @media screen and (max-height: 450px) {
 	 .sidenav {
@@ -234,28 +236,27 @@ canvas{
 		display: block;
 		background-color: #333;
 		margin-bottom: 5px;
+		border-radius: 3px;
 	}
 	.sidenav  ul li a {
 		display: block;
-		padding:17px 10px 10px 70px;
-		width: 70px;
-		height: 70px;
+		padding: 14px 10px 10px 70px;
+		height: 50px;
 		background-size: contain;
 		background-position: center center;
 		font-family: 'arial';
 		font-size: 20px;
-		color: #fff;
+		color: #c1c1c1;
 		text-decoration: none;
-		opacity: 0.7;
 		position: relative;
 		-webkit-transition: opacity 0.3s ease;
 		transition: opacity 0.3s ease;
 	}
 	.sidenav  ul li a .icon {
 		position: absolute;
-		left: 50%;
+		left: 12px;
 		top: 50%;
-		transform: translate(-50%, -60%);
+		transform: translate(0%, -50%);
 		width: 50px;
 		height: 50px;
 		display: block;
@@ -284,6 +285,22 @@ canvas{
 	.sidenav  ul li:nth-child(7) .icon {
 		background-image: url('assets/icons/Safety-48x48.svg');
 	}
+}
+
+.overlay{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 999;
+	background-color: rgba(255, 255, 255, .8);
+}
+.overlay .messagebox{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 	
 </style>
@@ -365,11 +382,20 @@ canvas{
 					</li>
 				</ul>
 			</footer>
+			<div class="overlay">
+				<div class="messagebox">
+					<img src="assets/gif/ajax-loader.gif" alt="Loading ...">
+					<br>
+					<span>
+						Please wait, Loading model ...
+					</span>
+				</div>
+			</div>
 		</div>
 
 		<script>
 			function openNav() {
-			  document.getElementById("mySidenav").style.width = "250px";
+			  document.getElementById("mySidenav").style.width = "290px";
 			}
 			
 			function closeNav() {
@@ -410,6 +436,7 @@ canvas{
 				}
 
 				loadModel($(this).attr("data-model"));
+				$(".overlay").fadeIn();
 				//alert($(this).attr("data-model"));
 			});
 
@@ -471,8 +498,10 @@ canvas{
 						var loader = new GLTFLoader().setPath('3d/');
 						 loader.load( /* model */ model + '.glb', function(glb) {
 							//loader.load( "1.glb", function(glb) {
-
+							$(".overlay").fadeOut();
+							closeNav();
 							current_object = glb.scene;
+							current_object.scale.set(1.2,1.2,1.2);
 							scene.add(current_object);
 
 							arPlace();
@@ -493,7 +522,7 @@ canvas{
 				document.getElementById("container").appendChild( container );
 
 				scene = new THREE.Scene();
-				scene.position.z = -3;
+				//scene.position.z = -3;
 				// if(getUrlParameter('model') !== currentModel){
 				// 	scene.position.z = -2;
 				// 	console.log(getUrlParameter('model') + currentModel);
@@ -507,6 +536,9 @@ canvas{
 				window.scene = scene;
 
 				camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.001, 200 );
+
+				camera.position.set(4,3,-5); // Set position like this
+				camera.lookAt(new THREE.Vector3(0,0,0));
 
 				var directionalLight = new THREE.DirectionalLight(0xdddddd, 1);
 				directionalLight.position.set(1, 1, 1).normalize();

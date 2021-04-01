@@ -103,6 +103,22 @@
 	  color: yellow;
   }
 
+  .overlay{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 999;
+	background-color: rgba(255, 255, 255, .8);
+}
+.overlay .messagebox{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
 </style>
 	</head>
 	<body>
@@ -130,6 +146,16 @@
 					</div>
 				</div>
 			</div> -->
+		</div>
+
+		<div class="overlay">
+			<div class="messagebox">
+				<img src="assets/gif/ajax-loader.gif" alt="Loading ...">
+				<br>
+				<span>
+					Please wait, Loading model ...
+				</span>
+			</div>
 		</div>
 
 		<script>
@@ -217,7 +243,7 @@
 			}
 
 			function loadModel(model){
-				
+				$(".overlay").fadeIn();
 				new RGBELoader()
 					.setDataType(THREE.UnsignedByteType)
 					.setPath('textures/')
@@ -233,8 +259,9 @@
 						var loader = new GLTFLoader().setPath('3d/');
 						 loader.load( /* model */ getUrlParameter('model') + '.glb', function(glb) {
 							//loader.load( "1.glb", function(glb) {
-
+							$(".overlay").fadeOut();
 							current_object = glb.scene;
+							current_object.scale.set(.5,.5,.5);
 							scene.add(current_object);
 
 							arPlace();
@@ -259,6 +286,8 @@
 				window.scene = scene;
 
 				camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.001, 200 );
+
+				
 
 				var directionalLight = new THREE.DirectionalLight(0xdddddd, 1);
 				directionalLight.position.set(0, 0, 1).normalize();
