@@ -4,6 +4,7 @@
 		<title>three.js ar - hit tests</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+		<link rel="stylesheet" href="css/font-awesome.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<style>
 			body {
@@ -137,6 +138,7 @@
 	 overflow-x: hidden;
 	 transition: 0.5s;
 	 padding-top: 60px;
+	 overflow-x: hidden;
 }
  .sidenav a {
 	 padding: 8px 8px 8px 32px;
@@ -207,6 +209,13 @@ canvas{
 }
 
 @media only screen and (max-width: 768px) {
+	.inner-wrap{
+		width: 290px;
+	}
+	.inner-wrap h3{
+		padding: 0 20px;
+		color:#c1c1c1;
+	}
 	header{
 		padding: 12px 0 8px;
 	}
@@ -227,18 +236,18 @@ canvas{
 	 margin: 0;
 	 display: none;
 	}
-	.sidenav ul {
+	.sidenav ul.modellist {
 	 padding: 0;
 	 margin: 0;
 	}
-	.sidenav  ul li {
+	.sidenav ul.modellist li {
 		margin: 0 10px;
 		display: block;
 		background-color: #333;
 		margin-bottom: 5px;
 		border-radius: 3px;
 	}
-	.sidenav  ul li a {
+	.sidenav ul.modellist li a {
 		display: block;
 		padding: 14px 10px 10px 70px;
 		height: 50px;
@@ -252,7 +261,7 @@ canvas{
 		-webkit-transition: opacity 0.3s ease;
 		transition: opacity 0.3s ease;
 	}
-	.sidenav  ul li a .icon {
+	.sidenav ul.modellist li a .icon {
 		position: absolute;
 		left: 12px;
 		top: 50%;
@@ -261,30 +270,89 @@ canvas{
 		height: 50px;
 		display: block;
 	}
-	.sidenav  ul li a:hover {
+	.sidenav ul.modellist li a:hover {
 		opacity: 1;
 	}
-	.sidenav  ul li:nth-child(1) .icon {
+	.sidenav ul.modellist li:nth-child(1) .icon {
 		background-image: url('assets/icons/Aesthetics-48x48.svg');
 	}
-	.sidenav  ul li:nth-child(2) .icon {
+	.sidenav ul.modellist li:nth-child(2) .icon {
 		background-image: url('assets/icons/Cabin-48x48.svg');
 	}
-	.sidenav  ul li:nth-child(3) .icon {
+	.sidenav ul.modellist li:nth-child(3) .icon {
 		background-image: url('assets/icons/Durability-48x48.svg');
 	}
-	.sidenav  ul li:nth-child(4) .icon {
+	.sidenav ul.modellist li:nth-child(4) .icon {
 		background-image: url('assets/icons/Engine-48x48.svg');
 	}
-	.sidenav  ul li:nth-child(5) .icon {
+	.sidenav ul.modellist li:nth-child(5) .icon {
 		background-image: url('assets/icons/Hydraulics-48x48.svg');
 	}
-	.sidenav  ul li:nth-child(6) .icon {
+	.sidenav ul.modellist li:nth-child(6) .icon {
 		background-image: url('assets/icons/Maintenance-48x48.svg');
 	}
-	.sidenav  ul li:nth-child(7) .icon {
+	.sidenav ul.modellist li:nth-child(7) .icon {
 		background-image: url('assets/icons/Safety-48x48.svg');
 	}
+	.copyrights {
+    padding: 20px 20px;
+    text-align: center;
+    background-color: #111;
+    margin-top: 30px;
+    margin-bottom: 55px;
+}
+.copyrights h5 {
+    line-height: 1;
+    margin: 0;
+    color: #fff;
+}
+.copyrights h5 a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 400;
+	display: inline-block;
+	padding: 0 5px;
+}
+.social-icons {
+    list-style: none;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 0;
+	padding: 0;
+}
+.social-icons li {
+    margin: 0;
+    text-align: center;
+	background-color: transparent !important;
+	display: inline-block;
+}
+.social-icons li:first-child{
+	display: block;
+}
+.social-icons > li > a {
+    padding: 0 !important;
+    width: 40px !important;
+    margin: 0 auto !important;
+}
+.social-icons > li > a > span {
+    width: 25px;
+    height: 28px;
+    margin: 2px;
+    color: #fff;
+    display: inline-block;
+    border-radius: 50%;
+    font-size: 18px;
+    padding-top: 10px;
+    text-align: center;
+}
+.copyrights h6 {
+    color: #afafaf;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 400;
+}
 }
 
 .overlay{
@@ -298,10 +366,14 @@ canvas{
 }
 .overlay .messagebox{
 	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+    text-align: center;
 }
+
+
 	
 </style>
 	</head>
@@ -323,47 +395,71 @@ canvas{
 					<a class="ar-object" id="2" href="#">item_2</a>
 					<a class="ar-object" id="3" href="#">item_3</a>
 					<a class="ar-object" id="4" href="#">item_4</a> -->
-					<ul>
-						<li>
-							<a class="ar-object " href="javascript:void(0)" data-model="1"><span class="icon"></span><span>Aesthetics</span></a>
-						</li>
-						<li>
-							<a class="ar-object" href="javascript:void(0)" data-model="2"><span class="icon"></span><span>Cabin</span></a>
-						</li>
-						<li>
-							<a class="ar-object" href="javascript:void(0)" data-model="3"><span class="icon"></span><span>Durability</span></a>
-						</li>
-						<li>
-							<a class="ar-object" href="javascript:void(0)"data-model="4"><span class="icon"></span><span>Engine</span></a>
-						</li>
-						<li>
-							<a class="ar-object" href="javascript:void(0)" data-model="5"><span class="icon"></span><span>Hydraulics</span></a>
-						</li>
-						<li>
-							<a class="ar-object" href="javascript:void(0)" data-model="1"><span class="icon"></span><span>Maintenance</span></a>
-						</li>
-						<li>
-							<a class="ar-object" href="javascript:void(0)" data-model="car"><span class="icon"></span><span>Safety</span></a>
-						</li>
-					</ul>
-					<!-- <div class="copyrights">
-						<div class="row">
-							<div class="col-sm-7 col-md-8">
-								<h5><a href="https://www.tatahitachi.co.in/privacy-policy/" target="_blank">Privacy Policy</a> | <a href="https://www.tatahitachi.co.in/disclaimer/" target="_blank">Disclaimer</a></h5>
-								<h6>© 2018 Tata Hitachi Construction Machinery  |  All rights reserved.</h6>
-							</div>
-							<div class="col-sm-5 col-md-4">
-								<ul class="social-icons">
+					
+					<div class="inner-wrap">
+						<h3>Available Models</h3>
+						<ul class="modellist">
+							<li>
+								<a class="ar-object " href="javascript:void(0)" data-model="1"><span class="icon"></span><span>Aesthetics</span></a>
+							</li>
+							<li>
+								<a class="ar-object" href="javascript:void(0)" data-model="2"><span class="icon"></span><span>Cabin</span></a>
+							</li>
+							<li>
+								<a class="ar-object" href="javascript:void(0)" data-model="3"><span class="icon"></span><span>Durability</span></a>
+							</li>
+							<li>
+								<a class="ar-object" href="javascript:void(0)"data-model="4"><span class="icon"></span><span>Engine</span></a>
+							</li>
+							<li>
+								<a class="ar-object" href="javascript:void(0)" data-model="5"><span class="icon"></span><span>Hydraulics</span></a>
+							</li>
+							<li>
+								<a class="ar-object" href="javascript:void(0)" data-model="1"><span class="icon"></span><span>Maintenance</span></a>
+							</li>
+							<li>
+								<a class="ar-object" href="javascript:void(0)" data-model="car"><span class="icon"></span><span>Safety</span></a>
+							</li>
+						</ul>
+						<div class="copyrights">
+							<div class="row">
+								<div class="col-sm-7 col-md-8">
+									<h5><a href="https://www.tatahitachi.co.in/privacy-policy/" target="_blank">Privacy Policy</a> | <a href="https://www.tatahitachi.co.in/disclaimer/" target="_blank">Disclaimer</a></h5>
+									<h6>© 2018 Tata Hitachi Construction Machinery  |  All rights reserved.</h6>
+								</div>
+								<div class="col-sm-5 col-md-4">
+									<ul class="social-icons">
 										<li><h6>Follow us :</h6></li>
-										<li><a href="https://www.facebook.com/TataHitachiCorporate/" target="_blank" rel="noopener noreferrer"><span class="icon-facebook" title="Facebook" alt="Facebbok"></span></a></li>
-										<li><a href="https://twitter.com/Tata_Hitachi_IN" target="_blank" rel="noopener noreferrer"><span class="icon-twitter" title="Twitter" alt="twitter"></span></a></li>
-										<li><a href="https://www.youtube.com/channel/UCYE6DtE-X3JXinUFzVGsffQ" target="_blank" rel="noopener noreferrer"><span class="icon-youtube-play" title="YouTube" alt="youtube"></span></a></li>
-										<li><a href="https://www.linkedin.com/company/telcon/" target="_blank" rel="noopener noreferrer"><span class="icon-linkedin" title="LinkedIn" alt="linkedin"></span></a></li>
-										<li><a href="https://www.instagram.com/tatahitachicorporate/" target="_blank" rel="noopener noreferrer"><span class="icon-instagram" title="Instagram" alt="Instagram"></span></a></li>
+										<li>
+											<a href="https://www.facebook.com/TataHitachiCorporate/" target="_blank" rel="noopener noreferrer">
+												<i class="fa fa-facebook" aria-hidden="true"></i>
+											</a>
+										</li>
+										<li>
+											<a href="https://twitter.com/Tata_Hitachi_IN" target="_blank" rel="noopener noreferrer">
+												<i class="fa fa-twitter" aria-hidden="true"></i>
+											</a>
+										</li>
+										<li>
+											<a href="https://www.youtube.com/channel/UCYE6DtE-X3JXinUFzVGsffQ" target="_blank" rel="noopener noreferrer">
+												<i class="fa fa-youtube-play" aria-hidden="true"></i>
+											</a>
+										</li>
+										<li>
+											<a href="https://www.linkedin.com/company/telcon/" target="_blank" rel="noopener noreferrer">
+												<i class="fa fa-linkedin-square" aria-hidden="true"></i>
+											</a>
+										</li>
+										<li>
+											<a href="https://www.instagram.com/tatahitachicorporate/" target="_blank" rel="noopener noreferrer">
+												<i class="fa fa-instagram" aria-hidden="true"></i>
+											</a>
+										</li>
 									</ul>
+								</div>
 							</div>
 						</div>
-					</div> -->
+					</div>
 				</div>
 				<span class="openNav" onclick="openNav()">&#9776;</span>
 				<div id="container" style="position: fixed;">
