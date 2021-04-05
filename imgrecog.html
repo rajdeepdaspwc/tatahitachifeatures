@@ -2,38 +2,80 @@
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#317EFB"/>
 	<title></title>
   <style>
-    .start-analyzing, .stop-analyzing{
-      position: fixed;
+    .start, .stop{
+      position: absolute;
       bottom: 25px;
       left: 50%;
       transform: translate(-50%, 0);
       display: none;
+      font-weight:bold;
+      padding:12px 35px;
+      border:none;
+      border-radius: 30px;
+      font-size: 25px;
+      outline: none;
+    }
+    .start{
+      background-color: rgb(58, 209, 38);
+      color:#fff;
+      
+    }
+    .stop{
+      background-color: rgb(238, 11, 4);
+      color:#fff;
+    }
+    .analyze-loader, .detection-result{
+      position: absolute;
+      bottom: 150px;
+      left: 50%;
+      transform: translate(-50%, 0);
+      display: none;
+    }
+    .analyze-loader span{
+      padding-bottom: 7px;
+      display: block;
+      text-align: center;
+      color:#fff;
+      font-family: "Arial";
+    }
+    .detection-result{
+      min-width: 320px;
+      font-size:30px;
+      color:#fff;
+      font-family: "Arial";
     }
   </style>
 </head>
 <body>
-  <button class="start-analyzing">Start Analyzing</button>
-  <button class="stop-analyzing">Stop Analyzing</button>
 <!-- <button onclick="changeURL()">URL</button> -->
 <!-- <div>Teachable Machine Image Model - p5.js and ml5.js</div> -->
+
+<button class="start" onclick="startClassify()">Start Analyzing</button>
+<button class="stop" onclick="stopClassify()">Stop Analyzing</button>
+
+<div class="analyze-loader">
+  <br>
+  <span>Analyzing ...</span>
+  <img src="./assets/gif/loading.gif" alt="" width="120">
+</div>
+<div class="detection-result"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
 <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<style>body{margin: 15px; text-align: center; background-color: #111;} .p5Canvas{display: inline-block;}</style>
+<style>body{margin: 15px; text-align: center; background-color: #101010; user-select: none;} .p5Canvas{display: inline-block;}</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
 
-
-$(window).load(function(){
-  
-});
 
   // function changeURL(){
   //   window.parent.location.href = "https://www.google.com";
   // }
+
+  var classifyImage = false;
 
   var getUrlParameter = function getUrlParameter(sParam) {
           var sPageURL = window.location.search.substring(1),
@@ -58,9 +100,7 @@ $(window).load(function(){
   // Classifier Variable
   let classifier;
   // Model URL
-  let filePath = './imgrecog/models/'
-  let imageModelURL = filePath + getUrlParameter("type") + '/';
-
+  let imageModelURL = './' + getUrlParameter("type") + '/';
   
   // Video
   let video;
@@ -70,22 +110,24 @@ $(window).load(function(){
 
   // Load the model first
   function preload() {
-    classifier = ml5.imageClassifier(imageModelURL + 'model.json');
+    classifier = ml5.imageClassifier(imageModelURL + 'model.json', function(){
+      $(".start").css("display", "block");
+    });
   }
 
   function setup() {
-    createCanvas(340, 500);
+    createCanvas(380, 500);
     // Create the video
     video = createCapture({
     audio: false,
-   // video: true
+  // video: true
     video: {
       facingMode: {
         exact: "environment"
       }
     }
   });
-    video.size(340, 500);
+    video.size(380, 500);
     video.hide();
 
     flippedVideo = ml5.flipImage(video);
@@ -107,21 +149,41 @@ $(window).load(function(){
 
   // Get a prediction for the current video frame
   function classifyVideo() {
-    flippedVideo = ml5.flipImage(video)
-    classifier.classify(video, gotResult);
-    video.remove();
+   // flippedVideo = ml5.flipImage(video)
+    
+      classifier.classify(video, gotResult);
+      video.remove();
+    
 
   }
 
-
+  function startClassify(){
+    classifyImage = true;
+    $(".stop").css("display", "block");
+    $(".start").css("display", "none");
+    $(".analyze-loader").show();
+    $(".detection-result").hide().text("");
+  }
+  function stopClassify(){
+    classifyImage = false;
+    $(".stop").css("display", "none");
+    $(".start").css("display", "block");
+    $(".analyze-loader").hide();
+    label = "";
+  }
 
   // When we get a result
   function gotResult(error, results) {
+
+    if(classifyImage){
+
     // If there is an error
     if (error) {
       console.error(error);
       return;
     }
+
+    
     //console.log(results);
     // The results are in an array ordered by confidence.
     // console.log(results[0]);
@@ -135,9 +197,12 @@ $(window).load(function(){
       //alert(getUrlParameter("mode"))
       label = results[0].label +" : "+ (results[0].confidence * 100).toFixed(2)+"%";
     }else{
-      label = "Analyzing...";
+     // label = "Analyzing...";
+
+      
       if(results[0].confidence.toFixed(2) >= .98){
-        alert(results[0].label);
+        stopClassify();
+        //alert(results[0].label);
       }
     }
 
@@ -146,10 +211,16 @@ $(window).load(function(){
     if(results[0].confidence.toFixed(2) >= .98){
     //alert(results[0].label);
 
-    label = capitalizeFirstLetter(results[0].label) + " is detected";
+    //label = capitalizeFirstLetter(results[0].label) + " is detected";
+    $(".detection-result").text(capitalizeFirstLetter(results[0].label) + " was detected.").show();
     }
-
+      console.log("asd");
+  }
+    
     classifyVideo();
+
+    
+    
   }
 
 //alert("HOLAa");

@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>three.js ar - hit tests</title>
+		<title>Tata Hitachi Augmented Reality</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+		<meta name="theme-color" content="#317EFB"/>
+		<link rel="Shortcut Icon" type="image/x-icon" href="https://www.tatahitachi.co.in/favicon.ico" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<style>
+			*{
+				box-sizing: border-box;
+			}
 	body {
     background-color: #fff;
     color: #333;
@@ -69,10 +74,11 @@
   }
 
   .backbutton{
-	  position: absolute;
-	  left: 20px;
-	  top: 7px;
-	  z-index: 2;
+	position: fixed;
+	left: 50%;
+	transform: translate(-50%, 0);
+	bottom: 75px;
+	z-index: 2;
   }
   .backbutton img{
 	  opacity: .6;
@@ -110,7 +116,7 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
-	z-index: 999;
+	z-index: 1001;
 	background-color: rgba(255, 255, 255, .8);
 }
 .overlay .messagebox{
@@ -140,18 +146,15 @@ header {
 }
  header .logo1 {
 	 float: left;
+
 }
  header .logo2 {
 	 float: right;
 	 margin-top: 12px;
 }
-
 @media only screen and (max-width: 768px) {
 	header{
-		padding: 12px 0 8px;
-	}
-	header .logo1{
-		margin-left: 95px;
+		padding: 12px 15 8px;
 	}
 	header .logo2{
 		display: none;
