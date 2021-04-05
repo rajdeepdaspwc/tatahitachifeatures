@@ -71,7 +71,7 @@
   .backbutton{
 	  position: absolute;
 	  left: 20px;
-	  top: 20px;
+	  top: 7px;
 	  z-index: 2;
   }
   .backbutton img{
@@ -124,6 +124,39 @@
 #ARButton{
 	background-color: #ed691f !important;
 }
+header {
+	 position: fixed;
+	 width: 100%;
+	 left: 0;
+	 top: 0;
+	 padding: 20px;
+	 background-color: #fff;
+	 z-index: 1;
+}
+ .clearfix::after {
+	 content: "";
+	 display: block;
+	 clear: both;
+}
+ header .logo1 {
+	 float: left;
+}
+ header .logo2 {
+	 float: right;
+	 margin-top: 12px;
+}
+
+@media only screen and (max-width: 768px) {
+	header{
+		padding: 12px 0 8px;
+	}
+	header .logo1{
+		margin-left: 95px;
+	}
+	header .logo2{
+		display: none;
+	}
+}
 
 
 
@@ -131,6 +164,14 @@
 	</head>
 	<body>
 		<a class="backbutton" href="viewin360.html?model=car"><img src="assets/icons/360-degree.svg" width="45" alt=""></a>
+		<header class="clearfix">
+			<div class="logo1">
+				<img src="assets/EdostLogoWithoutBorder.svg" alt="" height="40">
+			</div>
+			<div class="logo2">
+				<img src="assets/Tata_Hitachi_logo2.jpg" alt="" height="18">
+			</div>
+		</header>
 		<div id="content">
 			<!-- <div id="mySidenav" class="sidenav">
 				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>

@@ -107,10 +107,11 @@
 	 opacity: 1;
 }
  footer ul li:nth-child(1) .icon {
-	 background-image: url('assets/icons/Aesthetics-48x48.svg');
+	background-image: url('assets/icons/Cabin-48x48.svg');
+	 
 }
  footer ul li:nth-child(2) .icon {
-	 background-image: url('assets/icons/Cabin-48x48.svg');
+	background-image: url('assets/icons/Aesthetics-48x48.svg');
 }
  footer ul li:nth-child(3) .icon {
 	 background-image: url('assets/icons/Durability-48x48.svg');
@@ -274,10 +275,10 @@ canvas{
 		opacity: 1;
 	}
 	.sidenav ul.modellist li:nth-child(1) .icon {
-		background-image: url('assets/icons/Aesthetics-48x48.svg');
+		background-image: url('assets/icons/Cabin-48x48.svg');
 	}
 	.sidenav ul.modellist li:nth-child(2) .icon {
-		background-image: url('assets/icons/Cabin-48x48.svg');
+		background-image: url('assets/icons/Aesthetics-48x48.svg');
 	}
 	.sidenav ul.modellist li:nth-child(3) .icon {
 		background-image: url('assets/icons/Durability-48x48.svg');
@@ -400,10 +401,10 @@ canvas{
 						<h3>Available Models</h3>
 						<ul class="modellist">
 							<li>
-								<a class="ar-object " href="javascript:void(0)" data-model="1"><span class="icon"></span><span>Aesthetics</span></a>
+								<a class="ar-object " href="javascript:void(0)" data-model="car"><span class="icon"></span><span>Excavator</span></a>
 							</li>
 							<li>
-								<a class="ar-object" href="javascript:void(0)" data-model="2"><span class="icon"></span><span>Cabin</span></a>
+								<a class="ar-object" href="javascript:void(0)" data-model="2"><span class="icon"></span><span>Aesthetics</span></a>
 							</li>
 							<li>
 								<a class="ar-object" href="javascript:void(0)" data-model="3"><span class="icon"></span><span>Durability</span></a>
@@ -474,25 +475,26 @@ canvas{
 				<a class="viewinar" href="arvr.html?model=car"><img src="assets/icons/ar-icon.svg" width="40" alt=""></a>
 				<ul>
 					<li>
+						<a class="ar-object" href="javascript:void(0)" data-model="car"><span class="icon"></span><span>Excavator</span></a>
+					</li>
+					<li>
 						<a class="ar-object " href="javascript:void(0)" data-model="1"><span class="icon"></span><span>Aesthetics</span></a>
 					</li>
+					
 					<li>
-						<a class="ar-object" href="javascript:void(0)" data-model="2"><span class="icon"></span><span>Cabin</span></a>
+						<a class="ar-object" href="javascript:void(0)" data-model="2"><span class="icon"></span><span>Durability</span></a>
 					</li>
 					<li>
-						<a class="ar-object" href="javascript:void(0)" data-model="3"><span class="icon"></span><span>Durability</span></a>
+						<a class="ar-object" href="javascript:void(0)"data-model="3"><span class="icon"></span><span>Engine</span></a>
 					</li>
 					<li>
-						<a class="ar-object" href="javascript:void(0)"data-model="4"><span class="icon"></span><span>Engine</span></a>
+						<a class="ar-object" href="javascript:void(0)" data-model="4"><span class="icon"></span><span>Hydraulics</span></a>
 					</li>
 					<li>
-						<a class="ar-object" href="javascript:void(0)" data-model="5"><span class="icon"></span><span>Hydraulics</span></a>
+						<a class="ar-object" href="javascript:void(0)" data-model="5"><span class="icon"></span><span>Maintenance</span></a>
 					</li>
 					<li>
-						<a class="ar-object" href="javascript:void(0)" data-model="1"><span class="icon"></span><span>Maintenance</span></a>
-					</li>
-					<li>
-						<a class="ar-object" href="javascript:void(0)" data-model="car"><span class="icon"></span><span>Safety</span></a>
+						<a class="ar-object" href="javascript:void(0)" data-model="6"><span class="icon"></span><span>Safety</span></a>
 					</li>
 				</ul>
 			</footer>
@@ -653,10 +655,11 @@ canvas{
 				camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.001, 200 );
 
 				camera.position.set(4,3,-5); // Set position like this
+				//camera.position.set(.5,.1,-6); // Set position like this
 				camera.lookAt(new THREE.Vector3(0,0,0));
 
 				var directionalLight = new THREE.DirectionalLight(0xdddddd, 1);
-				directionalLight.position.set(4, 7, 4).normalize();
+				directionalLight.position.set(10, 10, 10).normalize();
 				scene.add(directionalLight);
 
 				var ambientLight = new THREE.AmbientLight(0x222222);

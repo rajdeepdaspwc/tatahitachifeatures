@@ -3,16 +3,33 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title></title>
+  <style>
+    .start-analyzing, .stop-analyzing{
+      position: fixed;
+      bottom: 25px;
+      left: 50%;
+      transform: translate(-50%, 0);
+      display: none;
+    }
+  </style>
 </head>
 <body>
+  <button class="start-analyzing">Start Analyzing</button>
+  <button class="stop-analyzing">Stop Analyzing</button>
 <!-- <button onclick="changeURL()">URL</button> -->
 <!-- <div>Teachable Machine Image Model - p5.js and ml5.js</div> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
 <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <style>body{margin: 15px; text-align: center; background-color: #111;} .p5Canvas{display: inline-block;}</style>
 <script type="text/javascript">
 
+
+$(window).load(function(){
+  
+});
 
   // function changeURL(){
   //   window.parent.location.href = "https://www.google.com";
@@ -57,7 +74,7 @@
   }
 
   function setup() {
-    createCanvas(380, 500);
+    createCanvas(340, 500);
     // Create the video
     video = createCapture({
     audio: false,
@@ -68,7 +85,7 @@
       }
     }
   });
-    video.size(380, 500);
+    video.size(340, 500);
     video.hide();
 
     flippedVideo = ml5.flipImage(video);
