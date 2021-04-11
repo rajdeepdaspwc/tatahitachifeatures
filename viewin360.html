@@ -25,8 +25,8 @@
 	 width: 100%;
 	 left: 0;
 	 top: 0;
-	 padding: 20px;
-	 background-color: #fff;
+	 padding: 14px 0 10px;
+	 background-color: #000;
 	 z-index: 1;
 }
  .clearfix::after {
@@ -36,10 +36,12 @@
 }
  header .logo1 {
 	 float: left;
+	 padding-left: 52px;
 }
  header .logo2 {
 	 float: right;
 	 margin-top: 12px;
+	 padding-right: 56px;
 }
  ::ng-deep #VRButton {
 	 display: none;
@@ -53,9 +55,14 @@
 		 display: block;
 	}
 }
+#content{
+	position: relative;
+	top: -75px;
+}
  #container {
 	 padding: 25px 0;
-	 position: relative;
+	 position: relative !important;
+	 overflow: hidden;
 	 outline: none;
 }
  #container .modelname {
@@ -64,13 +71,12 @@
 	 top: 100px;
 }
  footer {
-	 position: fixed;
+	 position: relative;
+	 margin-top: -144px;
 	 width: 100%;
-	 left: 0;
-	 bottom: 0;
 	 padding: 10px;
 	 text-align: center;
-	 background-color: #111;
+	 background-color: #000;
 }
  footer ul {
 	 padding: 0;
@@ -81,7 +87,7 @@
 	 display: inline-block;
 	 background-color: #333;
 }
- footer ul li a {
+ footer ul.options li a {
 	 display: block;
 	 padding-top: 53px;
 	 width: 70px;
@@ -138,11 +144,12 @@
 	 z-index: 5;
 	 top: 0;
 	 left: 0;
-	 background-color: #111;
+	 background-color: #000;
 	 overflow-x: hidden;
 	 transition: 0.5s;
-	 padding-top: 60px;
+	 padding-top: 18px;
 	 overflow-x: hidden;
+	 box-shadow: 3px 0px 14px #000;
 }
  .sidenav a {
 	 padding: 8px 8px 8px 32px;
@@ -188,10 +195,11 @@
  
 canvas{
 	outline: none;
+	position: relative !important;
 }
 .viewinar{
 	position: absolute;
-	top: -60px;
+	top: -65px;
 	left: 50%;
 	transform: translate(-50%, 0);
 }
@@ -208,8 +216,78 @@ canvas{
     position: fixed;
 	z-index: 2;
 	left: 16px;
-    top: 10px;
+    top: 8px;
 	display: none;
+	color:#fff;
+}
+
+.copyrights {
+    padding: 0px 20px 10px;
+    text-align: center;
+    background-color: #000;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.copyrights h5 {
+    line-height: 1;
+    margin: 0;
+    color: #fff;
+}
+.copyrights h5 a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 400;
+	display: inline-block;
+	padding: 0 5px;
+}
+.copyrights .social-icons {
+    list-style: none;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 0;
+	padding: 0;
+}
+.copyrights .social-icons li {
+    margin: 0;
+    text-align: center;
+	background-color: transparent !important;
+	display: inline-block;
+}
+.copyrights .social-icons li:first-child{
+	display: block;
+}
+.copyrights .social-icons > li > a {
+    padding: 0 !important;
+    width: 40px !important;
+    margin: 0 auto !important;
+	color: #c1c1c1;
+	display: block;
+	transform: scale(1);
+	-webkit-transition: all .2s ease;
+	transition: all .2s ease;
+}
+.copyrights .social-icons > li > a:hover{
+	transform: scale(1.5);
+}
+.copyrights .social-icons > li > a > span {
+    width: 25px;
+    height: 28px;
+    margin: 2px;
+    color: #fff;
+    display: inline-block;
+    border-radius: 50%;
+    font-size: 18px;
+    padding-top: 10px;
+    text-align: center;
+}
+.copyrights h6 {
+    color: #afafaf;
+    text-decoration: none;
+    font-size: 11px;
+    margin-bottom: 10px;
+    font-weight: 400;
 }
 
 @media only screen and (max-width: 768px) {
@@ -234,11 +312,31 @@ canvas{
 	}
 	footer{
 		padding: 0;
+		margin: 0;
+		position: fixed;
 	}
-	footer ul {
+	#content{
+		top:0;
+	}
+	#container{
+		padding: 0;
+	}
+	footer .viewinar{
+
+	}
+	footer .copyrights{
+		display: none;
+	}
+	footer ul.options {
 	 padding: 0;
 	 margin: 0;
 	 display: none;
+	}
+	footer ul.options{
+		top: -120px;
+	}
+	.sidenav .copyrights{
+		padding-top: 17px;
 	}
 	.sidenav ul.modellist {
 	 padding: 0;
@@ -298,65 +396,7 @@ canvas{
 	.sidenav ul.modellist li:nth-child(7) .icon {
 		background-image: url('assets/icons/Safety-48x48.svg');
 	}
-	.copyrights {
-    padding: 20px 20px;
-    text-align: center;
-    background-color: #111;
-    margin-top: 30px;
-    margin-bottom: 55px;
-}
-.copyrights h5 {
-    line-height: 1;
-    margin: 0;
-    color: #fff;
-}
-.copyrights h5 a {
-    color: #ccc;
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: 400;
-	display: inline-block;
-	padding: 0 5px;
-}
-.social-icons {
-    list-style: none;
-    display: block;
-    margin: 0 auto;
-    text-align: center;
-    margin-top: 0;
-	padding: 0;
-}
-.social-icons li {
-    margin: 0;
-    text-align: center;
-	background-color: transparent !important;
-	display: inline-block;
-}
-.social-icons li:first-child{
-	display: block;
-}
-.social-icons > li > a {
-    padding: 0 !important;
-    width: 40px !important;
-    margin: 0 auto !important;
-}
-.social-icons > li > a > span {
-    width: 25px;
-    height: 28px;
-    margin: 2px;
-    color: #fff;
-    display: inline-block;
-    border-radius: 50%;
-    font-size: 18px;
-    padding-top: 10px;
-    text-align: center;
-}
-.copyrights h6 {
-    color: #afafaf;
-    text-decoration: none;
-    font-size: 11px;
-    font-weight: 400;
-}
+
 }
 
 .overlay{
@@ -365,7 +405,7 @@ canvas{
 	left: 0;
 	width: 100%;
 	height: 100%;
-	z-index: 999;
+	z-index: 1001;
 	background-color: rgba(255, 255, 255, .8);
 }
 .overlay .messagebox{
@@ -375,6 +415,8 @@ canvas{
     transform: translate(-50%, -50%);
     width: 250px;
     text-align: center;
+	color:#ed691f;
+	font-weight: bold;
 }
 
 
@@ -386,10 +428,10 @@ canvas{
 		<div class="wrapper">
 			<header class="clearfix">
 				<div class="logo1">
-					<img src="assets/EdostLogoWithoutBorder.svg" alt="" height="40">
+					<img src="assets/images/tatahitachilogo.png" alt="" width="150">
 				</div>
 				<div class="logo2">
-					<img src="assets/Tata_Hitachi_logo2.jpg" alt="" height="18">
+					<img src="assets/images/tatahitachilogotext.jpg" alt="" width="162">
 				</div>
 			</header>
 			<div id="content">
@@ -470,13 +512,13 @@ canvas{
 					<h1 class="modelname"></h1>
 				</div>
 				
-				<span style="font-size:30px;cursor:pointer;position: absolute;" (click)="openNav()">&#9776; open</span>
+				<!-- <span style="font-size:30px;cursor:pointer;position: absolute;" (click)="openNav()">&#9776; open</span> -->
 		
-				<button type="button" id="place-button">PLACE</button>
+				<!-- <button type="button" id="place-button">PLACE</button> -->
 			</div>
 			<footer>
 				<a class="viewinar" href="arvr.html?model=car"><img src="assets/icons/ar-icon.svg" width="40" alt=""></a>
-				<ul>
+				<ul class="options">
 					<li>
 						<a class="ar-object" href="javascript:void(0)" data-model="car"><span class="icon"></span><span>Excavator</span></a>
 					</li>
@@ -500,6 +542,44 @@ canvas{
 						<a class="ar-object" href="javascript:void(0)" data-model="6"><span class="icon"></span><span>Safety</span></a>
 					</li>
 				</ul>
+				<div class="copyrights">
+					<div class="row">
+						<div class="col-sm-5 col-md-4">
+							<ul class="social-icons">
+								<li><h6>Follow us :</h6></li>
+								<li>
+									<a href="https://www.facebook.com/TataHitachiCorporate/" target="_blank" rel="noopener noreferrer">
+										<i class="fa fa-facebook" aria-hidden="true"></i>
+									</a>
+								</li>
+								<li>
+									<a href="https://twitter.com/Tata_Hitachi_IN" target="_blank" rel="noopener noreferrer">
+										<i class="fa fa-twitter" aria-hidden="true"></i>
+									</a>
+								</li>
+								<li>
+									<a href="https://www.youtube.com/channel/UCYE6DtE-X3JXinUFzVGsffQ" target="_blank" rel="noopener noreferrer">
+										<i class="fa fa-youtube-play" aria-hidden="true"></i>
+									</a>
+								</li>
+								<li>
+									<a href="https://www.linkedin.com/company/telcon/" target="_blank" rel="noopener noreferrer">
+										<i class="fa fa-linkedin-square" aria-hidden="true"></i>
+									</a>
+								</li>
+								<li>
+									<a href="https://www.instagram.com/tatahitachicorporate/" target="_blank" rel="noopener noreferrer">
+										<i class="fa fa-instagram" aria-hidden="true"></i>
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="col-sm-7 col-md-8">
+							<!-- <h5><a href="https://www.tatahitachi.co.in/privacy-policy/" target="_blank">Privacy Policy</a> | <a href="https://www.tatahitachi.co.in/disclaimer/" target="_blank">Disclaimer</a></h5> -->
+							<h6>© 2018 Tata Hitachi Construction Machinery  |  All rights reserved.</h6>
+						</div>
+					</div>
+				</div>
 			</footer>
 			<div class="overlay">
 				<div class="messagebox">

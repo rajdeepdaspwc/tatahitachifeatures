@@ -8,6 +8,10 @@
 		<link rel="Shortcut Icon" type="image/x-icon" href="https://www.tatahitachi.co.in/favicon.ico" />
 	<title></title>
   <style>
+    body{
+      font-family: "Lato", sans-serif;
+      margin: 0;
+    }
     .start, .stop{
       position: absolute;
       bottom: 25px;
@@ -18,58 +22,192 @@
       padding:12px 35px;
       border:none;
       border-radius: 30px;
-      font-size: 25px;
+      font-size: 15px;
       outline: none;
     }
     .start{
       background-color: rgb(58, 209, 38);
       color:#fff;
-      
     }
     .stop{
       background-color: rgb(238, 11, 4);
       color:#fff;
     }
-    .analyze-loader, .detection-result{
-      position: absolute;
-      bottom: 150px;
-      left: 50%;
-      transform: translate(-50%, 0);
+    .analyze-loader{
+      position: fixed;
+      top: -8px;
+      right: 15px;
       display: none;
     }
     .analyze-loader span{
       padding-bottom: 7px;
       display: block;
       text-align: center;
-      color:#fff;
+      color:#ed691f;
       font-family: "Arial";
+      font-weight: bold;
     }
     .detection-result{
-      min-width: 320px;
-      font-size:30px;
-      color:#fff;
       font-family: "Arial";
+      font-size: 30px;
+      text-align: center;
     }
+    .instructions-overlay{
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0,0,0, .8);
+	z-index: 1002;
+	display: none;
+  text-align: left;
+}
+.instructions-overlay .instructions{
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top:50%;
+	left: 50%;
+	background-color: #fff;
+	border-radius: 7px;
+	box-shadow: 2px 2px 15px #000;
+	width: calc(100vw - 30px);
+	max-width: calc(767px - 30px);
+	max-height: calc(100vh - 30px);
+}
+.instructions-overlay .instructions .texts{
+	padding: 20px;
+}
+.instructions-overlay .instructions .texts ul{
+	padding-left: 20px;
+}
+.instructions-overlay .instructions a, .instructions-overlay .instructions .highlight, .instructions-overlay .instructions h4{
+	color: #ed691f;
+	font-weight: bold;
+}
+.instructions-overlay .instructions .gotit{
+	background-color: #ed691f;
+	color:#fff;
+	border:none;
+	border-radius: 7px;
+	padding: 15px 30px;
+	font-size: 16px;
+	font-weight: bold;
+	margin-top: 15px;
+}
+.instructions-overlay .instructions .place-center{
+	text-align: center;
+}
+.more-options{
+  display: flex;
+  flex-wrap: nowrap;
+  text-align: center;
+}
+.more-options > div {
+  width: 25%;
+}
+.more-options .icon-wrapper{
+  margin-bottom: 10px;
+}
+.logo1{
+  position: fixed;
+  left: 20px;
+  top: 14px;
+}
+body{margin: 15px 0 0 0; text-align: center; background-color: #101010; user-select: none;} 
+.p5Canvas{display: inline-block; margin-top: 50px;}
+@media only screen and (max-width: 768px) {
+	.instructions-overlay .instructions{
+		overflow-y: scroll;
+	}
+}
+
+.overlay{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1001;
+	background-color: rgba(255, 255, 255, .8);
+}
+.overlay .messagebox{
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+    text-align: center;
+	color:#ed691f;
+	font-weight: bold;
+}
   </style>
 </head>
 <body>
 <!-- <button onclick="changeURL()">URL</button> -->
 <!-- <div>Teachable Machine Image Model - p5.js and ml5.js</div> -->
-
-<button class="start" onclick="startClassify()">Start Analyzing</button>
-<button class="stop" onclick="stopClassify()">Stop Analyzing</button>
-
+<div class="overlay">
+  <div class="messagebox">
+    <img src="assets/gif/ajax-loader.gif" alt="Loading ...">
+    <br>
+    <span>
+      Please wait, Loading model
+    </span>
+  </div>
+</div>
+<div class="logo1">
+  <img src="assets/images/tatahitachilogo.png" alt="" width="150">
+</div>
 <div class="analyze-loader">
   <br>
   <span>Analyzing ...</span>
   <img src="./assets/gif/loading.gif" alt="" width="120">
 </div>
-<div class="detection-result"></div>
+<div class="instructions-overlay">
+  <div class="instructions">
+    <div class="texts">
+      <div class="logo">
+        <img src="assets/EdostLogoWithoutBorder.svg" alt="TATA HITACHI" height="50">
+      </div>
+      <h4><div class="detection-result"></div></h4>
+      <p><b>Description:</b></p>
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam possimus non dolor ullam praesentium, perferendis nam libero, unde ipsum repellat corporis qui consectetur quasi maiores et quo alias neque in!</p>
+      <p><b>More Information:</b></p>
+      <div class="more-options">
+        <div class="options">
+          <div class="icon-wrapper"><img src="assets/icons/details-icon.svg" height="40" alt="Details"></div>
+          <b>Product <br>Details</b>
+        </div>
+        <div class="options">
+          <div class="icon-wrapper"><img src="assets/icons/3d-model.svg" height="40" alt="Details"></div>
+          <b>3D <br>View</b>
+        </div>
+        <div class="options">
+          <div class="icon-wrapper"><img src="assets/icons/wrench.svg" height="40" alt="Details"></div>
+          <b>Repair <br>Manuals</b>
+        </div>
+        <div class="options">
+          <div class="icon-wrapper"><img src="assets/icons/video-camera.svg" height="40" alt="Details"></div>
+          <b>Related <br>Videos</b>
+        </div>
+      </div>
+      <p class="place-center">
+        <button class="gotit">Analyze Again</button>
+      </p>
+    </div>
+  </div>
+</div>
+
+<button class="start" onclick="startClassify()">Start Analyzing</button>
+<button class="stop" onclick="stopClassify()">Stop Analyzing</button>
+
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
 <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
 
-<style>body{margin: 15px; text-align: center; background-color: #101010; user-select: none;} .p5Canvas{display: inline-block;}</style>
+<style></style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
 
@@ -77,6 +215,18 @@
   // function changeURL(){
   //   window.parent.location.href = "https://www.google.com";
   // }
+
+  function getWindowWidth(){
+    if(window.innerWidth < 769){
+      return window.innerWidth;
+    }
+    else if (window.innerWidth > 768){
+      return 380;
+    }
+    
+  }
+
+  //alert((getWindowWidth() -30) * 1.31);
 
   var classifyImage = false;
 
@@ -119,7 +269,7 @@
   }
 
   function setup() {
-    createCanvas(380, 500);
+    createCanvas((getWindowWidth() -30), (getWindowWidth() -30) * 1.31);
     // Create the video
     video = createCapture({
     audio: false,
@@ -130,7 +280,7 @@
       }
     }
   });
-    video.size(380, 500);
+    video.size((getWindowWidth() -30), (getWindowWidth() -30) * 1.31);
     video.hide();
 
     flippedVideo = ml5.flipImage(video);
@@ -160,12 +310,17 @@
 
   }
 
+  $(".instructions-overlay .gotit").click(function(){
+    $(".instructions-overlay").fadeOut();
+  });
+
   function startClassify(){
     classifyImage = true;
     $(".stop").css("display", "block");
     $(".start").css("display", "none");
     $(".analyze-loader").show();
-    $(".detection-result").hide().text("");
+    $(".detection-result").text("");
+    $(".instruction-overlay").fadeIn();
   }
   function stopClassify(){
     classifyImage = false;
@@ -217,7 +372,6 @@
     //label = capitalizeFirstLetter(results[0].label) + " is detected";
     $(".detection-result").text(capitalizeFirstLetter(results[0].label) + " was detected.").show();
     }
-      console.log("asd");
   }
     
     classifyVideo();

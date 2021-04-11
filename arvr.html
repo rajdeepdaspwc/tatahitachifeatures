@@ -82,7 +82,7 @@
 	position: fixed;
 	left: 50%;
 	transform: translate(-50%, 0);
-	bottom: 75px;
+	bottom: 90px;
 	z-index: 2;
   }
   .backbutton img{
@@ -131,6 +131,8 @@
     transform: translate(-50%, -50%);
     width: 250px;
     text-align: center;
+	color:#ed691f;
+	font-weight: bold;
 }
 #ARButton{
 	background-color: #ed691f !important;
@@ -140,8 +142,8 @@ header {
 	 width: 100%;
 	 left: 0;
 	 top: 0;
-	 padding: 20px;
-	 background-color: #fff;
+	 padding: 14px 0 10px;
+	 background-color: #000;
 	 z-index: 1;
 }
  .clearfix::after {
@@ -151,34 +153,106 @@ header {
 }
  header .logo1 {
 	 float: left;
-
+	 padding-left: 52px;
 }
  header .logo2 {
 	 float: right;
 	 margin-top: 12px;
+	 padding-right: 56px;
+}
+header .show-info{
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	transform: translate(0, -50%);
+	background-color: transparent;
+	border: 0;
 }
 @media only screen and (max-width: 768px) {
 	header{
-		padding: 12px 15 8px;
+		padding: 12px 0 8px;
+	}
+	header .logo1{
+		margin-left: 60px;
 	}
 	header .logo2{
 		display: none;
 	}
+	.instructions-overlay .instructions{
+		overflow-y: scroll;
+	}
 }
 
-
+.instructions-overlay{
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0,0,0, .5);
+	z-index: 1002;
+	display: none;
+}
+.instructions-overlay .instructions{
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top:50%;
+	left: 50%;
+	background-color: #fff;
+	border-radius: 7px;
+	box-shadow: 2px 2px 15px #000;
+	width: calc(100vw - 30px);
+	max-width: calc(767px - 30px);
+	max-height: calc(100vh - 30px);
+}
+.instructions-overlay .instructions .texts{
+	padding: 20px;
+}
+.instructions-overlay .instructions .texts ul{
+	padding-left: 20px;
+}
+.instructions-overlay .instructions a, .instructions-overlay .instructions .highlight, .instructions-overlay .instructions h4{
+	color: #ed691f;
+	font-weight: bold;
+	font-size: 18px;
+}
+.instructions-overlay .instructions .gotit{
+	background-color: #ed691f;
+	color:#fff;
+	border:none;
+	border-radius: 7px;
+	padding: 15px 30px;
+	font-size: 16px;
+	font-weight: bold;
+	margin-top: 15px;
+}
+.instructions-overlay .instructions .place-center{
+	text-align: center;
+}
+body > a{
+	background-color: #ed691f !important;
+	color:#fff !important;
+	border:none !important;
+	border-radius: 7px !important;
+	padding: 15px 30px !important;
+	font-size: 16px !important;
+	font-weight: bold !important;
+}
 
 </style>
 	</head>
 	<body>
-		<a class="backbutton" href="viewin360.html?model=car"><img src="assets/icons/360-degree.svg" width="45" alt=""></a>
+		<div>
+			<a class="backbutton" href="viewin360.html?model=car"><img src="assets/icons/360-degree.svg" width="45" alt=""></a>
+		</div>
 		<header class="clearfix">
 			<div class="logo1">
-				<img src="assets/EdostLogoWithoutBorder.svg" alt="" height="40">
+				<img src="assets/images/tatahitachilogo.png" alt="" width="150">
 			</div>
 			<div class="logo2">
-				<img src="assets/Tata_Hitachi_logo2.jpg" alt="" height="18">
+				<img src="assets/images/tatahitachilogotext.jpg" alt="" width="162">
 			</div>
+			<button class="show-info"><img src="assets/icons/info-button.svg" alt="i" height="30"></button>
 		</header>
 		<div id="content">
 			<!-- <div id="mySidenav" class="sidenav">
@@ -214,7 +288,33 @@ header {
 				</span>
 			</div>
 		</div>
-
+		<div class="instructions-overlay">
+			<div class="instructions">
+				<div class="texts">
+					<div class="logo1">
+						<img src="assets/EdostLogoWithoutBorder.svg" alt="TATA HITACHI" height="50">
+					</div>
+					<h4>Welcome to Tata Hitachi Augmented Reality Experience</h4>
+					<p><b>Please follow the below steps to experience augmented reality:</b></p>
+					<ul>
+						<li>Click on <span class="highlight">'Start AR'</span> button at the bottom of the screen.</li>
+						<li>Point the camera on a horizontal surface (floor).</li>
+						<li>Wait for the <span class="highlight">white circle</span> and the <span class="highlight">'Place'</span> button to appear on the screen.</li>
+						<li>Move the <span class="highlight">white circle</span> to a desired position and press the <span class="highlight">'Place'</span> button to place the model.</li>
+						<li>Touch and rotate the model according to your desire while viewing it.</li>
+					</ul>
+					<p><b>If the augmented reality feature is <br><span style="color: red;">not working:</span></b></p>
+					<ul>
+						<li>Please check whether your device has AR Core support by visiting this <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">suported devices</a> link.</li>
+						<li>Update you Google Chrome browser to the latest version.</li>
+						<li>If a black screen is coming due to hardware error please go back and press the  <span class="highlight">'Start AR'</span> button again.</li>
+					</ul>
+					<p class="place-center">
+						<button class="gotit">Got it</button>
+					</p>
+				</div>
+			</div>
+		</div>
 		<script>
 			function openNav() {
 			  document.getElementById("mySidenav").style.width = "250px";
@@ -273,6 +373,14 @@ header {
 			$("#place-button").click(function(){
 				arPlace();
 			});
+			$(".gotit").click(function(){
+				$(".instructions-overlay").fadeOut();
+			});
+			$(".show-info").click(function(){
+				$(".instructions-overlay").fadeIn();
+				$(".instructions-overlay .instructions").scrollTop(0);
+			});
+			
 
 			var getUrlParameter = function getUrlParameter(sParam) {
 			    var sPageURL = window.location.search.substring(1),
@@ -317,6 +425,7 @@ header {
 						 loader.load( /* model */ getUrlParameter('model') + '.glb', function(glb) {
 							//loader.load( "1.glb", function(glb) {
 							$(".overlay").fadeOut();
+							$(".instructions-overlay").fadeIn();
 							current_object = glb.scene;
 							current_object.scale.set(.5,.5,.5);
 							scene.add(current_object);
