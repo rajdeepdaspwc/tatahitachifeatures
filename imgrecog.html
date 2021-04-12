@@ -371,6 +371,7 @@ body{margin: 15px 0 0 0; text-align: center; background-color: #101010; user-sel
     //alert(results[0].label);
 
     //label = capitalizeFirstLetter(results[0].label) + " is detected";
+    $(".instructions-overlay").fadeIn();
     $(".detection-result").text(capitalizeFirstLetter(results[0].label) + " was detected.").show();
     }
   }
