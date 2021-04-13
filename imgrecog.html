@@ -8,6 +8,9 @@
 		<link rel="Shortcut Icon" type="image/x-icon" href="https://www.tatahitachi.co.in/favicon.ico" />
 	<title></title>
   <style>
+    *{
+      box-sizing: border-box;
+    }
     body{
       font-family: "Lato", sans-serif;
       margin: 0;
@@ -52,6 +55,35 @@
       font-size: 30px;
       text-align: center;
     }
+
+.nothingDetected-overlay{
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0,0,0, .8);
+	z-index: 1002;
+	display: none;
+  text-align: left;
+}
+.nothingDetected-overlay .nothingDetected-text{
+  position: absolute;
+	transform: translate(-50%, -50%);
+	top:50%;
+	left: 50%;
+	background-color: #fff;
+	border-radius: 7px;
+	box-shadow: 2px 2px 15px #000;
+	width: calc(100vw - 30px);
+	max-width: calc(767px - 30px);
+	max-height: calc(100vh - 30px);
+  padding: 20px;
+  text-align: center;
+}
+.nothingDetected-overlay .nothingDetected-text p{
+  font-size: 30px;
+}
     .instructions-overlay{
 	position: fixed;
 	left: 0;
@@ -75,6 +107,11 @@
 	max-width: calc(767px - 30px);
 	max-height: calc(100vh - 30px);
 }
+.instructions-overlay .instructions .close-popup{
+	position: absolute;
+	right: 15px;
+	top: 15px;
+}
 .instructions-overlay .instructions .texts{
 	padding: 20px;
 }
@@ -85,7 +122,7 @@
 	color: #ed691f;
 	font-weight: bold;
 }
-.instructions-overlay .instructions .gotit{
+.instructions-overlay .instructions .gotit, .nothingDetected-overlay .try-again{
 	background-color: #ed691f;
 	color:#fff;
 	border:none;
@@ -141,6 +178,80 @@ body{margin: 15px 0 0 0; text-align: center; background-color: #101010; user-sel
 	color:#ed691f;
 	font-weight: bold;
 }
+
+.copyrights {
+    padding: 17px 20px 10px;
+    text-align: center;
+    background-color: #000;
+    margin-top: 0;
+    margin-bottom: 0;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+}
+.copyrights h5 {
+    line-height: 1;
+    margin: 0;
+    color: #fff;
+}
+.copyrights h5 a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 400;
+	display: inline-block;
+	padding: 0 5px;
+}
+.copyrights .social-icons {
+    list-style: none;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 0;
+	padding: 0;
+}
+.copyrights .social-icons li {
+    margin: 0;
+    text-align: center;
+	background-color: transparent !important;
+	display: inline-block;
+}
+.copyrights .social-icons li:first-child{
+	display: block;
+}
+.copyrights .social-icons > li > a {
+    padding: 0 !important;
+    width: 40px !important;
+    margin: 0 auto !important;
+	color: #c1c1c1;
+	display: block;
+	transform: scale(1);
+	-webkit-transition: all .2s ease;
+	transition: all .2s ease;
+}
+.copyrights .social-icons > li > a:hover{
+	transform: scale(1.5);
+}
+.copyrights .social-icons > li > a > span {
+    width: 25px;
+    height: 28px;
+    margin: 2px;
+    color: #fff;
+    display: inline-block;
+    border-radius: 50%;
+    font-size: 18px;
+    padding-top: 10px;
+    text-align: center;
+}
+.copyrights h6 {
+    color: #afafaf;
+    text-decoration: none;
+    font-size: 11px;
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+
+
   </style>
 </head>
 <body>
@@ -165,6 +276,9 @@ body{margin: 15px 0 0 0; text-align: center; background-color: #101010; user-sel
 </div>
 <div class="instructions-overlay">
   <div class="instructions">
+    <div class="close-popup">
+      <img src="assets/icons/close.svg" width="30" alt="">
+    </div>
     <div class="texts">
       <div class="logo">
         <img src="assets/EdostLogoWithoutBorder.svg" alt="TATA HITACHI" height="50">
@@ -197,9 +311,55 @@ body{margin: 15px 0 0 0; text-align: center; background-color: #101010; user-sel
     </div>
   </div>
 </div>
+<div class="nothingDetected-overlay">
+  <div class="nothingDetected-text">
+    <img src="assets/icons/complain.svg" height="50" alt="">
+    <p>No component was detected!</p>
+    <button class="try-again">Try Again</button>
+  </div>
+</div>
 
 <button class="start" onclick="startClassify()">Start Analyzing</button>
 <button class="stop" onclick="stopClassify()">Stop Analyzing</button>
+
+<div class="copyrights">
+  <div class="row">
+    <div class="col-sm-7 col-md-8">
+      <h5><a href="https://www.tatahitachi.co.in/privacy-policy/" target="_blank">Privacy Policy</a> | <a href="https://www.tatahitachi.co.in/disclaimer/" target="_blank">Disclaimer</a></h5>
+      <h6>© 2018 Tata Hitachi Construction Machinery  |  All rights reserved.</h6>
+    </div>
+    <div class="col-sm-5 col-md-4">
+      <ul class="social-icons">
+        <li><h6>Follow us :</h6></li>
+        <li>
+          <a href="https://www.facebook.com/TataHitachiCorporate/" target="_blank" rel="noopener noreferrer">
+            <i class="fa fa-facebook" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/Tata_Hitachi_IN" target="_blank" rel="noopener noreferrer">
+            <i class="fa fa-twitter" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/channel/UCYE6DtE-X3JXinUFzVGsffQ" target="_blank" rel="noopener noreferrer">
+            <i class="fa fa-youtube-play" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/company/telcon/" target="_blank" rel="noopener noreferrer">
+            <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/tatahitachicorporate/" target="_blank" rel="noopener noreferrer">
+            <i class="fa fa-instagram" aria-hidden="true"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
 
 
 
@@ -314,22 +474,30 @@ body{margin: 15px 0 0 0; text-align: center; background-color: #101010; user-sel
   $(".instructions-overlay .gotit").click(function(){
     $(".instructions-overlay").fadeOut();
   });
-
+var timeOut;
   function startClassify(){
     classifyImage = true;
     $(".stop").css("display", "block");
     $(".start").css("display", "none");
     $(".analyze-loader").show();
     $(".detection-result").text("");
-    $(".instruction-overlay").fadeIn();
+    timeOut = setTimeout(function(){
+      stopClassify();
+      $(".nothingDetected-overlay").fadeIn();
+    }, 20000)
   }
   function stopClassify(){
     classifyImage = false;
+    clearTimeout(timeOut);
     $(".stop").css("display", "none");
     $(".start").css("display", "block");
     $(".analyze-loader").hide();
     label = "";
   }
+
+  $(".nothingDetected-overlay .try-again, .nothingDetected-overlay .close-popup").click(function(){
+    $(".nothingDetected-overlay").fadeOut();
+  });
 
   // When we get a result
   function gotResult(error, results) {

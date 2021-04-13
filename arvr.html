@@ -6,6 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 		<meta name="theme-color" content="#317EFB"/>
 		<link rel="Shortcut Icon" type="image/x-icon" href="https://www.tatahitachi.co.in/favicon.ico" />
+		<link rel="stylesheet" href="css/font-awesome.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<style>
 			*{
@@ -144,7 +145,7 @@ header {
 	 top: 0;
 	 padding: 14px 0 10px;
 	 background-color: #000;
-	 z-index: 1;
+	 z-index: 3;
 }
  .clearfix::after {
 	 content: "";
@@ -153,7 +154,7 @@ header {
 }
  header .logo1 {
 	 float: left;
-	 padding-left: 52px;
+	 margin-left: 60px;
 }
  header .logo2 {
 	 float: right;
@@ -167,13 +168,14 @@ header .show-info{
 	transform: translate(0, -50%);
 	background-color: transparent;
 	border: 0;
+	cursor: pointer;
 }
 @media only screen and (max-width: 768px) {
 	header{
 		padding: 12px 0 8px;
 	}
 	header .logo1{
-		margin-left: 60px;
+		margin-left: 20px;
 	}
 	header .logo2{
 		display: none;
@@ -205,6 +207,11 @@ header .show-info{
 	max-width: calc(767px - 30px);
 	max-height: calc(100vh - 30px);
 }
+.instructions-overlay .instructions .close-popup{
+	position: absolute;
+	right: 15px;
+	top: 15px;
+}
 .instructions-overlay .instructions .texts{
 	padding: 20px;
 }
@@ -225,6 +232,7 @@ header .show-info{
 	font-size: 16px;
 	font-weight: bold;
 	margin-top: 15px;
+	cursor: pointer;
 }
 .instructions-overlay .instructions .place-center{
 	text-align: center;
@@ -238,12 +246,86 @@ body > a{
 	font-size: 16px !important;
 	font-weight: bold !important;
 }
+footer{
+	position: relative;
+	z-index: 2;
+}
+.copyrights {
+    padding: 0px 20px 10px;
+    text-align: center;
+    background-color: #000;
+    margin-bottom: 0;
+    margin-top: 35px;
+    padding-top: 12px;
 
+}
+.copyrights h5 {
+    line-height: 1;
+    margin: 0;
+    color: #fff;
+}
+.copyrights h5 a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 400;
+	display: inline-block;
+	padding: 0 5px;
+}
+.copyrights .social-icons {
+    list-style: none;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 0;
+	padding: 0;
+}
+.copyrights .social-icons li {
+    margin: 0;
+    text-align: center;
+	background-color: transparent !important;
+	display: inline-block;
+}
+.copyrights .social-icons li:first-child{
+	display: block;
+}
+.copyrights .social-icons > li > a {
+    padding: 0 !important;
+    width: 40px !important;
+    margin: 0 auto !important;
+	color: #c1c1c1;
+	display: block;
+	transform: scale(1);
+	-webkit-transition: all .2s ease;
+	transition: all .2s ease;
+}
+.copyrights .social-icons > li > a:hover{
+	transform: scale(1.5);
+}
+.copyrights .social-icons > li > a > span {
+    width: 25px;
+    height: 28px;
+    margin: 2px;
+    color: #fff;
+    display: inline-block;
+    border-radius: 50%;
+    font-size: 18px;
+    padding-top: 10px;
+    text-align: center;
+}
+.copyrights h6 {
+    color: #afafaf;
+    text-decoration: none;
+    font-size: 11px;
+    margin-bottom: 10px;
+	margin-top: 15px;
+    font-weight: 400;
+}
 </style>
 	</head>
 	<body>
 		<div>
-			<a class="backbutton" href="viewin360.html?model=car"><img src="assets/icons/360-degree.svg" width="45" alt=""></a>
+			<a class="backbutton" href="viewin360.html?model=car"><img src="assets/icons/360-degree.svg" width="75" alt=""></a>
 		</div>
 		<header class="clearfix">
 			<div class="logo1">
@@ -252,7 +334,7 @@ body > a{
 			<div class="logo2">
 				<img src="assets/images/tatahitachilogotext.jpg" alt="" width="162">
 			</div>
-			<button class="show-info"><img src="assets/icons/info-button.svg" alt="i" height="30"></button>
+			<button class="show-info"><img src="assets/icons/info-button.svg" alt="i" height="35"></button>
 		</header>
 		<div id="content">
 			<!-- <div id="mySidenav" class="sidenav">
@@ -290,6 +372,9 @@ body > a{
 		</div>
 		<div class="instructions-overlay">
 			<div class="instructions">
+				<div class="close-popup">
+					<img src="assets/icons/close.svg" width="30" alt="">
+				</div>
 				<div class="texts">
 					<div class="logo1">
 						<img src="assets/EdostLogoWithoutBorder.svg" alt="TATA HITACHI" height="50">
@@ -303,9 +388,9 @@ body > a{
 						<li>Move the <span class="highlight">white circle</span> to a desired position and press the <span class="highlight">'Place'</span> button to place the model.</li>
 						<li>Touch and rotate the model according to your desire while viewing it.</li>
 					</ul>
-					<p><b>If the augmented reality feature is <br><span style="color: red;">not working:</span></b></p>
+					<p><b>If the augmented reality feature is <span style="color: red;">not working:</span></b></p>
 					<ul>
-						<li>Please check whether your device has AR Core support by visiting this <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">suported devices</a> link.</li>
+						<li>Please check whether your device has AR Core support by visiting this <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">supported devices</a> link.</li>
 						<li>Update you Google Chrome browser to the latest version.</li>
 						<li>If a black screen is coming due to hardware error please go back and press the  <span class="highlight">'Start AR'</span> button again.</li>
 					</ul>
@@ -315,6 +400,46 @@ body > a{
 				</div>
 			</div>
 		</div>
+		<footer>
+			<div class="copyrights">
+				<div class="row">
+					<div class="col-sm-5 col-md-4">
+						<ul class="social-icons">
+							<li><h6>Follow us :</h6></li>
+							<li>
+								<a href="https://www.facebook.com/TataHitachiCorporate/" target="_blank" rel="noopener noreferrer">
+									<i class="fa fa-facebook" aria-hidden="true"></i>
+								</a>
+							</li>
+							<li>
+								<a href="https://twitter.com/Tata_Hitachi_IN" target="_blank" rel="noopener noreferrer">
+									<i class="fa fa-twitter" aria-hidden="true"></i>
+								</a>
+							</li>
+							<li>
+								<a href="https://www.youtube.com/channel/UCYE6DtE-X3JXinUFzVGsffQ" target="_blank" rel="noopener noreferrer">
+									<i class="fa fa-youtube-play" aria-hidden="true"></i>
+								</a>
+							</li>
+							<li>
+								<a href="https://www.linkedin.com/company/telcon/" target="_blank" rel="noopener noreferrer">
+									<i class="fa fa-linkedin-square" aria-hidden="true"></i>
+								</a>
+							</li>
+							<li>
+								<a href="https://www.instagram.com/tatahitachicorporate/" target="_blank" rel="noopener noreferrer">
+									<i class="fa fa-instagram" aria-hidden="true"></i>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div class="col-sm-7 col-md-8">
+						<!-- <h5><a href="https://www.tatahitachi.co.in/privacy-policy/" target="_blank">Privacy Policy</a> | <a href="https://www.tatahitachi.co.in/disclaimer/" target="_blank">Disclaimer</a></h5> -->
+						<h6>© 2018 Tata Hitachi Construction Machinery  |  All rights reserved.</h6>
+					</div>
+				</div>
+			</div>
+		</footer>
 		<script>
 			function openNav() {
 			  document.getElementById("mySidenav").style.width = "250px";
@@ -373,7 +498,7 @@ body > a{
 			$("#place-button").click(function(){
 				arPlace();
 			});
-			$(".gotit").click(function(){
+			$(".gotit, .close-popup").click(function(){
 				$(".instructions-overlay").fadeOut();
 			});
 			$(".show-info").click(function(){
@@ -638,28 +763,7 @@ body > a{
 
 			}
 
-			// $.ajax({
-   //          url: 'https://api.cegcpapa5m-tatahitachi1-d1-public.model-t.cc.commerce.ondemand.com/occ/v2/tatahitachi-spa/category/m23?fields=FULL&lang=en&curr=INR',
-   //          type: 'GET',
-   //          dataType: 'json',
-   //          headers: {
-   //              'header1': 'value1',
-   //              'header2': 'value2'
-   //          },
-   //          contentType: 'application/json; charset=utf-8',
-   //          success: function (result) {
-   //             // CallBack(result);  
-   //             console.log(result);
-   //          },
-   //          error: function (error) {
-                
-   //          }
-   //      });
-
-
-  //  $.load({url: "https://api.cegcpapa5m-tatahitach1-d1-public.model-t.cc.commerce.ondemand.com/occ/v2/tatahitachi-spa/category/m23?fields=FULL&lang=en&curr=INR", success: function(result){
-  //   $("#div1").html(result);
-  // }});
+			
 
 		</script>
 	</body>
