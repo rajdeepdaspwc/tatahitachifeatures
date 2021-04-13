@@ -498,6 +498,9 @@ var timeOut;
   $(".nothingDetected-overlay .try-again, .nothingDetected-overlay .close-popup").click(function(){
     $(".nothingDetected-overlay").fadeOut();
   });
+  $(".instructions-overlay .close-popup").click(function(){
+    $(".instructions-overlay").fadeOut();
+  });
 
   // When we get a result
   function gotResult(error, results) {
