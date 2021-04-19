@@ -27,7 +27,7 @@
 	 top: 0;
 	 padding: 14px 0 10px;
 	 background-color: #000;
-	 z-index: 1;
+	 z-index: 2;
 }
  .clearfix::after {
 	 content: "";
@@ -68,7 +68,28 @@
  #container .modelname {
 	 position: absolute;
 	 left: 50px;
-	 top: 100px;
+	 top: 150px;
+	 z-index: 1;
+	 text-transform: capitalize;
+}
+#container .description{
+	position: absolute;
+    width: 250px;
+	padding: 20px;
+    right: 30px;
+	font-size: 14px;
+	color:#555;
+	border-radius: 4px;
+	background-color: #FcFcFc;
+	line-height: 1.4;
+	z-index: 1;
+	display: none;
+	/*box-shadow: 2px 2px 2px rgba(0,0,0, .5);*/
+	top: 50%;
+	transform: translate(0, -42%);
+}
+@media screen and (max-height: 1275px) {
+	
 }
  footer {
 	 position: relative;
@@ -77,6 +98,7 @@
 	 padding: 10px;
 	 text-align: center;
 	 background-color: #000;
+	 z-index: 2;
 }
  footer ul {
 	 padding: 0;
@@ -103,6 +125,9 @@
 	 -webkit-transition: opacity 0.3s ease;
 	 transition: opacity 0.3s ease;
 }
+footer ul.options li a span{
+	text-transform: capitalize;
+}
  footer ul li a .icon {
 	 position: absolute;
 	 left: 50%;
@@ -115,7 +140,7 @@
  footer ul li a:hover {
 	 opacity: 1;
 }
- footer ul li:nth-child(1) .icon {
+ /* footer ul li:nth-child(1) .icon {
 	background-image: url('assets/icons/Cabin-48x48.svg');
 	 
 }
@@ -136,7 +161,7 @@
 }
  footer ul li:nth-child(7) .icon {
 	 background-image: url('assets/icons/Safety-48x48.svg');
-}
+} */
  .sidenav {
 	 height: 100%;
 	 width: 0;
@@ -307,6 +332,9 @@ canvas{
 	header .logo2{
 		display: none;
 	}
+	#container .modelname{
+		top : 60px;
+	}
 	.openNav{
 		display: block;
 	}
@@ -363,6 +391,9 @@ canvas{
 		-webkit-transition: opacity 0.3s ease;
 		transition: opacity 0.3s ease;
 	}
+	.sidenav ul.modellist li a span{
+		text-transform: capitalize;
+	}
 	.sidenav ul.modellist li a .icon {
 		position: absolute;
 		left: 12px;
@@ -396,7 +427,41 @@ canvas{
 	.sidenav ul.modellist li:nth-child(7) .icon {
 		background-image: url('assets/icons/Safety-48x48.svg');
 	}
+	#container .description{
+		top: 133px;
+    	transform: translate(0, 0);
+    	width: calc(100vw - 60px);
+	}
+	#container .modelname{
+		left : 30px;
+	}
 
+}
+
+#container .description .close-popup{
+	position: absolute;
+	right: 15px;
+	top: 15px;
+	display: none;
+}
+header .show-info{
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	transform: translate(0, -50%);
+	background-color: transparent;
+	border: 0;
+	cursor: pointer;
+	display: none;
+}
+ 
+@media only screen and (max-width: 767px) {
+	#container .description .close-popup{
+		display: block;
+	}
+	header .show-info{
+		display: block;
+	}	
 }
 
 .overlay{
@@ -433,6 +498,7 @@ canvas{
 				<div class="logo2">
 					<img src="assets/images/tatahitachilogotext.jpg" alt="" width="162">
 				</div>
+				<button class="show-info"><img src="assets/icons/info-button.svg" alt="i" height="35"></button>
 			</header>
 			<div id="content">
 				<div id="mySidenav" class="sidenav">
@@ -510,6 +576,13 @@ canvas{
 				<span class="openNav" onclick="openNav()">&#9776;</span>
 				<div id="container" style="position: fixed;">
 					<h1 class="modelname"></h1>
+					<div class="description">
+						<div class="close-popup">
+							<img src="assets/icons/close.svg" width="30" alt="">
+						</div>
+						<h3>Description:</h3>
+						<span></span>
+					</div>
 				</div>
 				
 				<!-- <span style="font-size:30px;cursor:pointer;position: absolute;" (click)="openNav()">&#9776; open</span> -->
@@ -519,7 +592,7 @@ canvas{
 			<footer>
 				<a class="viewinar" href="arvr.html?model=car"><img src="assets/icons/ar-icon.svg" width="40" alt=""></a>
 				<ul class="options">
-					<li>
+					<!-- <li>
 						<a class="ar-object" href="javascript:void(0)" data-model="car"><span class="icon"></span><span>Excavator</span></a>
 					</li>
 					<li>
@@ -540,7 +613,7 @@ canvas{
 					</li>
 					<li>
 						<a class="ar-object" href="javascript:void(0)" data-model="6"><span class="icon"></span><span>Safety</span></a>
-					</li>
+					</li> -->
 				</ul>
 				<div class="copyrights">
 					<div class="row">
@@ -615,6 +688,10 @@ canvas{
 			import { RGBELoader } from './jsm/loaders/RGBELoader.js';
 			import { RoughnessMipmapper } from './jsm/utils/RoughnessMipmapper.js';
 
+			function getHostUrl(){
+				return document.location.href.split('/')[0] +"//" + document.location.hostname;
+			}
+
 			var container;
 			var camera, scene, renderer;
 			var controller;
@@ -624,35 +701,50 @@ canvas{
 			var hitTestSource = null;
 			var hitTestSourceRequested = false;
 			var currentModel;
+			var modelDetailsPath = "/3d/";
+			//alert(getHostUrl() + getPort() + modelDetailsPath + getUrlParameter("model") + "/" + getUrlParameter("model") + ".json");
+			var modelDetails;
+			getModelDetails();
+			populateSelection(modelDetails);
+			
+			$("header .show-info").click(function(){
+				$("#container .description").fadeIn();
+			});
+
+			$("#container .description .close-popup").click(function(){
+				$("#container .description").fadeOut();
+			})
+			
 			init();
 			animate();
 
+			function getPort(){
+				if(document.location.port){
+					return ":" + document.location.port;
+				}
+				return ""; 
+			}
+
 			loadModel(getUrlParameter('model'));
+			
 
 			$(".ar-object").click(function(){
 				if(current_object != null){
 					scene.remove(current_object);
 				}
-
 				loadModel($(this).attr("data-model"));
 				$(".overlay").fadeIn();
 				closeNav();
-				//alert($(this).attr("data-model"));
 			});
 
-			// $("#ARButton").click(function(){
-			// 	current_object.visible = false;
-			// 	isAR = true;
-			// });
-
-			// $("#VRButton").click(function(){
-			// 	scene.background = envmap;
-			// 	scene.position.z = -2;
-			// });
-
-			// $("#place-button").click(function(){
-			// 	arPlace();
-			// });
+			function writeDescription(dataModel){
+				JSON.parse(modelDetails).modelDetails.forEach(function(ele){
+					if(dataModel === ele.fileName){
+						$("#container .description span").html(ele.description);
+						return "";
+					}
+				});
+			}
 
 			function getUrlParameter(sParam) {
 			    var sPageURL = window.location.search.substring(1),
@@ -670,7 +762,29 @@ canvas{
 			    return false;
 			};
 
-			//console.log(getUrlParameter('model'));
+			function populateSelection(modelDetailsArg){
+				var models = JSON.parse(modelDetailsArg).modelDetails;
+				var totalHtml
+				models.forEach(function(mod){
+					totalHtml += `<li>
+						<a class="ar-object" href="javascript:void(0)" data-model="${mod.fileName}"><span class="icon" style="background-image: url(assets/icons/${mod.iconName})"></span><span>${mod.buttonText}</span></a>
+					</li>`
+				});
+				
+				$("footer .options").html(totalHtml);
+				$(".modellist").html(totalHtml);
+			}
+
+			function getModelDetails(){
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						modelDetails = this.responseText;
+					}
+				};
+				xhttp.open("GET", getHostUrl() + getPort() + modelDetailsPath + getUrlParameter("model") + "/" + getUrlParameter("model") + ".json", false);
+				xhttp.send();
+			}
 
 			function arPlace(){
 				if ( reticle.visible ) {
@@ -695,10 +809,13 @@ canvas{
 						pmremGenerator.dispose();
 						render();
 
-						var loader = new GLTFLoader().setPath('3d/');
+						var loader = new GLTFLoader().setPath(modelDetailsPath + getUrlParameter("model") + "/");
 						 loader.load( /* model */ model + '.glb', function(glb) {
 							//loader.load( "1.glb", function(glb) {
 							$(".overlay").fadeOut();
+							$("#container .description").fadeIn();
+							$("#container .modelname").text(getUrlParameter("model"));
+							writeDescription(model);
 							
 							current_object = glb.scene;
 							//current_object.scale.set(1.2,1.2,1.2);
