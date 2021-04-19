@@ -72,6 +72,9 @@
 	 z-index: 1;
 	 text-transform: capitalize;
 }
+#container .description-overlay{
+	display: none;
+}
 #container .description{
 	position: absolute;
     width: 250px;
@@ -83,7 +86,6 @@
 	background-color: #FcFcFc;
 	line-height: 1.4;
 	z-index: 1;
-	display: none;
 	/*box-shadow: 2px 2px 2px rgba(0,0,0, .5);*/
 	top: 50%;
 	transform: translate(0, -42%);
@@ -334,6 +336,8 @@ canvas{
 	}
 	#container .modelname{
 		top : 60px;
+		left : 30px;
+		max-width: calc(100vw - 95px);
 	}
 	.openNav{
 		display: block;
@@ -427,15 +431,31 @@ canvas{
 	.sidenav ul.modellist li:nth-child(7) .icon {
 		background-image: url('assets/icons/Safety-48x48.svg');
 	}
+	#container .description-overlay{
+		position: absolute;
+		top:0;
+		left:0;
+		background-color: rgba(0,0,0,0.7);
+		width: 100vw;
+		height: 100vh;
+		z-index: 10;
+		display: none;
+	}
 	#container .description{
-		top: 133px;
-    	transform: translate(0, 0);
-    	width: calc(100vw - 60px);
+		position: absolute;
+		min-width: calc(100vw - 60px);
+		max-width: calc(100vw - 60px);
+		padding: 20px;
+		font-size: 16px;
+		color:#555;
+		border-radius: 4px;
+		background-color: #FcFcFc;
+		line-height: 1.4;
+		top:50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		overflow-y: hidden;
 	}
-	#container .modelname{
-		left : 30px;
-	}
-
 }
 
 #container .description .close-popup{
@@ -445,22 +465,33 @@ canvas{
 	display: none;
 }
 header .show-info{
-	position: absolute;
-	top: 50%;
+	position: fixed;
+	top: 80px;
 	right: 10px;
-	transform: translate(0, -50%);
 	background-color: transparent;
 	border: 0;
 	cursor: pointer;
 	display: none;
 }
- 
+@keyframes zoominoutsinglefeatured {
+    0% {
+        transform: scale(1,1);
+    }
+    50% {
+        transform: scale(1.2,1.2);
+    }
+    100% {
+        transform: scale(1,1);
+    }
+}
+
 @media only screen and (max-width: 767px) {
 	#container .description .close-popup{
 		display: block;
 	}
 	header .show-info{
 		display: block;
+		animation: zoominoutsinglefeatured 1s infinite ;
 	}	
 }
 
@@ -498,7 +529,7 @@ header .show-info{
 				<div class="logo2">
 					<img src="assets/images/tatahitachilogotext.jpg" alt="" width="162">
 				</div>
-				<button class="show-info"><img src="assets/icons/info-button.svg" alt="i" height="35"></button>
+				<button class="show-info"><img src="assets/icons/info-bubble.svg" alt="i" height="35"></button>
 			</header>
 			<div id="content">
 				<div id="mySidenav" class="sidenav">
@@ -576,12 +607,14 @@ header .show-info{
 				<span class="openNav" onclick="openNav()">&#9776;</span>
 				<div id="container" style="position: fixed;">
 					<h1 class="modelname"></h1>
-					<div class="description">
-						<div class="close-popup">
-							<img src="assets/icons/close.svg" width="30" alt="">
+					<div class="description-overlay">
+						<div class="description">
+							<div class="close-popup">
+								<img src="assets/icons/close.svg" width="30" alt="">
+							</div>
+							<h3>Description:</h3>
+							<span></span>
 						</div>
-						<h3>Description:</h3>
-						<span></span>
 					</div>
 				</div>
 				
@@ -708,11 +741,11 @@ header .show-info{
 			populateSelection(modelDetails);
 			
 			$("header .show-info").click(function(){
-				$("#container .description").fadeIn();
+				$("#container .description-overlay").fadeIn();
 			});
 
 			$("#container .description .close-popup").click(function(){
-				$("#container .description").fadeOut();
+				$("#container .description-overlay").fadeOut();
 			})
 			
 			init();
@@ -764,13 +797,13 @@ header .show-info{
 
 			function populateSelection(modelDetailsArg){
 				var models = JSON.parse(modelDetailsArg).modelDetails;
-				var totalHtml
+				var totalHtml = "";
 				models.forEach(function(mod){
 					totalHtml += `<li>
 						<a class="ar-object" href="javascript:void(0)" data-model="${mod.fileName}"><span class="icon" style="background-image: url(assets/icons/${mod.iconName})"></span><span>${mod.buttonText}</span></a>
 					</li>`
 				});
-				
+
 				$("footer .options").html(totalHtml);
 				$(".modellist").html(totalHtml);
 			}
@@ -813,7 +846,9 @@ header .show-info{
 						 loader.load( /* model */ model + '.glb', function(glb) {
 							//loader.load( "1.glb", function(glb) {
 							$(".overlay").fadeOut();
-							$("#container .description").fadeIn();
+							if(window.innerWidth > 768){
+								$(".description-overlay").show();
+							}
 							$("#container .modelname").text(getUrlParameter("model"));
 							writeDescription(model);
 							

@@ -80,7 +80,7 @@
   }
 
   .backbutton{
-	position: fixed;
+	position: absolute;
 	left: 50%;
 	transform: translate(-50%, 0);
 	bottom: 90px;
@@ -204,7 +204,7 @@ header .show-info{
 	border-radius: 7px;
 	box-shadow: 2px 2px 15px #000;
 	width: calc(100vw - 30px);
-	max-width: calc(767px - 30px);
+	max-width: calc(100vw - 30px);
 	max-height: calc(100vh - 30px);
 }
 .instructions-overlay .instructions .close-popup{
@@ -247,8 +247,11 @@ body > a{
 	font-weight: bold !important;
 }
 footer{
-	position: relative;
+	position: absolute;
 	z-index: 2;
+	top: 100vh;
+	width: 100%;
+	left: 0;
 }
 .copyrights {
     padding: 0px 20px 10px;
@@ -334,7 +337,7 @@ footer{
 			<div class="logo2">
 				<img src="assets/images/tatahitachilogotext.jpg" alt="" width="162">
 			</div>
-			<button class="show-info"><img src="assets/icons/info-button.svg" alt="i" height="35"></button>
+			<button class="show-info"><img src="assets/icons/info-button.svg" alt="i" height="30"></button>
 		</header>
 		<div id="content">
 			<!-- <div id="mySidenav" class="sidenav">
