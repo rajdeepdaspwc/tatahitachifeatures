@@ -77,7 +77,7 @@
 }
 #container .description{
 	position: absolute;
-    width: 250px;
+    width: 290px;
 	padding: 20px;
     right: 30px;
 	font-size: 14px;
@@ -85,11 +85,19 @@
 	border-radius: 4px;
 	background-color: #FcFcFc;
 	line-height: 1.4;
-	z-index: 1;
+	z-index: 2;
 	/*box-shadow: 2px 2px 2px rgba(0,0,0, .5);*/
 	top: 50%;
 	transform: translate(0, -42%);
 }
+#container .description h3{
+	color:#f37435;
+}
+#container .description div img{
+	position: relative;
+	top: 5px;
+}
+
 @media screen and (max-height: 1275px) {
 	
 }
@@ -448,8 +456,9 @@ canvas{
 	}
 	#container .description{
 		position: absolute;
-		min-width: calc(100vw - 60px);
-		max-width: calc(100vw - 60px);
+		min-width: calc(100vw - 30px);
+		max-width: calc(100vw - 30px);
+		max-height: calc(100vh - 30px);
 		padding: 20px;
 		font-size: 16px;
 		color:#555;
@@ -467,16 +476,14 @@ canvas{
 	position: absolute;
 	right: 15px;
 	top: 15px;
-	display: none;
 }
 header .show-info{
 	position: fixed;
-	top: 80px;
-	right: 10px;
+	top: 102px;
+	right: 36px;
 	background-color: transparent;
 	border: 0;
 	cursor: pointer;
-	display: none;
 }
 @keyframes zoominoutsinglefeatured {
     0% {
@@ -618,7 +625,11 @@ header .show-info{
 								<img src="assets/icons/close.svg" width="30" alt="">
 							</div>
 							<h3>Description:</h3>
-							<span></span>
+							<div class="details"></div>
+							<h3>Specifications:</h3>
+							<div class="power"><img src="assets/icons/power-icon.png" width="25" alt=""> <b>Engine Power:</b> <span></span></div>
+							<div class="weight"><img src="assets/icons/weight-icon.png" width="25" alt=""> <b>Operating Weight:</b> <span></span></div>
+							<div class="bucket"><img src="assets/icons/bucket-icon.png" width="25" alt=""> <b>Bucket Capacity:</b> <span></span></div>
 						</div>
 					</div>
 				</div>
@@ -778,7 +789,10 @@ header .show-info{
 			function writeDescription(dataModel){
 				JSON.parse(modelDetails).modelDetails.forEach(function(ele){
 					if(dataModel === ele.fileName){
-						$("#container .description span").html(ele.description);
+						$("#container .details").html(ele.description);
+						$("#container .power span").html(ele.engine_power);
+						$("#container .weight span").html(ele.operating_weight);
+						$("#container .bucket span").html(ele.bucket_capacity);
 						return "";
 					}
 				});
