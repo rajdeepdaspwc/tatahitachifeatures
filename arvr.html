@@ -138,6 +138,28 @@
 #ARButton{
 	background-color: #ed691f !important;
 }
+#ARButtonIos{
+	display: none;
+    padding: 10px 17px;
+    background-color: #ed691f;
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    top: calc(100% - 50px);
+    font-size: 14px;
+}
+body.ios #ARButton{
+	display: none;
+}
+body.ios #ARButtonIos{
+	display: block;
+}
+body > a{
+	display: none;
+}
 header {
 	 position: fixed;
 	 width: 100%;
@@ -353,6 +375,7 @@ footer{
 			<!-- <span style="font-size:30px;cursor:pointer;position: absolute;" onclick="openNav()">&#9776; open</span> -->
 		
 			<button type="button" id="place-button">PLACE</button>
+			<a id="ARButtonIos" href="3d/wheelbarrow.usdz">START AR</a>
 
 			<!-- <div class="supportmsg">
 				<div class="overlay">
@@ -450,6 +473,22 @@ footer{
 			
 			function closeNav() {
 			  document.getElementById("mySidenav").style.width = "0";
+			}
+
+			function iOS() {
+				return [
+					'iPad Simulator',
+					'iPhone Simulator',
+					'iPod Simulator',
+					'iPad',
+					'iPhone',
+					'iPod'
+				].includes(navigator.platform)
+				// iPad on iOS 13 detection
+				|| (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+			}
+			if(iOS()){
+				$("body").addClass("ios");
 			}
 		</script>
 
