@@ -405,20 +405,20 @@ body{margin: 15px 0 0 0; text-align: center; background-color: #101010; user-sel
   var classifyImage = false;
 
   var getUrlParameter = function getUrlParameter(sParam) {
-          var sPageURL = window.location.search.substring(1),
-              sURLVariables = sPageURL.split('&'),
-              sParameterName,
-              i;
+      var sPageURL = window.location.search.substring(1),
+          sURLVariables = sPageURL.split('&'),
+          sParameterName,
+          i;
 
-          for (i = 0; i < sURLVariables.length; i++) {
-              sParameterName = sURLVariables[i].split('=');
+      for (i = 0; i < sURLVariables.length; i++) {
+          sParameterName = sURLVariables[i].split('=');
 
-              if (sParameterName[0] === sParam) {
-                  return typeof sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
-              }
+          if (sParameterName[0] === sParam) {
+              return typeof sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
           }
-          return false;
-      };
+      }
+      return false;
+  };
 
         function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -562,9 +562,6 @@ var timeOut;
   }
     
     classifyVideo();
-
-    
-    
   }
 
 //alert("HOLAa");
