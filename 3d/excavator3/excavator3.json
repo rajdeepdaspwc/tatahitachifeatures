@@ -1,0 +1,43 @@
+{
+    "modelDetails" : [
+        { 
+            "fileName" : "excavator3",
+            "iconName" : "Cabin-48x48.svg",
+            "buttonText" : "Excavator",
+            "description" : "Equipped with advanced hydraulic technology, the ZAXIS 80 series construction excavator has been designed with the latest features of Global e-Service. It combines refinement with power. The latest series cabin and seating are ergonomic, offering absolute operator comfort. The machines promise high performance and durability",
+            "engine_power" : "56 PS",
+            "operating_weight" : "7300-7650 KG",
+            "bucket_capacity" : "0.13-0.30 m^3"
+        },
+        { 
+            "fileName" : "cabin",
+            "iconName" : "Cabin-48x48.svg",
+            "buttonText" : "Cabin",
+            "description" : " 2 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        },
+        { 
+            "fileName" : "engine",
+            "iconName" : "Engine-48x48.svg",
+            "buttonText" : "Engine",
+            "description" : " 4 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        },
+        { 
+            "fileName" : "swing",
+            "iconName" : "swing-motor.svg",
+            "buttonText" : "Swing Motor",
+            "description" : " 3 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        },
+        { 
+            "fileName" : "track",
+            "iconName" : "track-motor.svg",
+            "buttonText" : "Track Motor",
+            "description" : "7 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        },
+        { 
+            "fileName" : "control",
+            "iconName" : "track-motor.svg",
+            "buttonText" : "Control Valve",
+            "description" : "7 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        }
+    ]
+}

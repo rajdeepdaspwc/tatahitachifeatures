@@ -872,7 +872,7 @@ header .show-info{
 							writeDescription(model);
 							
 							current_object = glb.scene;
-							//current_object.scale.set(1.2,1.2,1.2);
+							current_object.scale.set(.85,.85,.85);
 							scene.add(current_object);
 
 							arPlace();
@@ -907,8 +907,8 @@ header .show-info{
 				window.scene = scene;
 
 				camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.001, 200 );
-
-				camera.position.set(4,3,-5); // Set position like this
+				camera.position.set(-6,3,-5);
+			//	camera.position.set(4,3,-5); // Set position like this
 				//camera.position.set(.5,.1,-6); // Set position like this
 				camera.lookAt(new THREE.Vector3(0,0,0));
 
