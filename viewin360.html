@@ -734,6 +734,7 @@ header .show-info{
 			import { GLTFLoader } from './jsm/loaders/GLTFLoader.js';
 			//import { OBJLoader } from './jsm/loaders/OBJLoader.js';
 			//import { VRMLLoader } from './jsm/loaders/VRMLLoader.js';
+			import { DRACOLoader } from './jsm/loaders/DRACOLoader.js';
 			import { RGBELoader } from './jsm/loaders/RGBELoader.js';
 			import { RoughnessMipmapper } from './jsm/utils/RoughnessMipmapper.js';
 
@@ -860,7 +861,11 @@ header .show-info{
 						texture.dispose();
 						pmremGenerator.dispose();
 						render();
+						
 
+						var dracoLoader = new DRACOLoader();
+						dracoLoader.setDecoderPath('/js/libs/draco/');
+						dracoLoader.setDecoderConfig({ type: 'js' });
 						var loader = new GLTFLoader().setPath(modelDetailsPath + getUrlParameter("model") + "/");
 						 loader.load( /* model */ model + '.glb', function(glb) {
 							//loader.load( "1.glb", function(glb) {
@@ -884,6 +889,7 @@ header .show-info{
 							controls.update();
 							render();
 						});
+						loader.setDRACOLoader(dracoLoader);
 					});
 			}
 
