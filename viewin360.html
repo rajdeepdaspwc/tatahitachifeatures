@@ -92,6 +92,7 @@
 }
 #container .description h3{
 	color:#f37435;
+	margin-bottom: 5px;
 }
 #container .description div img{
 	position: relative;
@@ -460,6 +461,7 @@ canvas{
 		max-width: calc(100vw - 30px);
 		max-height: calc(100vh - 30px);
 		padding: 20px;
+		padding-top:10px;
 		font-size: 16px;
 		color:#555;
 		border-radius: 4px;
@@ -474,8 +476,9 @@ canvas{
 
 #container .description .close-popup{
 	position: absolute;
-	right: 15px;
-	top: 15px;
+	right: 9px;
+	top: 3px;
+	cursor: pointer;
 }
 header .show-info{
 	position: fixed;
@@ -484,6 +487,7 @@ header .show-info{
 	background-color: transparent;
 	border: 0;
 	cursor: pointer;
+	display: none;
 }
 @keyframes zoominoutsinglefeatured {
     0% {
@@ -626,10 +630,10 @@ header .show-info{
 							</div>
 							<h3>Description:</h3>
 							<div class="details"></div>
-							<h3>Specifications:</h3>
+							<!-- <h3>Specifications:</h3>
 							<div class="power"><img src="assets/icons/power-icon.png" width="25" alt=""> <b>Engine Power:</b> <span></span></div>
 							<div class="weight"><img src="assets/icons/weight-icon.png" width="25" alt=""> <b>Operating Weight:</b> <span></span></div>
-							<div class="bucket"><img src="assets/icons/bucket-icon.png" width="25" alt=""> <b>Bucket Capacity:</b> <span></span></div>
+							<div class="bucket"><img src="assets/icons/bucket-icon.png" width="25" alt=""> <b>Bucket Capacity:</b> <span></span></div> -->
 						</div>
 					</div>
 				</div>
@@ -759,9 +763,11 @@ header .show-info{
 			
 			$("header .show-info").click(function(){
 				$("#container .description-overlay").fadeIn();
+				$(this).fadeOut();
 			});
 
 			$("#container .description .close-popup").click(function(){
+				$("header .show-info").fadeIn();
 				$("#container .description-overlay").fadeOut();
 			})
 			
@@ -791,10 +797,10 @@ header .show-info{
 				JSON.parse(modelDetails).modelDetails.forEach(function(ele){
 					if(dataModel === ele.fileName){
 						$("#container .details").html(ele.description);
-						$("#container .power span").html(ele.engine_power);
-						$("#container .weight span").html(ele.operating_weight);
-						$("#container .bucket span").html(ele.bucket_capacity);
-						return "";
+						// $("#container .power span").html(ele.engine_power);
+						// $("#container .weight span").html(ele.operating_weight);
+						// $("#container .bucket span").html(ele.bucket_capacity);
+						// return "";
 					}
 				});
 			}
@@ -918,11 +924,15 @@ header .show-info{
 				//camera.position.set(.5,.1,-6); // Set position like this
 				camera.lookAt(new THREE.Vector3(0,0,0));
 
-				var directionalLight = new THREE.DirectionalLight(0xdddddd, 1);
-				directionalLight.position.set(10, 10, 10).normalize();
-				scene.add(directionalLight);
+				// var directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+				// directionalLight.position.set(-0.371, 4.118, 7.111).normalize();
+				// scene.add(directionalLight);
 
-				var ambientLight = new THREE.AmbientLight(0x222222);
+				var directionalLight2 = new THREE.DirectionalLight(0xffffff, 1);
+				directionalLight2.position.set(2.007, 8.119, -10.539).normalize();
+				scene.add(directionalLight2);
+
+				var ambientLight = new THREE.AmbientLight(0x999999, .5);
 				scene.add(ambientLight);
 
 				//
