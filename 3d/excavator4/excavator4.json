@@ -7,7 +7,7 @@
             "description" : "Equipped with advanced hydraulic technology, the ZAXIS 80 series construction excavator has been designed with the latest features of Global e-Service. It combines refinement with power. The latest series cabin and seating are ergonomic, offering absolute operator comfort. The machines promise high performance and durability"
         },
         { 
-            "fileName" : "cabin_new",
+            "fileName" : "cabin",
             "iconName" : "Cabin-48x48.svg",
             "buttonText" : "Cabin",
             "description" : " <ul><li>Comfortable operating environment.</li> <li>Operator seat designed for comfort</li> <li>Robust cab meeting OPG Top Guard Level 1</li> <li>New easy to use multifunctional monitor.</li></ul> <h3>Specifications:</h3><div class='power'><img src='assets/icons/power-icon.png' width='25'> <b>Engine Power:</b> <span>56 PS</span></div> <div class='weight'><img src='assets/icons/weight-icon.png' width='25'> <b>Operating Weight:</b> <span>7300-7650 KG</span></div> <div class='bucket'><img src='assets/icons/bucket-icon.png' width='25'> <b>Bucket Capacity:</b> <span>0.13-0.30 m^3</span></div>"
