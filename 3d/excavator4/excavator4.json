@@ -7,10 +7,10 @@
             "description" : "Equipped with advanced hydraulic technology, the ZAXIS 80 series construction excavator has been designed with the latest features of Global e-Service. It combines refinement with power. The latest series cabin and seating are ergonomic, offering absolute operator comfort. The machines promise high performance and durability"
         },
         { 
-            "fileName" : "cabin_real",
+            "fileName" : "cabinrotDraco",
             "iconName" : "Cabin-48x48.svg",
             "buttonText" : "Cabin",
-            "description" : " <ul><li>Comfortable operating environment.</li> <li>Operator seat designed for comfort</li> <li>Robust cab meeting OPG Top Guard Level 1</li> <li>New easy to use multifunctional monitor.</li></ul> <h3>Specifications:</h3><div class='power'><img src='assets/icons/power-icon.png' width='25'> <b>Engine Power:</b> <span>56 PS</span></div> <div class='weight'><img src='assets/icons/weight-icon.png' width='25'> <b>Operating Weight:</b> <span>7300-7650 KG</span></div> <div class='bucket'><img src='assets/icons/bucket-icon.png' width='25'> <b>Bucket Capacity:</b> <span>0.13-0.30 m^3</span></div>"
+            "description" : " <ul><li>Comfortable operating environment.</li> <li>Operator seat designed for comfort</li> <li>Robust cab meeting OPG Top Guard Level 1</li> <li>New easy to use multifunctional monitor.</li></ul>"
         },
         { 
             "fileName" : "engine",
@@ -22,7 +22,7 @@
             "fileName" : "swing",
             "iconName" : "swing-motor.svg",
             "buttonText" : "Swing Motor",
-            "description" : "<div>Axial piston motor with planetary reduction gear is bathed in oil.Swing circle is a single row.Swing parking brake is spring-set /hydraulic released disc type.</div> <div class='power'><img src='assets/icons/power-icon.png' width='25'> <b>Swing speed:</b> <span>10.7 rpm</span></div> <div class='weight'><img src='assets/icons/weight-icon.png' width='25'> <b>Swing torque:</b> <span>Every 1000hrs</span></div> <div class='bucket'><img src='assets/icons/bucket-icon.png' width='25'> <b>Maintenance Engine oil:</b> <span>500hrs</span></div> <div class='bucket'><img src='assets/icons/bucket-icon.png' width='25'> <b>Maintenance:</b> <span>1000hrs</span></div>"
+            "description" : "<div>Axial piston motor with planetary reduction gear is bathed in oil.Swing circle is a single row.Swing parking brake is spring-set /hydraulic released disc type.</div> <br><div class='power'><img src='assets/icons/power-icon.png' width='25'> <b>Swing speed:</b> <span>10.7 rpm</span></div> <div class='weight'><img src='assets/icons/weight-icon.png' width='25'> <b>Swing torque:</b> <span>Every 1000hrs</span></div> <div class='bucket'><img src='assets/icons/bucket-icon.png' width='25'> <b>Maintenance Engine oil:</b> <span>500hrs</span></div> <div class='bucket'><img src='assets/icons/bucket-icon.png' width='25'> <b>Maintenance:</b> <span>1000hrs</span></div>"
         },
         { 
             "fileName" : "track",
