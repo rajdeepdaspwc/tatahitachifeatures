@@ -752,6 +752,7 @@ header .show-info{
 			var container;
 			var camera, scene, renderer;
 			var controller;
+			var directionalLight1, directionalLight2, ambientLight;
 
 			var reticle, pmremGenerator, current_object, controls, isAR, envmap;
 
@@ -857,7 +858,7 @@ header .show-info{
 
 			
 			function loadModel(model){
-				currentModel = model;
+				controls.reset();
 				
 				new RGBELoader()
 					.setDataType(THREE.UnsignedByteType)
@@ -886,7 +887,22 @@ header .show-info{
 							writeDescription(model);
 							
 							current_object = glb.scene;
-							current_object.scale.set(.65,.65,.65);
+							if(modelDetails){
+								JSON.parse(modelDetails).modelDetails.forEach(function(ele){
+									if(model === ele.fileName){
+										current_object.scale.set(ele.scale[0], ele.scale[1], ele.scale[2]);
+										camera.position.set(ele.camera[0], ele.camera[1], ele.camera[2]);
+										directionalLight1.position.set(ele.dLight1[0], ele.dLight1[1], ele.dLight1[2]).normalize();
+										directionalLight2.position.set(ele.dLight2[0], ele.dLight2[1], ele.dLight2[2]).normalize();
+
+										return "";
+									}
+								});
+								//console.log((JSON.parse(modelDetails).modelDetails));
+							} else {
+								current_object.scale.set(.65,.65,.65);
+							}
+							
 							scene.add(current_object);
 
 							arPlace();
@@ -927,15 +943,15 @@ header .show-info{
 				//camera.position.set(.5,.1,-6); // Set position like this
 				camera.lookAt(new THREE.Vector3(0,0,0));
 
-				// var directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-				// directionalLight.position.set(-0.371, 4.118, 7.111).normalize();
-				// scene.add(directionalLight);
+				directionalLight1 = new THREE.DirectionalLight(0xffffff, 1);
+				directionalLight1.position.set(-0.371, 4.118, 7.111).normalize();
+				scene.add(directionalLight1);
 
-				var directionalLight2 = new THREE.DirectionalLight(0xffffff, 1);
+				directionalLight2 = new THREE.DirectionalLight(0xffffff, 1);
 				directionalLight2.position.set(2.007, 8.119, -10.539).normalize();
 				scene.add(directionalLight2);
 
-				var ambientLight = new THREE.AmbientLight(0x777777, .5);
+				ambientLight = new THREE.AmbientLight(0x777777, .5);
 				scene.add(ambientLight);
 
 				//
