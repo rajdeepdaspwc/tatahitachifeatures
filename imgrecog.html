@@ -610,12 +610,17 @@ var timeOut;
       //alert(results[0].label);
 
       //label = capitalizeFirstLetter(results[0].label) + " is detected";
-      $(".instructions-overlay").fadeIn();
+      stopClassify();
+      
 
       JSON.parse(componentDetails).componentDetails.forEach(element => {
         if(element.componentId === results[0].label){
           $(".detection-result").text(capitalizeFirstLetter(element.componentName) + " was detected.").show();
           $(".component-description").html(element.description);
+          $(".instructions-overlay").fadeIn();
+          $(".stop").css("display", "none");
+          $(".start").css("display", "block");
+          $(".analyze-loader").hide();
         }
       });
     }
