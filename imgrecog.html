@@ -615,7 +615,7 @@ var timeOut;
       JSON.parse(componentDetails).componentDetails.forEach(element => {
         if(element.componentId === results[0].label){
           $(".detection-result").text(capitalizeFirstLetter(element.componentName) + " was detected.").show();
-          $(".component-description").text(element.description);
+          $(".component-description").html(element.description);
         }
       });
     }
