@@ -107,6 +107,7 @@
 	width: calc(100vw - 30px);
 	max-width: calc(767px - 30px);
 	max-height: calc(100vh - 30px);
+  overflow-y: scroll;
 }
 .instructions-overlay .instructions .close-popup{
 	position: absolute;
@@ -299,8 +300,10 @@ body{margin: 15px 0 0 0; text-align: center; background-color: #101010; user-sel
       </div>
       <h4><div class="detection-result"></div></h4>
       <p><b>Description:</b></p>
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam possimus non dolor ullam praesentium, perferendis nam libero, unde ipsum repellat corporis qui consectetur quasi maiores et quo alias neque in!</p>
-      <p><b>More Information:</b></p>
+      <div class="component-description">
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam possimus non dolor ullam praesentium, perferendis nam libero, unde ipsum repellat corporis qui consectetur quasi maiores et quo alias neque in!</p>
+      </div>
+        <p><b>More Information:</b></p>
       <div class="more-options">
         <div class="options">
           <a href="imgrecog/models/excavator2/files/sample.pdf" >
@@ -398,6 +401,8 @@ body{margin: 15px 0 0 0; text-align: center; background-color: #101010; user-sel
   //   window.parent.location.href = "https://www.google.com";
   // }
 
+  
+
   function getWindowWidth(){
     if(window.innerWidth < 769){
       return window.innerWidth;
@@ -405,14 +410,18 @@ body{margin: 15px 0 0 0; text-align: center; background-color: #101010; user-sel
     else if (window.innerWidth > 768){
       return 380;
     }
-    
   }
 
-  //alert((getWindowWidth() -30) * 1.31);
+  var modelDetailsPath = "/imgrecog/models/";
 
-  var classifyImage = false;
+  function getPort(){
+    if(document.location.port){
+      return ":" + document.location.port;
+    }
+    return ""; 
+  }
 
-  var getUrlParameter = function getUrlParameter(sParam) {
+  function getUrlParameter(sParam) {
       var sPageURL = window.location.search.substring(1),
           sURLVariables = sPageURL.split('&'),
           sParameterName,
@@ -426,6 +435,43 @@ body{margin: 15px 0 0 0; text-align: center; background-color: #101010; user-sel
           }
       }
       return false;
+  };
+
+  function getHostUrl(){
+    return document.location.href.split('/')[0] +"//" + document.location.hostname;
+  }
+  var componentDetails = {};
+  function getComponentDetails(){
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        componentDetails = this.responseText;
+      }
+    };
+    xhttp.open("GET", getHostUrl() + getPort() + modelDetailsPath + getUrlParameter("type") + "/" + getUrlParameter("type") + ".json", false);
+    xhttp.send();
+  }
+
+  getComponentDetails();
+
+  //alert((getWindowWidth() -30) * 1.31);
+
+  var classifyImage = false;
+
+  var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = window.location.search.substring(1),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return typeof sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+        }
+    }
+    return false;
   };
 
         function capitalizeFirstLetter(string) {
@@ -456,7 +502,7 @@ body{margin: 15px 0 0 0; text-align: center; background-color: #101010; user-sel
     // Create the video
     video = createCapture({
     audio: false,
-  // video: true
+   //video: true
     video: {
       facingMode: {
         exact: "environment"
@@ -561,16 +607,24 @@ var timeOut;
    // label = "Analyzingg...";
 
     if(results[0].confidence.toFixed(2) >= .98){
-    //alert(results[0].label);
+      //alert(results[0].label);
 
-    //label = capitalizeFirstLetter(results[0].label) + " is detected";
-    $(".instructions-overlay").fadeIn();
-    $(".detection-result").text(capitalizeFirstLetter(results[0].label) + " was detected.").show();
+      //label = capitalizeFirstLetter(results[0].label) + " is detected";
+      $(".instructions-overlay").fadeIn();
+
+      JSON.parse(componentDetails).componentDetails.forEach(element => {
+        if(element.componentId === results[0].label){
+          $(".detection-result").text(capitalizeFirstLetter(element.componentName) + " was detected.").show();
+          $(".component-description").text(element.description);
+        }
+      });
     }
   }
     
     classifyVideo();
   }
+
+  
 
 //alert("HOLAa");
 

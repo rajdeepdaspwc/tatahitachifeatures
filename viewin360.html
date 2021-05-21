@@ -745,10 +745,6 @@ header .show-info{
 			import { RGBELoader } from './jsm/loaders/RGBELoader.js';
 			import { RoughnessMipmapper } from './jsm/utils/RoughnessMipmapper.js';
 
-			function getHostUrl(){
-				return document.location.href.split('/')[0] +"//" + document.location.hostname;
-			}
-
 			var container;
 			var camera, scene, renderer;
 			var controller;
@@ -785,6 +781,26 @@ header .show-info{
 				return ""; 
 			}
 
+			function getUrlParameter(sParam) {
+			    var sPageURL = window.location.search.substring(1),
+			        sURLVariables = sPageURL.split('&'),
+			        sParameterName,
+			        i;
+
+			    for (i = 0; i < sURLVariables.length; i++) {
+			        sParameterName = sURLVariables[i].split('=');
+
+			        if (sParameterName[0] === sParam) {
+			            return typeof sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+			        }
+			    }
+			    return false;
+			};
+
+			function getHostUrl(){
+				return document.location.href.split('/')[0] +"//" + document.location.hostname;
+			}
+
 			loadModel(getUrlParameter('model'));
 			
 
@@ -808,22 +824,6 @@ header .show-info{
 					}
 				});
 			}
-
-			function getUrlParameter(sParam) {
-			    var sPageURL = window.location.search.substring(1),
-			        sURLVariables = sPageURL.split('&'),
-			        sParameterName,
-			        i;
-
-			    for (i = 0; i < sURLVariables.length; i++) {
-			        sParameterName = sURLVariables[i].split('=');
-
-			        if (sParameterName[0] === sParam) {
-			            return typeof sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
-			        }
-			    }
-			    return false;
-			};
 
 			function populateSelection(modelDetailsArg){
 				var models = JSON.parse(modelDetailsArg).modelDetails;
