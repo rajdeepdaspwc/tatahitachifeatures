@@ -646,7 +646,7 @@ header .show-info{
 				<!-- <button type="button" id="place-button">PLACE</button> -->
 			</div>
 			<footer>
-				<a class="viewinar" href="arvr.html?model=car"><img src="assets/icons/ar-icon.svg" width="40" alt=""></a>
+				<a class="viewinar" href="arvr.html?model="><img src="assets/icons/ar-icon.svg" width="40" alt=""></a>
 				<ul class="options">
 					<!-- <li>
 						<a class="ar-object" href="javascript:void(0)" data-model="car"><span class="icon"></span><span>Excavator</span></a>
@@ -769,7 +769,9 @@ header .show-info{
 			$("#container .description .close-popup").click(function(){
 				$("header .show-info").fadeIn();
 				$("#container .description-overlay").fadeOut();
-			})
+			});
+
+			$(".viewinar").attr("href", $(".viewinar").attr("href") + getUrlParameter("model"));
 			
 			init();
 			animate();

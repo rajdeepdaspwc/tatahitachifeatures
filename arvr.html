@@ -350,7 +350,7 @@ footer{
 	</head>
 	<body>
 		<div>
-			<a class="backbutton" href="viewin360.html?model=car"><img src="assets/icons/360-degree.svg" width="75" alt=""></a>
+			<a class="backbutton" href="viewin360.html?model="><img src="assets/icons/360-degree.svg" width="75" alt=""></a>
 		</div>
 		<header class="clearfix">
 			<div class="logo1">
@@ -509,11 +509,17 @@ footer{
 			var container;
 			var camera, scene, renderer;
 			var controller;
+			var directionalLight1, directionalLight2, ambientLight;
 
 			var reticle, pmremGenerator, current_object, controls, isAR, envmap;
 
 			var hitTestSource = null;
 			var hitTestSourceRequested = false;
+
+
+			
+
+			$(".backbutton").attr("href", $(".backbutton").attr("href") + getUrlParameter("model"));
 
 			init();
 			animate();
@@ -550,7 +556,7 @@ footer{
 			});
 			
 
-			var getUrlParameter = function getUrlParameter(sParam) {
+			function getUrlParameter(sParam) {
 			    var sPageURL = window.location.search.substring(1),
 			        sURLVariables = sPageURL.split('&'),
 			        sParameterName,
@@ -592,7 +598,7 @@ footer{
 						dracoLoader.setDecoderPath('/js/libs/draco/');
 						dracoLoader.setDecoderConfig({ type: 'js' });
 						var loader = new GLTFLoader().setPath('3d/');
-						 loader.load( /* model */ getUrlParameter('model') + '.glb', function(glb) {
+						 loader.load( /* model */ getUrlParameter('model') + "/" + getUrlParameter('model') + ".glb", function(glb) {
 							//loader.load( "1.glb", function(glb) {
 							$(".overlay").fadeOut();
 							$(".instructions-overlay").fadeIn();
@@ -623,15 +629,20 @@ footer{
 				window.scene = scene;
 
 				camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.001, 200 );
+				camera.position.set(10,3,-5);
+				//camera.position.set(-6,3,-5);
 
-				camera.position.set(-6,3,-5);
+				directionalLight1 = new THREE.DirectionalLight(0xffffff, 1);
+				directionalLight1.position.set(-0.371, 4.118, 7.111).normalize();
+				scene.add(directionalLight1);
 
-				var directionalLight = new THREE.DirectionalLight(0xdddddd, 1);
-				directionalLight.position.set(0, 0, 1).normalize();
-				scene.add(directionalLight);
+				directionalLight2 = new THREE.DirectionalLight(0xffffff, 1);
+				directionalLight2.position.set(2.007, 8.119, -10.539).normalize();
+				scene.add(directionalLight2);
 
-				var ambientLight = new THREE.AmbientLight(0x222222);
+				ambientLight = new THREE.AmbientLight(0x777777, .5);
 				scene.add(ambientLight);
+
 
 				//
 
