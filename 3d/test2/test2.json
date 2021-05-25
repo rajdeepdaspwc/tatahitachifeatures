@@ -15,7 +15,7 @@
             "iconName" : "Cabin-48x48.svg",
             "buttonText" : "Cabin",
             "description" : "<ul><li>Comfortable operating environment.</li> <li>Operator seat designed for comfort</li> <li>Robust cab meeting OPG Top Guard Level 1</li> <li>New easy to use multifunctional monitor.</li></ul>",
-            "scale" : [0.7, 0.7, 0.7],
+            "scale" : [3, 3, 3],
             "camera" : [7,3,-5],
             "dLight1" : [-0.371, 4.118, 7.111],
             "dLight2" : [2.007, 8.119, -10.539]
