@@ -5,7 +5,7 @@
             "iconName" : "excavator.svg",
             "buttonText" : "Chair",
             "description" : "Equipped with advanced hydraulic technology, the ZAXIS 80 series construction excavator has been designed with the latest features of Global e-Service. It combines refinement with power. The latest series cabin and seating are ergonomic, offering absolute operator comfort. The machines promise high performance and durability",
-            "scale" : [3,3,3],
+            "scale" : [500,500,500],
             "camera" : [0,2,5],
             "dLight1" : [-0.371, 4.118, 7.111],
             "dLight2" : [2.007, 8.119, -10.539]

@@ -916,6 +916,7 @@ header .show-info{
 							controls.update();
 							render();
 						});
+						
 						loader.setDRACOLoader(dracoLoader);
 					});
 			}
@@ -958,7 +959,7 @@ header .show-info{
 
 				//
 
-				renderer = new THREE.WebGLRenderer( { antialias: false, alpha: true } );
+				renderer = new THREE.WebGLRenderer( { antialias: true, alpha: true } );
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				renderer.xr.enabled = true;
