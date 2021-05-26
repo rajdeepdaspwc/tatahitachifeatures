@@ -606,15 +606,13 @@ var timeOut;
       //label = capitalizeFirstLetter(results[0].label) + " is detected";
       stopClassify();
       
-
+      alert("Outside");
       JSON.parse(componentDetails).componentDetails.forEach(element => {
         if(element.componentId === results[0].label){
+          alert("Inside");
           $(".detection-result").text(capitalizeFirstLetter(element.componentName) + " was detected.").show();
           $(".component-description").html(element.description);
           $(".instructions-overlay").fadeIn();
-          $(".stop").css("display", "none");
-          $(".start").css("display", "block");
-          $(".analyze-loader").hide();
         }
       });
     }
