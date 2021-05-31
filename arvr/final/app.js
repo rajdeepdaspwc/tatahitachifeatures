@@ -233,11 +233,15 @@ class App {
         this.reticle.visible = true;
         this.reticle.position.set(hitPose.transform.position.x, hitPose.transform.position.y, hitPose.transform.position.z)
         this.reticle.updateMatrixWorld(true);
-        document.getElementById("place-button").style.display = "block";
+
+        if(!this.reticle){
+        	document.getElementById("place-button").style.display = "block";
         document.getElementById("rotate-left").style.display = "block";
         document.getElementById("rotate-right").style.display = "block";
         document.getElementById("zoom-out").style.display = "block";
         document.getElementById("zoom-in").style.display = "block";
+        }
+        
 
         
       }
