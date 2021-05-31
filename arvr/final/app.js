@@ -96,7 +96,7 @@ class App {
 
     this.xrSession.addEventListener('end', this.sessionEnd);
 
-    document.getElementById("place-button").addEventListener("click", this.onSelect);
+    document.getElementById("place-button").addEventListener("click", this.onPlace);
 
      document.getElementById("rotate-left").addEventListener("click", this.onRotateLeft);
 
@@ -115,26 +115,29 @@ class App {
         document.getElementById("zoom-out").style.display = "none";
         document.getElementById("zoom-in").style.display = "none";
         document.getElementById("enter-ar-info").style.display = "block";
-    }
+    };
+
+    rotation = current_object.rotation.y;
+    scale = .01;
 
     onRotateRight = () => {
-    	current_object.rotation.y = current_object.rotation.y + .1;
+    	this.rotation = this.rotation + .1;
+      current_object.rotation.y = this.rotation;
     }
 
     onRotateLeft = () => {
-    	current_object.rotation.y = current_object.rotation.y - .1 ;
+    	this.rotation = this.rotation - .1;
+      current_object.rotation.y = this.rotation;
     }
 
     onZoomIn = () => {
-    	current_object.scale.x = current_object.scale.x + (current_object.scale.x / 10);
-    	current_object.scale.y = current_object.scale.y + (current_object.scale.y / 10);
-    	current_object.scale.z = current_object.scale.z + (current_object.scale.z / 10);
+      this.scale = this.scale + this.scale / 10;
+    	current_object.scale.set(this.scale, this.scale, this.scale);
     }
 
     onZoomOut = () => {
-    	current_object.scale.x = current_object.scale.x - (current_object.scale.x / 10);
-    	current_object.scale.y = current_object.scale.y - (current_object.scale.y / 10);
-    	current_object.scale.z = current_object.scale.z - (current_object.scale.z / 10);
+    	this.scale = this.scale - this.scale / 10;
+    	current_object.scale.set(this.scale, this.scale, this.scale);
     }
 
   /** Place a sunflower when the screen is tapped. */
@@ -144,7 +147,7 @@ class App {
 	// 			}
 	// 		};
 
-  onSelect = () => {
+  onPlace = () => {
 
    if (window.sunflower) {
     	this.scene.remove(current_object);
