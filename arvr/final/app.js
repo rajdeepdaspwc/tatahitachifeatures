@@ -117,7 +117,7 @@ class App {
         document.getElementById("enter-ar-info").style.display = "block";
     };
 
-    rotation = current_object.rotation.y;
+    rotation;
     scale = .01;
 
     onRotateRight = () => {
@@ -155,7 +155,8 @@ class App {
       current_object.position.copy(this.reticle.position);
       
       this.scene.add(current_object);
-      current_object.scale.set(.01,.01,.01);
+      current_object.scale.set(this.scale,this.scale,this.scale);
+      this.rotation = current_object.rotation.y;
 
       // const shadowMesh = this.scene.children.find(c => c.name === 'shadowMesh');
       // shadowMesh.position.y = current_object.position.y;
