@@ -97,7 +97,6 @@ class App {
     this.xrSession.addEventListener('end', this.sessionEnd);
 
     document.getElementById("place-button").addEventListener("click", this.onPlace);
-    document.getElementById("replace-button").addEventListener("click", this.onPlace);
 
      document.getElementById("rotate-left").addEventListener("click", this.onRotateLeft);
 
@@ -111,13 +110,11 @@ class App {
 
     sessionEnd = () => {
     	document.getElementById("place-button").style.display = "none";
-    	document.getElementById("replace-button").style.display = "none";
         document.getElementById("rotate-left").style.display = "none";
         document.getElementById("rotate-right").style.display = "none";
         document.getElementById("zoom-out").style.display = "none";
         document.getElementById("zoom-in").style.display = "none";
         document.getElementById("enter-ar-info").style.display = "block";
-
     };
 
     rotation;
@@ -150,11 +147,6 @@ class App {
 	// 			}
 	// 		};
 
-
-	onReplace = () => {
-		document.getElementById("place-button").style.display = "block";
-		this.reticle.visible = true;
-	}
   onPlace = () => {
 
    if (window.sunflower) {
@@ -162,9 +154,7 @@ class App {
     	this.scene.remove(current_object);
        current_object = window.sunflower.clone();
       current_object.position.copy(this.reticle.position);
-      this.reticle.visible = false;
-      document.getElementById("place-button").style.display = "none";
-      document.getElementById("replace-button").style.display = "block";
+      
       this.scene.add(current_object);
       current_object.scale.set(this.scale,this.scale,this.scale);
       if(this.rotation !== undefined){
@@ -233,15 +223,11 @@ class App {
         this.reticle.visible = true;
         this.reticle.position.set(hitPose.transform.position.x, hitPose.transform.position.y, hitPose.transform.position.z)
         this.reticle.updateMatrixWorld(true);
-
-        if(!this.reticle){
-        	document.getElementById("place-button").style.display = "block";
+        document.getElementById("place-button").style.display = "block";
         document.getElementById("rotate-left").style.display = "block";
         document.getElementById("rotate-right").style.display = "block";
         document.getElementById("zoom-out").style.display = "block";
         document.getElementById("zoom-in").style.display = "block";
-        }
-        
 
         
       }
