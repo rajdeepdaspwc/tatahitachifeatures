@@ -156,7 +156,11 @@ class App {
       
       this.scene.add(current_object);
       current_object.scale.set(this.scale,this.scale,this.scale);
-      this.rotation = current_object.rotation.y;
+      if(this.rotation !== undefined){
+      	current_object.rotation.y = this.rotation;
+      } else{
+      	this.rotation = current_object.rotation.y;
+      }
 
       // const shadowMesh = this.scene.children.find(c => c.name === 'shadowMesh');
       // shadowMesh.position.y = current_object.position.y;
