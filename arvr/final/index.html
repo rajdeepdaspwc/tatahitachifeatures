@@ -27,7 +27,6 @@
     bottom: 22px;
     left: 50%;
     transform: translate(-50%, 0);
-    display: none;
     border: none;
     font-size: 14px;
     color: #fff;
@@ -41,7 +40,6 @@
     position: absolute;
     bottom: 22px;
     left: 15px;
-    display: none;
     border: none;
     font-size: 14px;
     color: #fff;
@@ -51,7 +49,6 @@
     position: absolute;
     bottom: 22px;
     right: 15px;
-    display: none;
     border: none;
     font-size: 14px;
     color: #fff;
@@ -61,7 +58,6 @@
     position: absolute;
     top: 22px;
     right: 15px;
-    display: none;
     border: none;
     font-size: 14px;
     color: #fff;
@@ -74,7 +70,6 @@
     position: absolute;
     top: 70px;
     right: 15px;
-    display: none;
     border: none;
     font-size: 14px;
     color: #fff;
@@ -86,15 +81,14 @@
   .pushable{
     background: #733e20;
     border-radius: 8px;
+    display: none;
     border: none;
     padding: 0;
     cursor: pointer;
     outline-offset: 4px;
-    display: block !important;
   }
 
   .front {
-    display: block;
     padding: 8px 10px;
     border-radius: 8px;
     background: #ed691f;
@@ -171,14 +165,14 @@ button {
     </div>
     <script src="app.js"></script>
     <div id="stabilization"></div>
-    <button type="button" id="place-button" class="pushable"><span class="front ripple">PLACE</span></button>
+    <button type="button" id="place-button" class="pushable"><div class="front ripple">PLACE</div></button>
 
-    <button type="button" id="rotate-left" class="pushable"><span class="front ripple"><img src="../../assets/icons/left-chevron.svg" alt="<" height="15"></span></button>
+    <button type="button" id="rotate-left" class="pushable"><div class="front ripple"><img src="../../assets/icons/left-chevron.svg" alt="<" height="15"></div></button>
 
-    <button type="button" id="rotate-right" class="pushable"><span class="front ripple"><img src="../../assets/icons/right-chevron.svg" alt="<" height="15"></span></button>
+    <button type="button" id="rotate-right" class="pushable"><div class="front ripple"><img src="../../assets/icons/right-chevron.svg" alt="<" height="15"></div></button>
 
-    <button type="button" id="zoom-in" class="pushable"><span class="front ripple">+</span></button>
+    <button type="button" id="zoom-in" class="pushable"><div class="front ripple">+</div></button>
 
-    <button type="button" id="zoom-out" class="pushable"><span class="front ripple">-</span></button>
+    <button type="button" id="zoom-out" class="pushable"><div class="front ripple">-</div></button>
   </body>
 </html>
