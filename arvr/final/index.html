@@ -25,77 +25,116 @@
       #place-button{
     position: absolute;
     bottom: 22px;
-    left: calc(50% - 64px);
-    width: 128px;
-    height: 37px;
+    left: 50%;
+    transform: translate(-50%, 0);
     display: none;
     border: none;
     font-size: 14px;
-    padding: 11px 22px 23px;
     color: #fff;
-    border-radius: 30px;
-    background: #ed691f !important;
+    font-weight: bold;
+  }
+  #place-button .front {
+    padding: 8px 20px !important;
   }
 
   #rotate-left{
     position: absolute;
     bottom: 22px;
     left: 15px;
-    width: 50px;
-    height: 37px;
     display: none;
     border: none;
     font-size: 14px;
-    padding: 11px 22px 23px;
     color: #fff;
-    border-radius: 30px;
-    background: #ed691f !important;
   }
 
   #rotate-right{
     position: absolute;
     bottom: 22px;
     right: 15px;
-    width: 50px;
-    height: 37px;
     display: none;
     border: none;
     font-size: 14px;
-    padding: 11px 22px 23px;
     color: #fff;
-    border-radius: 30px;
-    background: #ed691f !important;
   }
 
   #zoom-out{
     position: absolute;
     top: 22px;
     right: 15px;
-    width: 50px;
-    height: 37px;
     display: none;
     border: none;
     font-size: 14px;
-    padding: 11px 22px 23px;
     color: #fff;
-    border-radius: 30px;
-    background: #ed691f !important;
+    font-weight: bold;
+    width: 40px;
+    height: 32px;
   }
 
   #zoom-in{
     position: absolute;
     top: 70px;
     right: 15px;
-    width: 50px;
-    height: 37px;
     display: none;
     border: none;
     font-size: 14px;
-    padding: 11px 22px 23px;
     color: #fff;
-    border-radius: 30px;
-    background: #ed691f !important;
+    font-weight: bold;
+    width: 40px;
+    height: 32px;
   }
+
+  .pushable{
+    background: #733e20;
+    border-radius: 8px;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline-offset: 4px;
+    display: block !important;
+  }
+
+  .front {
+    display: block;
+    padding: 8px 10px;
+    border-radius: 8px;
+    background: #ed691f;
+    color: white;
+    will-change: transform;
+    transition: transform 120ms;
+    transform: translateY(-4px);
+  }
+  
+  .pushable:active .front {
+    transform: translateY(-2px);
+  }
+
+  /* Ripple effect */
+.ripple {
+  background-position: center;
+  transition: background 0.8s;
+}
+
+.ripple:hover {
+  background: #ed691f radial-gradient(circle, transparent 1%, #ed691f 1%) center/15000%;
+}
+
+.ripple:active {
+  background-color: #fff;
+  background-size: 100%;
+  transition: background 0s;
+}
+
+/* Button style */
+button {
+  border: none;
+  padding: 8px 10px;
+  font-size: 12px;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: white;
+  background-color: #ed691f;
+  outline: none;
+}
     </style>
     <script src="https://unpkg.com/three@0.126.0/build/three.js"></script>
     <script src="https://unpkg.com/three@0.126.0/examples/js/loaders/GLTFLoader.js"></script>
@@ -132,14 +171,14 @@
     </div>
     <script src="app.js"></script>
     <div id="stabilization"></div>
-    <button type="button" id="place-button">PLACE</button>
+    <button type="button" id="place-button" class="pushable"><span class="front ripple">PLACE</span></button>
 
-    <button type="button" id="rotate-left"><</button>
+    <button type="button" id="rotate-left" class="pushable"><span class="front ripple"><img src="../../assets/icons/left-chevron.svg" alt="<" height="15"></span></button>
 
-    <button type="button" id="rotate-right">></button>
+    <button type="button" id="rotate-right" class="pushable"><span class="front ripple"><img src="../../assets/icons/right-chevron.svg" alt="<" height="15"></span></button>
 
-    <button type="button" id="zoom-in">+</button>
+    <button type="button" id="zoom-in" class="pushable"><span class="front ripple">+</span></button>
 
-    <button type="button" id="zoom-out">-</button>
+    <button type="button" id="zoom-out" class="pushable"><span class="front ripple">-</span></button>
   </body>
 </html>
