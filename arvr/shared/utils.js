@@ -1,24 +1,21 @@
-/*
- * Copyright 2017 Google Inc. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the 'License');
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an 'AS IS' BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-var dracoLoader = new THREE.DRACOLoader();
-window.gltfLoader = new THREE.GLTFLoader();
-/**
- * The Reticle class creates an object that repeatedly calls
- * `xrSession.requestHitTest()` to render a ring along a found
- * horizontal surface.
- */
+
+function getUrlParameter(sParam) {
+  var sPageURL = window.location.search.substring(1),
+      sURLVariables = sPageURL.split('&'),
+      sParameterName,
+      i;
+
+  for (i = 0; i < sURLVariables.length; i++) {
+      sParameterName = sURLVariables[i].split('=');
+
+      if (sParameterName[0] === sParam) {
+          return typeof sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+      }
+  }
+  return false;
+};
+
+
 class Reticle extends THREE.Object3D {
   constructor() {
     super();
@@ -38,9 +35,11 @@ class Reticle extends THREE.Object3D {
     this.visible = false;
   }
 }
-
+var dracoLoader = new THREE.DRACOLoader();
 dracoLoader.setDecoderConfig({ type: 'js' });
-window.gltfLoader.load("../3d/zaxis370.glb", function(glb) {
+window.gltfLoader = new THREE.GLTFLoader();
+
+window.gltfLoader.load("../3d/" + getUrlParameter("model") + ".glb", function(glb) {
   //const model = glb.scene.children.find(c => c.name === 'sunflower')
   // const bodyMaterial = new THREE.MeshPhysicalMaterial({
   //   color: 0xff0000, metalness: 0.6, roughness: 0.4, clearcoat: 0.05, clearcoatRoughness: 0.05
