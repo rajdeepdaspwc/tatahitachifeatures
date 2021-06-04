@@ -2,6 +2,26 @@
  * Query for WebXR support. If there's no support for the `immersive-ar` mode,
  * show an error.
  */
+$(".backbutton a").attr("href", $(".backbutton a").attr("href") + getUrlParameter("model"));
+ function iOS() {
+  return [
+    'iPad Simulator',
+    'iPhone Simulator',
+    'iPod Simulator',
+    'iPad',
+    'iPhone',
+    'iPod'
+  ].includes(navigator.platform)
+  // iPad on iOS 13 detection
+  || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+}
+if(iOS()){
+  $("#ARButtonIos").show();
+  $("#enter-ar").hide();
+} else {
+  $("#ARButtonIos").hide();
+  $("#enter-ar").show();
+}
 
 (async function() {
   const isArSessionSupported = navigator.xr && navigator.xr.isSessionSupported && await navigator.xr.isSessionSupported("immersive-ar");
@@ -63,7 +83,7 @@ class App {
    */
   onSessionStarted = async () => {
     // Add the `ar` class to our body, which will hide our 2D components
-    document.body.classList.add('ar');
+    $("#stabilization").show();
 
     // To help with working with 3D on the web, we'll use three.js.
     this.setupThreeJs();
@@ -94,12 +114,16 @@ class App {
     }
 
     sessionEnd = () => {
+      location.reload();
     	document.getElementById("place-button").style.display = "none";
         document.getElementById("rotate-left").style.display = "none";
         document.getElementById("rotate-right").style.display = "none";
         document.getElementById("zoom-out").style.display = "none";
         document.getElementById("zoom-in").style.display = "none";
-        document.getElementById("enter-ar-info").style.display = "block";
+        $("#stabilization").hide();
+     //    $(".instructions-overlay").fadeIn();
+     //    $("footer").fadeIn();
+     //    $("header").fadeIn();
     };
 
     rotation;
@@ -162,7 +186,10 @@ class App {
    */
   onXRFrame = (time, frame) => {
 
-  		document.getElementById("enter-ar-info").style.display = "none";
+      $(".instructions-overlay").fadeOut();
+      $("footer").fadeOut();
+      $("header").fadeOut();
+
 				
 
     // Queue up the next draw request.
@@ -199,7 +226,7 @@ class App {
       // If we have results, consider the environment stabilized.
       if (!this.stabilized && hitTestResults.length > 0) {
         this.stabilized = true;
-        document.body.classList.add('stabilized');
+        $("#stabilization").hide();
       }
       if (hitTestResults.length > 0) {
         const hitPose = hitTestResults[0].getPose(this.localReferenceSpace);

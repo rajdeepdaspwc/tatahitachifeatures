@@ -39,7 +39,7 @@ window.gltfLoader = new THREE.GLTFLoader();
 
 //window.gltfLoader.load("https://api.cegcpapa5m-tatahitac1-d1-public.model-t.cc.commerce.ondemand.com/medias/ferrarired.glb?context=bWFzdGVyfGltYWdlc3wxNTE4NTQ2NHxhcHBsaWNhdGlvbi9vY3RldC1zdHJlYW18aGQ3L2g3NS84ODM2MTcxNDY0NzM0L2ZlcnJhcmlyZWQuZ2xifGQwNzg0MTc4OTQ4MmU1NDZmYmIzNTQwNDE4NjNmMTI4YmM5ZDRhODE4MTk3MTg5YmFmYzFjZTgwNGIyY2IwZDk", function(glb) {
 
-window.gltfLoader.load("../3d/" + getUrlParameter("model") + ".glb", function(glb) {
+window.gltfLoader.load("../3d/" + getUrlParameter("model") + "/" + getUrlParameter("model") + ".glb", function(glb) {
   //const model = glb.scene.children.find(c => c.name === 'sunflower')
   // const bodyMaterial = new THREE.MeshPhysicalMaterial({
   //   color: 0xff0000, metalness: 0.6, roughness: 0.4, clearcoat: 0.05, clearcoatRoughness: 0.05
@@ -57,6 +57,7 @@ window.gltfLoader.load("../3d/" + getUrlParameter("model") + ".glb", function(gl
           //console.log(carModel.getObjectByName( 'body' ).material);
  // console.log(glb.scene.children[0].children);
   window.sunflower = glb.scene;
+  $("#loading-screen").fadeOut();
 });
 
 window.gltfLoader.setDRACOLoader(dracoLoader);
