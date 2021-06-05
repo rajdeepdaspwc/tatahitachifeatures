@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html>
   <head>
@@ -289,6 +290,7 @@ header .show-info{
    color: #ed691f;
    font-weight: bold;
     margin-top: 0;
+    text-align: center;
 }
 .instructions-overlay .instructions a, .instructions-overlay .instructions .highlight{
   color: #ed691f;
@@ -414,6 +416,32 @@ footer{
   padding: 10px 20px;
   text-shadow: 1px 1px 1px #333;
 }
+
+.error-overlay{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0, .7);
+  z-index: 4;
+}
+.error-overlay .support-message{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 2px 2px 7px rgba(0,0,0, .7);
+  padding: 15px;
+  width: calc(100vw - 60px);
+  max-width: 450px;
+}
+.error-overlay .support-message a{
+  color:#ed691f;
+}
+
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://unpkg.com/three@0.126.0/build/three.js"></script>
@@ -452,14 +480,16 @@ footer{
       </a> -->
     </div>
 
-    <div id="unsupported-info" class="mdc-card demo-card">
-      <h2>Unsupported Device/Browser</h2>
-      <p>
-        Your device or browser does not support AR features with WebXR. 
-        <!-- Learn more about these features from the
-        <a href="https://codelabs.developers.google.com/codelabs/ar-with-webxr">Building an augmented reality application with the WebXR Device API</a> Code Lab. -->
-      </p>
-    </div>
+      <div id="unsupported-info" class="error-overlay">
+        <div class="support-message">
+          <p style="text-align: center;"><img src="./assets/icons/alert.png" width="50" alt="Error!"></p>
+          <p>Your device or browser does not support AR features with WebXR.</p>
+          <p>Please check whether your device has AR Core support by visiting this <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">supported devices</a> link.
+            <!-- Learn more about these features from the
+            <a href="https://codelabs.developers.google.com/codelabs/ar-with-webxr">Building an augmented reality application with the WebXR Device API</a> Code Lab. -->
+          </p>
+        </div>
+      </div>
     
     <div id="stabilization"></div>
     <button type="button" id="place-button" class="pushable"><div class="front ripple">PLACE</div></button>
@@ -492,15 +522,14 @@ footer{
             <li>Click on <span class="highlight">'Start AR'</span> button at the bottom of the screen.</li>
             <li>Point the camera on a horizontal surface (floor).</li>
             <li>Wait for the <span class="highlight">white circle</span> and the <span class="highlight">'Place'</span> button to appear on the screen.</li>
-            <li>Move the <span class="highlight">white circle</span> to a desired position and press the <span class="highlight">'Place'</span> button to place the model.</li>
-            <li>Rotate and scale the model according to your desire while viewing it.</li>
+            <li>Move the <span class="highlight">white circle</span> to a desired position and press the <span class="highlight">'Place'</span> button.</li>
           </ul>
-          <p><b>If the augmented reality feature is <span style="color: red;">not working:</span></b></p>
+          <!-- <p><b>If the augmented reality feature is <span style="color: red;">not working:</span></b></p>
           <ul>
             <li>Please check whether your device has AR Core support by visiting this <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">supported devices</a> link.</li>
             <li>Update you Google Chrome browser to the latest version.</li>
             <li>If a black screen is coming due to hardware error please go back and press the  <span class="highlight">'Start AR'</span> button again.</li>
-          </ul>
+          </ul> -->
           <p class="place-center">
             <button id="enter-ar" class="gotit">START AR</button>
             <a id="ARButtonIos" href="3d/sample3.usdz">START AR</a>
