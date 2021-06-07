@@ -63,10 +63,7 @@ body.ar #info {
 }
 
 #stabilization {
-  background-image: url(../assets/gif/stabilization.gif);
-  background-size: contain;
-  background-repeat: no-repeat;
-  width: 400px;
+  width: 100%;
   height: 400px;
   position: absolute;
   left: 50%;
@@ -74,6 +71,20 @@ body.ar #info {
   transform: translate(-50%, 0);
   z-index: 10;
   display: none;
+}
+#stabilization .gif-image{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  text-align: center;
+}
+#stabilization .gif-image span{
+  display: block;
+  margin-top:-140px;
+  color: #fff;
+  font-size: 18px;
 }
 
 

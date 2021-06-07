@@ -32,7 +32,7 @@
   100% {transform: scale(1);}
 }/*End of Zoom out Keyframes */
   .background-img{
-    /*background: url("./assets/images/ar-back.jpg");
+    /* background: url("./assets/images/ar-back.jpg");
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -45,8 +45,8 @@
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    /*-webkit-animation: zoomin 30s ease-in infinite;
-    animation: zoomin 30s ease-in infinite;*/
+    -webkit-animation: zoomin 30s ease-in infinite;
+    animation: zoomin 30s ease-in infinite; */
     
   
       }
@@ -55,10 +55,14 @@
     bottom: 22px;
     left: 50%;
     transform: translate(-50%, 0);
-    border: none;
     font-size: 14px;
     color: #fff;
     font-weight: bold;
+    width: 80px;
+    padding: 7px;
+    border-radius: 7px;
+    background-color: rgba(255,255,255, .3);
+    border: 3px double #fff;
   }
   #place-button .front {
     padding: 8px 20px !important;
@@ -71,6 +75,12 @@
     border: none;
     font-size: 14px;
     color: #fff;
+    padding: 7px;
+    border-radius: 50%;
+    background-color: rgba(255,255,255, .3);
+    border: 3px double #fff;
+    width: 37px;
+    height: 37px;
   }
 
   #rotate-right{
@@ -84,46 +94,42 @@
 
   #zoom-out{
     position: absolute;
-    top: 70px;
+    bottom: 22px;
     right: 15px;
     border: none;
-    font-size: 14px;
+    font-size: 18px;
     color: #fff;
     font-weight: bold;
-    width: 40px;
-    height: 32px;
+    padding: 7px;
+    border-radius: 50%;
+    background-color: rgba(255,255,255, .3);
+    border: 3px double #fff;
+    width: 37px;
+    height: 37px;
   }
 
   #zoom-in{
     position: absolute;
-    top: 22px;
+    bottom: 70px;
     right: 15px;
     border: none;
-    font-size: 14px;
+    font-size: 18px;
     color: #fff;
     font-weight: bold;
-    width: 40px;
-    height: 32px;
+    padding: 7px;
+    border-radius: 50%;
+    background-color: rgba(255,255,255, .3);
+    border: 3px double #fff;
+    width: 37px;
+    height: 37px;
   }
 
   .pushable{
-    background: #733e20;
-    border-radius: 8px;
     display: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    outline-offset: 4px;
   }
 
   .front {
-    padding: 8px 10px;
-    border-radius: 8px;
-    background: #ed691f;
-    color: white;
-    will-change: transform;
-    transition: transform 120ms;
-    transform: translateY(-4px);
+   
   }
   
   .pushable:active .front {
@@ -146,24 +152,6 @@
   transition: background 0s;
 }
 
-/* Button style */
-button {
-  border: none;
-  padding: 8px 10px;
-  font-size: 12px;
-  text-transform: uppercase;
-  cursor: pointer;
-  color: white;
-  background-color: #ed691f;
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
 
 #enter-ar{
   background-color: #ed691f;
@@ -281,6 +269,8 @@ header .show-info{
 }
 .instructions-overlay .instructions .texts{
   padding: 20px;
+  max-width: 500px;
+  margin: 0 auto;
 }
 .instructions-overlay .instructions .texts ul{
   padding-left: 20px;
@@ -340,6 +330,7 @@ footer{
     line-height: 1;
     margin: 0;
     color: #fff;
+    margin: 12px 0;
 }
 .copyrights h5 a {
     color: #ccc;
@@ -442,6 +433,12 @@ footer{
   color:#ed691f;
 }
 
+#unsupported-info .close-popup{
+	position: absolute;
+	right: 15px;
+	top: 15px;
+}
+
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://unpkg.com/three@0.126.0/build/three.js"></script>
@@ -482,25 +479,32 @@ footer{
 
       <div id="unsupported-info" class="error-overlay">
         <div class="support-message">
+          <div class="close-popup">
+            <img src="assets/icons/close.svg" width="30" alt="">
+          </div>
           <p style="text-align: center;"><img src="./assets/icons/alert.png" width="50" alt="Error!"></p>
           <p>Your device or browser does not support AR features with WebXR.</p>
           <p>Please check whether your device has AR Core support by visiting this <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">supported devices</a> link.
-            <!-- Learn more about these features from the
-            <a href="https://codelabs.developers.google.com/codelabs/ar-with-webxr">Building an augmented reality application with the WebXR Device API</a> Code Lab. -->
+          <p>If listed, please update your chrome browser to the latest</p>
           </p>
         </div>
       </div>
     
-    <div id="stabilization"></div>
-    <button type="button" id="place-button" class="pushable"><div class="front ripple">PLACE</div></button>
-    <!-- <button type="button" id="replace-button" class="pushable"><div class="front ripple">REPLACE</div></button> -->
-    <button type="button" id="rotate-left" class="pushable"><div class="front ripple"><img src="../../assets/icons/left-chevron.svg" alt="<" height="15"></div></button>
+    <div id="stabilization">
+      <div class="gif-image">
+        <img src="./assets/gif/stabilization.gif" alt="Focus on the ground" width="400"><br>
+        <span>Focus on the ground and wave</span>
 
-    <button type="button" id="rotate-right" class="pushable"><div class="front ripple"><img src="../../assets/icons/right-chevron.svg" alt="<" height="15"></div></button>
+      </div>
+    </div>
+    <button type="button" id="place-button" class="pushable">PLACE</button>
+    <button type="button" id="rotate-left" class="pushable"><img src="./assets/icons/rotate-model.svg" alt="<" height="15"></button>
 
-    <button type="button" id="zoom-in" class="pushable"><div class="front ripple">+</div></button>
+    <!-- <button type="button" id="rotate-right" class="pushable"><img src="../../assets/icons/right-chevron.svg" alt="<" height="15"></button> -->
 
-    <button type="button" id="zoom-out" class="pushable"><div class="front ripple">-</div></button>
+    <button type="button" id="zoom-in" class="pushable">+</button>
+
+    <button type="button" id="zoom-out" class="pushable">-</button>
     <div id="loading-screen" class="overlay">
       <div class="messagebox">
         <img src="assets/gif/ajax-loader.gif" alt="Loading ...">
@@ -513,9 +517,6 @@ footer{
     <div class="instructions-overlay">
       <div class="instructions">
         <div class="texts">
-          <!-- <div class="logo1">
-            <img src="assets/EdostLogoWithoutBorder.svg" alt="TATA HITACHI" height="50">
-          </div> -->
           <h4>Welcome to Tata Hitachi Augmented Reality Experience</h4>
           <p><b>Please follow the below steps to experience augmented reality:</b></p>
           <ul>
@@ -524,17 +525,12 @@ footer{
             <li>Wait for the <span class="highlight">white circle</span> and the <span class="highlight">'Place'</span> button to appear on the screen.</li>
             <li>Move the <span class="highlight">white circle</span> to a desired position and press the <span class="highlight">'Place'</span> button.</li>
           </ul>
-          <!-- <p><b>If the augmented reality feature is <span style="color: red;">not working:</span></b></p>
-          <ul>
-            <li>Please check whether your device has AR Core support by visiting this <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">supported devices</a> link.</li>
-            <li>Update you Google Chrome browser to the latest version.</li>
-            <li>If a black screen is coming due to hardware error please go back and press the  <span class="highlight">'Start AR'</span> button again.</li>
-          </ul> -->
+          </ul>
           <p class="place-center">
             <button id="enter-ar" class="gotit">START AR</button>
             <a id="ARButtonIos" href="3d/sample3.usdz">START AR</a>
           </p>
-          <p class="backbutton"><a href="viewin360.html?model="><img src="assets/icons/360-degree.svg" width="75" alt=""><br> <span>View in 360 Degree </span></a></p>
+          <p class="backbutton"><a href="viewin360.html?model="><img src="assets/icons/360-degree.svg" width="75" alt=""><br> <span>View in 360° </span></a></p>
         </div>
       </div>
     </div>
@@ -572,7 +568,7 @@ footer{
             </ul>
           </div>
           <div class="col-sm-7 col-md-8">
-            <!-- <h5><a href="https://www.tatahitachi.co.in/privacy-policy/" target="_blank">Privacy Policy</a> | <a href="https://www.tatahitachi.co.in/disclaimer/" target="_blank">Disclaimer</a></h5> -->
+            <h5><a href="https://www.tatahitachi.co.in/privacy-policy/" target="_blank">Privacy Policy</a> | <a href="https://www.tatahitachi.co.in/disclaimer/" target="_blank">Disclaimer</a></h5>
             <h6>© 2018 Tata Hitachi Construction Machinery  |  All rights reserved.</h6>
           </div>
         </div>

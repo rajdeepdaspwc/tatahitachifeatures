@@ -32,6 +32,10 @@ if(iOS()){
   }
 })();
 
+$("#unsupported-info .close-popup").click(function(){
+  $("body").removeClass("unsupported");
+});
+
 /**
  * Container class to manage connecting to the WebXR Device API
  * and handle rendering on every frame.
@@ -105,7 +109,7 @@ class App {
 
      document.getElementById("rotate-left").addEventListener("click", this.onRotateLeft);
 
-      document.getElementById("rotate-right").addEventListener("click", this.onRotateRight);
+      // document.getElementById("rotate-right").addEventListener("click", this.onRotateRight);
 
       document.getElementById("zoom-in").addEventListener("click", this.onZoomIn);
       document.getElementById("zoom-out").addEventListener("click", this.onZoomOut);
@@ -127,7 +131,7 @@ class App {
     };
 
     rotation;
-    scale = .01;
+    scale = .7;
 
     onRotateRight = () => {
     	this.rotation = this.rotation + .1;
