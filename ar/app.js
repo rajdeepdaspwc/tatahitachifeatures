@@ -121,7 +121,7 @@ class App {
       location.reload();
     	document.getElementById("place-button").style.display = "none";
         document.getElementById("rotate-left").style.display = "none";
-        document.getElementById("rotate-right").style.display = "none";
+       // document.getElementById("rotate-right").style.display = "none";
         document.getElementById("zoom-out").style.display = "none";
         document.getElementById("zoom-in").style.display = "none";
         $("#stabilization").hide();
@@ -241,7 +241,7 @@ class App {
         this.reticle.updateMatrixWorld(true);
         document.getElementById("place-button").style.display = "block";
         document.getElementById("rotate-left").style.display = "block";
-        document.getElementById("rotate-right").style.display = "block";
+       // document.getElementById("rotate-right").style.display = "block";
         document.getElementById("zoom-out").style.display = "block";
         document.getElementById("zoom-in").style.display = "block";
 
