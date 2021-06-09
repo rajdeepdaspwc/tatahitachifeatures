@@ -88,15 +88,15 @@ window.DemoUtils = {
     // without lights in our scenes. Let's add an ambient light
     // so our material can be visible, as well as a directional light
     // for the shadow.
-    const light = new THREE.AmbientLight(0xffffff, 1);
-    scene.add(light);
-    const directionalLight1 = new THREE.DirectionalLight(0xffffff, 3);
-    directionalLight1.position.set(-0.371, 4.118, 7.111).normalize();
-    scene.add(directionalLight1);
+    // const light = new THREE.AmbientLight(0xffffff, 1);
+    // scene.add(light);
+    // const directionalLight1 = new THREE.DirectionalLight(0xffffff, 3);
+    // directionalLight1.position.set(-0.371, 4.118, 7.111).normalize();
+    // scene.add(directionalLight1);
 
-    const directionalLight2 = new THREE.DirectionalLight(0xffffff, 3);
-    directionalLight2.position.set(2.007, 8.119, -10.539).normalize();
-    scene.add(directionalLight2);
+    // const directionalLight2 = new THREE.DirectionalLight(0xffffff, 3);
+    // directionalLight2.position.set(2.007, 8.119, -10.539).normalize();
+    // scene.add(directionalLight2);
 
     const environment = new RoomEnvironment();
 		const pmremGenerator = new THREE.PMREMGenerator( renderer );
