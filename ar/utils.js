@@ -98,6 +98,10 @@ window.DemoUtils = {
     directionalLight2.position.set(2.007, 8.119, -10.539).normalize();
     scene.add(directionalLight2);
 
+    const environment = new RoomEnvironment();
+		const pmremGenerator = new THREE.PMREMGenerator( renderer );
+		scene.environment = pmremGenerator.fromScene( environment ).texture;
+
     // We want this light to cast shadow.
    // directionalLight.castShadow = true;
 

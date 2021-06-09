@@ -76,7 +76,7 @@ function loadDoc1() {
 		console.log(this.responseText);
 	  }
 	};
-	xhttp.open("GET", "https://api.cegcpapa5m-tatahitac1-d1-public.model-t.cc.commerce.ondemand.com/medias/data.txt?context=bWFzdGVyfHJvb3R8NDF8dGV4dC9wbGFpbnxoYTMvaGQwLzg4MzcwMzgxMTI3OTgvZGF0YS50eHR8ZWMzODdjZGZmNTk1MjJjYzVkMDdjZmY3Njk0NzAwOWJjYzVkOWZhODk4MzVjZWM1NTJkMDBkNDk3ODI4MzIwNQ", true);
+	xhttp.open("GET", "https://api.cegcpapa5m-tatahitac1-s1-public.model-t.cc.commerce.ondemand.com/medias/cabin.glb?context=bWFzdGVyfHJvb3R8OTAzNzgwfGFwcGxpY2F0aW9uL29jdGV0LXN0cmVhbXxoZTgvaGUwLzg4NzE2MjAzNzg2NTQvY2FiaW4uZ2xifDg4ZjQyOWZjNjgwZTE4OGVlOWNkNzM4ZDIxMWZmNzBhMGY1N2VlMjNhMGVlMTRmMDYyNGMwOWYwMGI4ZWJiOGU", true);
 	xhttp.send();
   }
   loadDoc2();
@@ -92,6 +92,20 @@ function loadDoc1() {
 	xhttp.send();
   }
   loadDoc3();
+
+  function loadDoc4() {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+	  if (this.readyState == 4 && this.status == 200) {
+		console.log(this.responseText);
+	  }
+	};
+	xhttp.open("GET", "https://api.cegcpapa5m-tatahitac1-d1-public.model-t.cc.commerce.ondemand.com/medias/cabin.glb?context=bWFzdGVyfHJvb3R8OTAzNzgwfGFwcGxpY2F0aW9uL29jdGV0LXN0cmVhbXxoMGIvaDU2Lzg4NDU1Mjk5NzI3NjYvY2FiaW4uZ2xifGZhZDc3ZjhjODZmNjAxZTBkNWFmZTViMTcyYjU0M2Y1OTJhYzYxMjk0ZmU1ZDdhZGRmOTVkY2ZiODA5OWFhYTY", true);
+	xhttp.send();
+  }
+  loadDoc4();
+
+  
 </script>
 </body>
 </html>
