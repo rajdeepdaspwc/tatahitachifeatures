@@ -1,0 +1,25 @@
+{
+    "modelDetails" : [
+        { 
+            "fileName" : "cars",
+            "iconName" : "excavator.svg",
+            "buttonText" : "Ferrari",
+            "description" : "Equipped with advanced hydraulic technology, the ZAXIS 80 series construction excavator has been designed with the latest features of Global e-Service. It combines refinement with power. The latest series cabin and seating are ergonomic, offering absolute operator comfort. The machines promise high performance and durability",
+            "scale" : [0.65,0.65,0.65],
+            "camera" : [7,3,-5],
+            "dLight1" : [-0.371, 4.118, 7.111],
+            "dLight2" : [2.007, 8.119, -10.539]
+        },
+        { 
+            "fileName" : "audi",
+            "iconName" : "Cabin-48x48.svg",
+            "buttonText" : "Audi",
+            "description" : "<ul><li>Comfortable operating environment.</li> <li>Operator seat designed for comfort</li> <li>Robust cab meeting OPG Top Guard Level 1</li> <li>New easy to use multifunctional monitor.</li></ul>",
+            "scale" : [0.65,0.65,0.65],
+            "camera" : [7,3,-5],
+            "dLight1" : [-0.371, 4.118, 7.111],
+            "dLight2" : [2.007, 8.119, -10.539]
+
+        }
+    ]
+}
