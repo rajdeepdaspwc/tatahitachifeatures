@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Tata Hitachi 360 Degree View</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+		<meta name="theme-color" content="#317EFB"/>
+		<link rel="Shortcut Icon" type="image/x-icon" href="https://www.tatahitachi.co.in/favicon.ico" />
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<style>
+			body {
+	 background-color: #f1f1f1;
+	 margin: 0;
+	 padding: 0;
+	 font-family: "Lato", sans-serif;
+}
+ * {
+	 -webkit-box-sizing: border-box;
+	 box-sizing: border-box;
+}
+ header {
+	 position: fixed;
+	 width: 100%;
+	 left: 0;
+	 top: 0;
+	 padding: 14px 0 10px;
+	 background-color: #000;
+	 z-index: 2;
+}
+ .clearfix::after {
+	 content: "";
+	 display: block;
+	 clear: both;
+}
+ header .logo1 {
+	 float: left;
+	 padding-left: 52px;
+}
+ header .logo2 {
+	 float: right;
+	 margin-top: 12px;
+	 padding-right: 56px;
+}
+ ::ng-deep #VRButton {
+	 display: none;
+}
+ ::ng-deep #ARButton {
+	 bottom: 80px !important;
+	 display: none;
+}
+ @media screen and (max-width: 600px) {
+	 ::ng-deep #ARButton {
+		 display: block;
+	}
+}
+#content{
+	position: relative;
+	top: -75px;
+}
+ #container {
+	 padding: 25px 0;
+	 position: relative !important;
+	 overflow: hidden;
+	 outline: none;
+}
+ #container .modelname {
+	 position: absolute;
+	 left: 50px;
+	 top: 150px;
+	 z-index: 1;
+	 text-transform: capitalize;
+}
+#container .description-overlay{
+	display: none;
+}
+#container .description{
+	position: absolute;
+    width: 330px;
+	padding: 20px;
+    right: 30px;
+	font-size: 14px;
+	color:#555;
+	border-radius: 4px;
+	background-color: #FcFcFc;
+	line-height: 1.4;
+	z-index: 2;
+	/*box-shadow: 2px 2px 2px rgba(0,0,0, .5);*/
+	top: 50%;
+	transform: translate(0, -42%);
+}
+#container .description .details ul li{
+	margin-bottom: 10px;
+}
+#container .description h3{
+	color:#f37435;
+	margin-bottom: 5px;
+}
+#container .description div img{
+	position: relative;
+	top: 5px;
+}
+
+@media screen and (max-height: 1275px) {
+	
+}
+ footer {
+	 position: relative;
+	 margin-top: -144px;
+	 width: 100%;
+	 padding: 10px;
+	 text-align: center;
+	 background-color: #000;
+	 z-index: 2;
+}
+ footer ul {
+	 padding: 0;
+	 margin: 0;
+}
+ footer ul li {
+	 margin: 0 10px;
+	 display: inline-block;
+	 background-color: #333;
+}
+ footer ul.options li a {
+	 display: block;
+	 padding-top: 53px;
+	 width: 70px;
+	 height: 70px;
+	 background-size: contain;
+	 background-position: center center;
+	 font-family: 'arial';
+	 font-size: 10px;
+	 color: #fff;
+	 text-decoration: none;
+	 opacity: 0.7;
+	 position: relative;
+	 -webkit-transition: opacity 0.3s ease;
+	 transition: opacity 0.3s ease;
+}
+footer ul.options li a span{
+	text-transform: capitalize;
+}
+ footer ul li a .icon {
+	 position: absolute;
+	 left: 50%;
+	 top: 50%;
+	 transform: translate(-50%, -60%);
+	 width: 50px;
+	 height: 50px;
+	 display: block;
+	 background-size: contain;
+	 background-position: center center;
+}
+ footer ul li a:hover {
+	 opacity: 1;
+}
+ /* footer ul li:nth-child(1) .icon {
+	background-image: url('assets/icons/Cabin-48x48.svg');
+	 
+}
+ footer ul li:nth-child(2) .icon {
+	background-image: url('assets/icons/Aesthetics-48x48.svg');
+}
+ footer ul li:nth-child(3) .icon {
+	 background-image: url('assets/icons/Durability-48x48.svg');
+}
+ footer ul li:nth-child(4) .icon {
+	 background-image: url('assets/icons/Engine-48x48.svg');
+}
+ footer ul li:nth-child(5) .icon {
+	 background-image: url('assets/icons/Hydraulics-48x48.svg');
+}
+ footer ul li:nth-child(6) .icon {
+	 background-image: url('assets/icons/Maintenance-48x48.svg');
+}
+ footer ul li:nth-child(7) .icon {
+	 background-image: url('assets/icons/Safety-48x48.svg');
+} */
+ .sidenav {
+	 height: 100%;
+	 width: 0;
+	 position: fixed;
+	 z-index: 5;
+	 top: 0;
+	 left: 0;
+	 background-color: #000;
+	 overflow-x: hidden;
+	 transition: 0.5s;
+	 padding-top: 18px;
+	 overflow-x: hidden;
+	 box-shadow: 3px 0px 14px #000;
+}
+ .sidenav a {
+	 padding: 8px 8px 8px 32px;
+	 text-decoration: none;
+	 font-size: 25px;
+	 color: #818181;
+	 display: block;
+	 transition: 0.3s;
+}
+ .sidenav a:hover {
+	 color: #f1f1f1;
+}
+ .sidenav .closebtn {
+	position: absolute;
+    top: -2px;
+    right: 2px;
+    font-size: 36px;
+    margin-left: 50px;
+    padding: 10px;
+    font-size: 40px;
+	color:#f37435 !important;
+	cursor: pointer;
+}
+ @media screen and (max-height: 450px) {
+	 .sidenav {
+		 padding-top: 15px;
+	}
+	 .sidenav a {
+		 font-size: 18px;
+	}
+}
+ #place-button {
+	 position: absolute;
+	 bottom: 20px;
+	 left: calc(50% - 50px);
+	 width: 100px;
+	 height: 35px;
+	 display: none;
+}
+ #VRButton {
+	 margin-bottom: 70px !important;
+}
+ 
+canvas{
+	outline: none;
+	position: relative !important;
+}
+.viewinar{
+	position: absolute;
+	top: -65px;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+.viewinar img{
+	-webkit-transition: all .3s ease;
+	transition: all .3s ease;
+}
+.viewinar:hover img{
+	transform: scale(1.2);
+}
+.openNav{
+	font-size: 30px;
+    cursor: pointer;
+    position: fixed;
+	z-index: 2;
+	left: 16px;
+    top: 8px;
+	display: none;
+	color:#fff;
+}
+
+.copyrights {
+    padding: 0px 20px 10px;
+    text-align: center;
+    background-color: #000;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.copyrights h5 {
+    line-height: 1;
+    margin: 0;
+    color: #fff;
+}
+.copyrights h5 a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 400;
+	display: inline-block;
+	padding: 0 5px;
+}
+.copyrights .social-icons {
+    list-style: none;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 0;
+	padding: 0;
+}
+.copyrights .social-icons li {
+    margin: 0;
+    text-align: center;
+	background-color: transparent !important;
+	display: inline-block;
+}
+.copyrights .social-icons li:first-child{
+	display: block;
+}
+.copyrights .social-icons > li > a {
+    padding: 0 !important;
+    width: 40px !important;
+    margin: 0 auto !important;
+	color: #c1c1c1;
+	display: block;
+	transform: scale(1);
+	-webkit-transition: all .2s ease;
+	transition: all .2s ease;
+}
+.copyrights .social-icons > li > a:hover{
+	transform: scale(1.5);
+}
+.copyrights .social-icons > li > a > span {
+    width: 25px;
+    height: 28px;
+    margin: 2px;
+    color: #fff;
+    display: inline-block;
+    border-radius: 50%;
+    font-size: 18px;
+    padding-top: 10px;
+    text-align: center;
+}
+.copyrights h6 {
+    color: #afafaf;
+    text-decoration: none;
+    font-size: 11px;
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+
+@media only screen and (max-width: 768px) {
+	.inner-wrap{
+		width: 290px;
+	}
+	.inner-wrap h3{
+		padding: 0 20px;
+		color:#c1c1c1;
+	}
+	header{
+		padding: 12px 0 8px;
+	}
+	header .logo1{
+		margin-left: 60px;
+	}
+	header .logo2{
+		display: none;
+	}
+	#container .modelname{
+		top : 60px;
+		left : 30px;
+		max-width: calc(100vw - 95px);
+	}
+	.openNav{
+		display: block;
+	}
+	footer{
+		padding: 0;
+		margin: 0;
+		position: fixed;
+	}
+	#content{
+		top:0;
+	}
+	#container{
+		padding: 0;
+	}
+	footer .viewinar{
+
+	}
+	footer .copyrights{
+		display: none;
+	}
+	footer ul.options {
+	 padding: 0;
+	 margin: 0;
+	 display: none;
+	}
+	footer ul.options{
+		top: -120px;
+	}
+	.sidenav .copyrights{
+		padding-top: 17px;
+	}
+	.sidenav ul.modellist {
+	 padding: 0;
+	 margin: 0;
+	}
+	.sidenav ul.modellist li {
+		margin: 0 10px;
+		display: block;
+		background-color: #333;
+		margin-bottom: 5px;
+		border-radius: 3px;
+	}
+	.sidenav ul.modellist li a {
+		display: block;
+		padding: 14px 10px 10px 70px;
+		height: 50px;
+		background-size: contain;
+		background-position: center center;
+		font-family: 'arial';
+		font-size: 20px;
+		color: #c1c1c1;
+		text-decoration: none;
+		position: relative;
+		-webkit-transition: opacity 0.3s ease;
+		transition: opacity 0.3s ease;
+	}
+	.sidenav ul.modellist li a span{
+		text-transform: capitalize;
+	}
+	.sidenav ul.modellist li a .icon {
+		position: absolute;
+		left: 12px;
+		top: 50%;
+		transform: translate(0%, -50%);
+		width: 40px;
+		height: 40px;
+		display: block;
+		background-size: contain;
+		background-position: center center;
+		background-repeat: no-repeat;
+	}
+	.sidenav ul.modellist li a:hover {
+		opacity: 1;
+	}
+	.sidenav ul.modellist li:nth-child(1) .icon {
+		background-image: url('assets/icons/Cabin-48x48.svg');
+	}
+	.sidenav ul.modellist li:nth-child(2) .icon {
+		background-image: url('assets/icons/Aesthetics-48x48.svg');
+	}
+	.sidenav ul.modellist li:nth-child(3) .icon {
+		background-image: url('assets/icons/Durability-48x48.svg');
+	}
+	.sidenav ul.modellist li:nth-child(4) .icon {
+		background-image: url('assets/icons/Engine-48x48.svg');
+	}
+	.sidenav ul.modellist li:nth-child(5) .icon {
+		background-image: url('assets/icons/Hydraulics-48x48.svg');
+	}
+	.sidenav ul.modellist li:nth-child(6) .icon {
+		background-image: url('assets/icons/Maintenance-48x48.svg');
+	}
+	.sidenav ul.modellist li:nth-child(7) .icon {
+		background-image: url('assets/icons/Safety-48x48.svg');
+	}
+	#container .description-overlay{
+		position: absolute;
+		top:0;
+		left:0;
+		background-color: rgba(0,0,0,0.7);
+		width: 100vw;
+		height: 100vh;
+		z-index: 10;
+		display: none;
+	}
+	#container .description{
+		position: absolute;
+		min-width: calc(100vw - 30px);
+		max-width: calc(100vw - 30px);
+		max-height: calc(100vh - 30px);
+		padding: 20px;
+		padding-top:10px;
+		font-size: 16px;
+		color:#555;
+		border-radius: 4px;
+		background-color: #FcFcFc;
+		line-height: 1.4;
+		top:50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		overflow-y: hidden;
+	}
+}
+
+#container .description .close-popup{
+	position: absolute;
+	right: 9px;
+	top: 3px;
+	cursor: pointer;
+}
+header .show-info{
+	position: fixed;
+	top: 102px;
+	right: 36px;
+	background-color: transparent;
+	border: 0;
+	cursor: pointer;
+	display: none;
+}
+@keyframes zoominoutsinglefeatured {
+    0% {
+        transform: scale(1,1);
+    }
+    50% {
+        transform: scale(1.2,1.2);
+    }
+    100% {
+        transform: scale(1,1);
+    }
+}
+
+@media only screen and (max-width: 767px) {
+	#container .description .close-popup{
+		display: block;
+	}
+	header .show-info{
+		display: block;
+		animation: zoominoutsinglefeatured 1s infinite ;
+	}	
+}
+
+.overlay{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1001;
+	background-color: rgba(255, 255, 255, .8);
+}
+.overlay .messagebox{
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+    text-align: center;
+	color:#ed691f;
+	font-weight: bold;
+}
+
+
+	
+</style>
+	</head>
+	<body>
+
+		<div class="wrapper">
+			<header class="clearfix">
+				<div class="logo1">
+					<img src="assets/images/tatahitachilogo.png" alt="" width="150">
+				</div>
+				<div class="logo2">
+					<img src="assets/images/tatahitachilogotext.jpg" alt="" width="162">
+				</div>
+				<button class="show-info"><img src="assets/icons/info-bubble.svg" alt="i" height="35"></button>
+			</header>
+			<div id="content">
+				<div id="mySidenav" class="sidenav">
+					<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+					<!-- <a class="ar-object" id="1" href="#">item_1</a>
+					<a class="ar-object" id="2" href="#">item_2</a>
+					<a class="ar-object" id="3" href="#">item_3</a>
+					<a class="ar-object" id="4" href="#">item_4</a> -->
+					
+					<div class="inner-wrap">
+						<h3>Available Models</h3>
+						<ul class="modellist">
+							<li>
+								<a class="ar-object " href="javascript:void(0)" data-model="car"><span class="icon"></span><span>Excavator</span></a>
+							</li>
+							<li>
+								<a class="ar-object" href="javascript:void(0)" data-model="2"><span class="icon"></span><span>Aesthetics</span></a>
+							</li>
+							<li>
+								<a class="ar-object" href="javascript:void(0)" data-model="3"><span class="icon"></span><span>Durability</span></a>
+							</li>
+							<li>
+								<a class="ar-object" href="javascript:void(0)"data-model="4"><span class="icon"></span><span>Engine</span></a>
+							</li>
+							<li>
+								<a class="ar-object" href="javascript:void(0)" data-model="5"><span class="icon"></span><span>Hydraulics</span></a>
+							</li>
+							<li>
+								<a class="ar-object" href="javascript:void(0)" data-model="1"><span class="icon"></span><span>Maintenance</span></a>
+							</li>
+							<li>
+								<a class="ar-object" href="javascript:void(0)" data-model="car"><span class="icon"></span><span>Safety</span></a>
+							</li>
+						</ul>
+						<div class="copyrights">
+							<div class="row">
+								<div class="col-sm-7 col-md-8">
+									<h5><a href="https://www.tatahitachi.co.in/privacy-policy/" target="_blank">Privacy Policy</a> | <a href="https://www.tatahitachi.co.in/disclaimer/" target="_blank">Disclaimer</a></h5>
+									<h6>© 2018 Tata Hitachi Construction Machinery  |  All rights reserved.</h6>
+								</div>
+								<div class="col-sm-5 col-md-4">
+									<ul class="social-icons">
+										<li><h6>Follow us :</h6></li>
+										<li>
+											<a href="https://www.facebook.com/TataHitachiCorporate/" target="_blank" rel="noopener noreferrer">
+												<i class="fa fa-facebook" aria-hidden="true"></i>
+											</a>
+										</li>
+										<li>
+											<a href="https://twitter.com/Tata_Hitachi_IN" target="_blank" rel="noopener noreferrer">
+												<i class="fa fa-twitter" aria-hidden="true"></i>
+											</a>
+										</li>
+										<li>
+											<a href="https://www.youtube.com/channel/UCYE6DtE-X3JXinUFzVGsffQ" target="_blank" rel="noopener noreferrer">
+												<i class="fa fa-youtube-play" aria-hidden="true"></i>
+											</a>
+										</li>
+										<li>
+											<a href="https://www.linkedin.com/company/telcon/" target="_blank" rel="noopener noreferrer">
+												<i class="fa fa-linkedin-square" aria-hidden="true"></i>
+											</a>
+										</li>
+										<li>
+											<a href="https://www.instagram.com/tatahitachicorporate/" target="_blank" rel="noopener noreferrer">
+												<i class="fa fa-instagram" aria-hidden="true"></i>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<span class="openNav" onclick="openNav()">&#9776;</span>
+				<div id="container" style="position: fixed;">
+					<!-- <h1 class="modelname"></h1> -->
+					<div class="description-overlay">
+						<div class="description">
+							<div class="close-popup">
+								<img src="assets/icons/close.svg" width="30" alt="">
+							</div>
+							<h3>Description:</h3>
+							<div class="details"></div>
+							<!-- <h3>Specifications:</h3>
+							<div class="power"><img src="assets/icons/power-icon.png" width="25" alt=""> <b>Engine Power:</b> <span></span></div>
+							<div class="weight"><img src="assets/icons/weight-icon.png" width="25" alt=""> <b>Operating Weight:</b> <span></span></div>
+							<div class="bucket"><img src="assets/icons/bucket-icon.png" width="25" alt=""> <b>Bucket Capacity:</b> <span></span></div> -->
+						</div>
+					</div>
+				</div>
+				
+				<!-- <span style="font-size:30px;cursor:pointer;position: absolute;" (click)="openNav()">&#9776; open</span> -->
+		
+				<!-- <button type="button" id="place-button">PLACE</button> -->
+			</div>
+			<footer>
+				<a class="viewinar" href="ar.html?model="><img src="assets/icons/ar-icon.svg" width="40" alt=""></a>
+				<ul class="options">
+					<!-- <li>
+						<a class="ar-object" href="javascript:void(0)" data-model="car"><span class="icon"></span><span>Excavator</span></a>
+					</li>
+					<li>
+						<a class="ar-object " href="javascript:void(0)" data-model="1"><span class="icon"></span><span>Aesthetics</span></a>
+					</li>
+					
+					<li>
+						<a class="ar-object" href="javascript:void(0)" data-model="2"><span class="icon"></span><span>Durability</span></a>
+					</li>
+					<li>
+						<a class="ar-object" href="javascript:void(0)"data-model="3"><span class="icon"></span><span>Engine</span></a>
+					</li>
+					<li>
+						<a class="ar-object" href="javascript:void(0)" data-model="4"><span class="icon"></span><span>Hydraulics</span></a>
+					</li>
+					<li>
+						<a class="ar-object" href="javascript:void(0)" data-model="5"><span class="icon"></span><span>Maintenance</span></a>
+					</li>
+					<li>
+						<a class="ar-object" href="javascript:void(0)" data-model="6"><span class="icon"></span><span>Safety</span></a>
+					</li> -->
+				</ul>
+				<div class="copyrights">
+					<div class="row">
+						<div class="col-sm-5 col-md-4">
+							<ul class="social-icons">
+								<li><h6>Follow us :</h6></li>
+								<li>
+									<a href="https://www.facebook.com/TataHitachiCorporate/" target="_blank" rel="noopener noreferrer">
+										<i class="fa fa-facebook" aria-hidden="true"></i>
+									</a>
+								</li>
+								<li>
+									<a href="https://twitter.com/Tata_Hitachi_IN" target="_blank" rel="noopener noreferrer">
+										<i class="fa fa-twitter" aria-hidden="true"></i>
+									</a>
+								</li>
+								<li>
+									<a href="https://www.youtube.com/channel/UCYE6DtE-X3JXinUFzVGsffQ" target="_blank" rel="noopener noreferrer">
+										<i class="fa fa-youtube-play" aria-hidden="true"></i>
+									</a>
+								</li>
+								<li>
+									<a href="https://www.linkedin.com/company/telcon/" target="_blank" rel="noopener noreferrer">
+										<i class="fa fa-linkedin-square" aria-hidden="true"></i>
+									</a>
+								</li>
+								<li>
+									<a href="https://www.instagram.com/tatahitachicorporate/" target="_blank" rel="noopener noreferrer">
+										<i class="fa fa-instagram" aria-hidden="true"></i>
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="col-sm-7 col-md-8">
+							<!-- <h5><a href="https://www.tatahitachi.co.in/privacy-policy/" target="_blank">Privacy Policy</a> | <a href="https://www.tatahitachi.co.in/disclaimer/" target="_blank">Disclaimer</a></h5> -->
+							<h6>© 2018 Tata Hitachi Construction Machinery  |  All rights reserved.</h6>
+						</div>
+					</div>
+				</div>
+			</footer>
+			<div class="overlay">
+				<div class="messagebox">
+					<img src="assets/gif/ajax-loader.gif" alt="Loading ...">
+					<br>
+					<span>
+						Please wait, Loading model
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			function openNav() {
+			  document.getElementById("mySidenav").style.width = "290px";
+			}
+			
+			function closeNav() {
+			  document.getElementById("mySidenav").style.width = "0";
+			}
+		</script>
+
+		<script type="module">
+
+			import * as THREE from './build/three.module.js';
+			//import { ARButton } from './jsm/webxr/ARButton.js';
+			//import { VRButton } from './jsm/webxr/VRButton.js';
+			import { RoomEnvironment } from './jsm/environments/RoomEnvironment.js';
+			import { OrbitControls } from './jsm/controls/OrbitControls.js';
+			import { GLTFLoader } from './jsm/loaders/GLTFLoader.js';
+			//import { OBJLoader } from './jsm/loaders/OBJLoader.js';
+			//import { VRMLLoader } from './jsm/loaders/VRMLLoader.js';
+			import { DRACOLoader } from './jsm/loaders/DRACOLoader.js';
+			import { RGBELoader } from './jsm/loaders/RGBELoader.js';
+			
+			import { RoughnessMipmapper } from './jsm/utils/RoughnessMipmapper.js';
+
+			var container;
+			var camera, scene, renderer;
+			var controller;
+			var directionalLight1, directionalLight2, ambientLight;
+
+			var reticle, pmremGenerator, current_object, controls, isAR, envmap;
+
+			var hitTestSource = null;
+			var hitTestSourceRequested = false;
+			var currentModel;
+			var modelDetailsPath = "/3d/";
+			//alert(getHostUrl() + getPort() + modelDetailsPath + getUrlParameter("model") + "/" + getUrlParameter("model") + ".json");
+			var modelDetails;
+			getModelDetails();
+			populateSelection(modelDetails);
+			
+			$("header .show-info").click(function(){
+				$("#container .description-overlay").fadeIn();
+				$(this).fadeOut();
+			});
+
+			$("#container .description .close-popup").click(function(){
+				$("header .show-info").fadeIn();
+				$("#container .description-overlay").fadeOut();
+			});
+
+			$(".viewinar").attr("href", $(".viewinar").attr("href") + getUrlParameter("model"));
+			
+			init();
+			animate();
+
+			function getPort(){
+				if(document.location.port){
+					return ":" + document.location.port;
+				}
+				return ""; 
+			}
+
+			function getUrlParameter(sParam) {
+			    var sPageURL = window.location.search.substring(1),
+			        sURLVariables = sPageURL.split('&'),
+			        sParameterName,
+			        i;
+
+			    for (i = 0; i < sURLVariables.length; i++) {
+			        sParameterName = sURLVariables[i].split('=');
+
+			        if (sParameterName[0] === sParam) {
+			            return typeof sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+			        }
+			    }
+			    return false;
+			};
+
+			function getHostUrl(){
+				return document.location.href.split('/')[0] +"//" + document.location.hostname;
+			}
+
+			loadModel(getUrlParameter('model'));
+			
+
+			$(".ar-object").click(function(){
+				if(current_object != null){
+					scene.remove(current_object);
+				}
+				loadModel($(this).attr("data-model"));
+				$(".overlay").fadeIn();
+				closeNav();
+			});
+
+			function writeDescription(dataModel){
+				JSON.parse(modelDetails).modelDetails.forEach(function(ele){
+					if(dataModel === ele.fileName){
+						$("#container .details").html(ele.description);
+						// $("#container .power span").html(ele.engine_power);
+						// $("#container .weight span").html(ele.operating_weight);
+						// $("#container .bucket span").html(ele.bucket_capacity);
+						// return "";
+					}
+				});
+			}
+
+			function populateSelection(modelDetailsArg){
+				var models = JSON.parse(modelDetailsArg).modelDetails;
+				var totalHtml = "";
+				models.forEach(function(mod){
+					totalHtml += `<li>
+						<a class="ar-object" href="javascript:void(0)" data-model="${mod.fileName}"><span class="icon" style="background-image: url(assets/icons/${mod.iconName})"></span><span>${mod.buttonText}</span></a>
+					</li>`
+				});
+
+				$("footer .options").html(totalHtml);
+				$(".modellist").html(totalHtml);
+			}
+
+			function getModelDetails(){
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						modelDetails = this.responseText;
+					}
+				};
+				xhttp.open("GET", getHostUrl() + getPort() + modelDetailsPath + getUrlParameter("model") + "/" + getUrlParameter("model") + ".json", false);
+				xhttp.send();
+			}
+
+			// function arPlace(){
+			// 	if ( reticle.visible ) {
+			// 		current_object.position.setFromMatrixPosition(reticle.matrix);
+			// 		current_object.visible = true;
+			// 	}
+			// }
+			var environment = new RoomEnvironment();
+			var pmremGenerator = new THREE.PMREMGenerator( renderer );
+			scene.environment = pmremGenerator.fromScene( environment ).texture;
+			function loadModel(model){
+				controls.reset();
+				
+				// new RGBELoader()
+				// 	.setDataType(THREE.UnsignedByteType)
+				// 	.setPath('textures/')
+				// 	.load('quarry_01_1k.hdr', function(texture){
+						// const environment = new RoomEnvironment();
+						// envmap = pmremGenerator.fromScene( environment ).texture;
+
+						// scene.environment = envmap;
+						// texture.dispose();
+						// pmremGenerator.dispose();
+						// render();
+						
+						
+
+						var dracoLoader = new DRACOLoader();
+						dracoLoader.setDecoderPath('/js/libs/draco/');
+						dracoLoader.setDecoderConfig({ type: 'js' });
+						var loader = new GLTFLoader().setPath(modelDetailsPath + getUrlParameter("model") + "/");
+						 loader.load( /* model */ model + '.glb', function(glb) {
+							//loader.load( "1.glb", function(glb) {
+							$(".overlay").fadeOut();
+							if(window.innerWidth > 768){
+								$(".description-overlay").show();
+							}
+							$("#container .modelname").text(getUrlParameter("model"));
+							writeDescription(model);
+							
+							current_object = glb.scene;
+							if(modelDetails){
+								JSON.parse(modelDetails).modelDetails.forEach(function(ele){
+									if(model === ele.fileName){
+										current_object.scale.set(ele.scale[0], ele.scale[1], ele.scale[2]);
+										camera.position.set(ele.camera[0], ele.camera[1], ele.camera[2]);
+										// directionalLight1.position.set(ele.dLight1[0], ele.dLight1[1], ele.dLight1[2]).normalize();
+										// directionalLight2.position.set(ele.dLight2[0], ele.dLight2[1], ele.dLight2[2]).normalize();
+										current_object.position.set(0,0.8,0);
+
+										return "";
+									}
+								});
+								//console.log((JSON.parse(modelDetails).modelDetails));
+							} else {
+								current_object.scale.set(.65,.65,.65);
+							}
+							
+							scene.add(current_object);
+
+							// arPlace();
+
+							var box = new THREE.Box3();
+							box.setFromObject(current_object);
+							box.center(controls.target);
+
+							//controls.update();
+							//render();
+						});
+						
+						loader.setDRACOLoader(dracoLoader);
+					// });
+			}
+
+			function init() {
+
+				container = document.createElement( 'div' );
+				document.getElementById("container").appendChild( container );
+
+				scene = new THREE.Scene();
+				//scene.position.z = -3;
+				// if(getUrlParameter('model') !== currentModel){
+				// 	scene.position.z = -2;
+				// 	console.log(getUrlParameter('model') + currentModel);
+				// }
+				// else{
+				// 	scene.position.z = -3;
+				// 	console.log(getUrlParameter('model') + currentModel);
+				// }
+				
+				
+				window.scene = scene;
+
+				camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.001, 200 );
+				camera.position.set(7,3,-5);
+			//	camera.position.set(4,3,-5); // Set position like this
+				//camera.position.set(.5,.1,-6); // Set position like this
+				camera.lookAt(new THREE.Vector3(0,0,0));
+
+				// directionalLight1 = new THREE.DirectionalLight(0xffffff, 1);
+				// directionalLight1.position.set(-0.371, 4.118, 7.111).normalize();
+				// scene.add(directionalLight1);
+
+				// directionalLight2 = new THREE.DirectionalLight(0xffffff, 1);
+				// directionalLight2.position.set(2.007, 8.119, -10.539).normalize();
+				// scene.add(directionalLight2);
+
+				// ambientLight = new THREE.AmbientLight(0x777777, 1);
+				// scene.add(ambientLight);
+
+				//
+				scene.fog = new THREE.Fog( 0xeeeeee, 5, 50 );
+				scene.background = new THREE.Color( 0xeeeeee );
+				var grid = new THREE.GridHelper( 100, 40, 0x000000, 0x000000 );
+				grid.material.opacity = 0.1;
+				grid.material.depthWrite = true;
+				grid.material.transparent = true;
+				scene.add( grid );
+
+				renderer = new THREE.WebGLRenderer( { antialias: true, alpha: true } );
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				//renderer.xr.enabled = true;
+				renderer.outputEncoding = THREE.sRGBEncoding;
+				renderer.toneMapping = THREE.ACESFilmicToneMapping;
+				renderer.toneMappingExposure = .95;
+				container.appendChild( renderer.domElement );
+
+				// pmremGenerator = new THREE.PMREMGenerator(renderer);
+				// pmremGenerator.compileEquirectangularShader();
+
+				controls = new OrbitControls(camera, renderer.domElement);
+				controls.addEventListener('change', render);
+				controls.minDistance = 2;
+				controls.maxDistance = 10;
+				controls.target.set(0, 0, -0.2);
+				// controls.enableDamping = true;
+				// controls.dampingFactor = 0.05;
+
+				//VR SETUP
+				//document.body.appendChild(VRButton.createButton(renderer));
+
+				//AR SETUP
+
+				// let options = {
+				// 	requiredFeatures: ['hit-test'],
+				// 	optionalFeatures: ['dom-overlay'],
+				// }
+
+				// options.domOverlay = { root: document.getElementById('content')};
+
+				//document.body.appendChild( ARButton.createButton(renderer, options));
+
+				//document.body.appendChild( ARButton.createButton( renderer, { requiredFeatures: [ 'hit-test' ] } ) );
+
+				//
+
+				// reticle = new THREE.Mesh(
+				// 	new THREE.RingBufferGeometry( 0.15, 0.2, 32 ).rotateX( - Math.PI / 2 ),
+				// 	new THREE.MeshBasicMaterial()
+				// );
+				// reticle.matrixAutoUpdate = false;
+				// reticle.visible = false;
+				// scene.add( reticle );
+				//scene.position.z = 0;
+
+				//
+
+				window.addEventListener( 'resize', onWindowResize, false );
+
+				// renderer.domElement.addEventListener('touchstart', function(e){
+				// 	e.preventDefault();
+				// 	touchDown=true;
+				// 	touchX = e.touches[0].pageX;
+				// 	touchY = e.touches[0].pageY;
+				// }, false);
+
+				// renderer.domElement.addEventListener('touchend', function(e){
+				// 	e.preventDefault();
+				// 	touchDown = false;
+				// }, false);
+
+				// renderer.domElement.addEventListener('touchmove', function(e){
+				// 	e.preventDefault();
+					
+				// 	if(!touchDown){
+				// 		return;
+				// 	}
+
+				// 	deltaX = e.touches[0].pageX - touchX;
+				// 	deltaY = e.touches[0].pageY - touchY;
+				// 	touchX = e.touches[0].pageX;
+				// 	touchY = e.touches[0].pageY;
+
+				// 	rotateObject();
+
+				// }, false);
+
+			}
+
+			// var touchDown, touchX, touchY, deltaX, deltaY;
+
+			// function rotateObject(){
+			// 	if(current_object && reticle.visible){
+			// 		current_object.rotation.y += deltaX / 100;
+			// 	}
+			// }
+
+			function onWindowResize() {
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+			}
+
+			//
+
+			function animate() {
+
+				renderer.setAnimationLoop( render );
+				requestAnimationFrame(animate);
+				controls.update();
+
+			}
+
+			function render( timestamp, frame ) {
+
+				// if ( frame && isAR) {
+
+				// 	var referenceSpace = renderer.xr.getReferenceSpace();
+				// 	var session = renderer.xr.getSession();
+
+				// 	if ( hitTestSourceRequested === false ) {
+
+				// 		session.requestReferenceSpace( 'viewer' ).then( function ( referenceSpace ) {
+
+				// 			session.requestHitTestSource( { space: referenceSpace } ).then( function ( source ) {
+
+				// 				hitTestSource = source;
+
+				// 			} );
+
+				// 		} );
+
+				// 		session.addEventListener( 'end', function () {
+
+				// 			hitTestSourceRequested = false;
+				// 			hitTestSource = null;
+
+				// 			isAR = false;
+
+				// 			reticle.visible = false;
+
+				// 			var box = new THREE.Box3();
+				// 			box.setFromObject(current_object);
+				// 			box.center(controls.target);
+
+				// 			document.getElementById("place-button").style.display = "none";
+
+				// 		} );
+
+				// 		hitTestSourceRequested = true;
+
+				// 	}
+
+				// 	if ( hitTestSource ) {
+
+				// 		var hitTestResults = frame.getHitTestResults( hitTestSource );
+
+				// 		if ( hitTestResults.length ) {
+
+				// 			var hit = hitTestResults[ 0 ];
+
+				// 			document.getElementById("place-button").style.display = "block";
+
+				// 			reticle.visible = true;
+				// 			reticle.matrix.fromArray( hit.getPose( referenceSpace ).transform.matrix );
+
+				// 		} else {
+
+				// 			reticle.visible = false;
+
+				// 			document.getElementById("place-button").style.display = "none";
+
+				// 		}
+
+				// 	}
+
+				// }
+
+				renderer.render( scene, camera );
+
+			}
+
+			// $.ajax({
+   //          url: 'https://api.cegcpapa5m-tatahitachi1-d1-public.model-t.cc.commerce.ondemand.com/occ/v2/tatahitachi-spa/category/m23?fields=FULL&lang=en&curr=INR',
+   //          type: 'GET',
+   //          dataType: 'json',
+   //          headers: {
+   //              'header1': 'value1',
+   //              'header2': 'value2'
+   //          },
+   //          contentType: 'application/json; charset=utf-8',
+   //          success: function (result) {
+   //             // CallBack(result);  
+   //             console.log(result);
+   //          },
+   //          error: function (error) {
+                
+   //          }
+   //      });
+
+
+  //  $.load({url: "https://api.cegcpapa5m-tatahitach1-d1-public.model-t.cc.commerce.ondemand.com/occ/v2/tatahitachi-spa/category/m23?fields=FULL&lang=en&curr=INR", success: function(result){
+  //   $("#div1").html(result);
+  // }});
+
+		</script>
+	</body>
+</html>
