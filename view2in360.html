@@ -736,6 +736,7 @@ header .show-info{
 			import * as THREE from './build/three.module.js';
 			//import { ARButton } from './jsm/webxr/ARButton.js';
 			//import { VRButton } from './jsm/webxr/VRButton.js';
+			import Stats from './jsm/libs/stats.module.js';
 			import { RoomEnvironment } from './jsm/environments/RoomEnvironment.js';
 			import { OrbitControls } from './jsm/controls/OrbitControls.js';
 			import { GLTFLoader } from './jsm/loaders/GLTFLoader.js';
@@ -747,6 +748,7 @@ header .show-info{
 			import { RoughnessMipmapper } from './jsm/utils/RoughnessMipmapper.js';
 
 			var container;
+			var stats;
 			var camera, scene, renderer;
 			var controller;
 			var directionalLight1, directionalLight2, ambientLight;
@@ -929,6 +931,8 @@ header .show-info{
 
 				container = document.createElement( 'div' );
 				document.getElementById("container").appendChild( container );
+				stats = new Stats();
+				container.appendChild( stats.dom );
 
 				scene = new THREE.Scene();
 				//scene.position.z = -3;
@@ -1142,7 +1146,7 @@ header .show-info{
 				// 	}
 
 				// }
-
+				stats.update();
 				renderer.render( scene, camera );
 
 			}
