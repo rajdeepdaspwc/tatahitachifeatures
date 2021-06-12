@@ -298,7 +298,7 @@ class App {
 
      document.getElementById("rotate-left").addEventListener("click", this.onRotateLeft);
 
-      // document.getElementById("rotate-right").addEventListener("click", this.onRotateRight);
+      document.getElementById("rotate-right").addEventListener("click", this.onRotateRight);
 
       document.getElementById("zoom-in").addEventListener("click", this.onZoomIn);
       document.getElementById("zoom-out").addEventListener("click", this.onZoomOut);
@@ -310,7 +310,7 @@ class App {
       location.reload();
     	document.getElementById("place-button").style.display = "none";
         document.getElementById("rotate-left").style.display = "none";
-       // document.getElementById("rotate-right").style.display = "none";
+        document.getElementById("rotate-right").style.display = "none";
         document.getElementById("zoom-out").style.display = "none";
         document.getElementById("zoom-in").style.display = "none";
         $("#stabilization").hide();
@@ -406,9 +406,9 @@ class App {
   this.environment = new RoomEnvironment();
       this.pmremGenerator = new THREE.PMREMGenerator( this.renderer );
       //this.scene.environment = this.pmremGenerator.fromScene( this.environment ).texture;
-	this.renderer.outputEncoding = THREE.sRGBEncoding;
-	this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
-	this.renderer.toneMappingExposure = 0.6;
+      this.renderer.outputEncoding = THREE.sRGBEncoding;
+      this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      this.renderer.toneMappingExposure = 0.6;
 
       // Use the view's transform matrix and projection matrix to configure the THREE.camera.
       this.camera.matrix.fromArray(view.transform.matrix);
@@ -432,7 +432,7 @@ class App {
         this.reticle.updateMatrixWorld(true);
         document.getElementById("place-button").style.display = "block";
         document.getElementById("rotate-left").style.display = "block";
-       // document.getElementById("rotate-right").style.display = "block";
+        document.getElementById("rotate-right").style.display = "block";
         document.getElementById("zoom-out").style.display = "block";
         document.getElementById("zoom-in").style.display = "block";
 
