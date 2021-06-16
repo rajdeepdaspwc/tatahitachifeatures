@@ -445,19 +445,15 @@ footer{
 	right: 15px;
 	top: 15px;
 }
-
+#qrcode{
+  text-align: center;
+}
+#qrcode img{
+  display: inline-block !important;
+}
     </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- <script src="https://unpkg.com/three@0.126.0/build/three.js"></script>
-    <script src="https://unpkg.com/three@0.126.0/examples/js/loaders/GLTFLoader.js"></script>
-    <script src="https://unpkg.com/three@0.126.0/examples/js/loaders/DRACOLoader.js"></script> -->
-    <!-- <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script> -->
-
-    <!-- three.js -->
-
-
     <link rel="stylesheet" type="text/css" href="./ar/app.css" />
-   <!--  <script src="./ar/utils.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>    
   </head>
   <body>
     <div class="wrapper">
@@ -494,6 +490,8 @@ footer{
           <p>Please check whether your device has AR Core support by visiting this <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">supported devices</a> link.
           <p>If listed, please update your chrome browser to the latest</p>
           </p>
+          <p><b>or scan this QR code with a supported device</b></p>
+          <div style="text-align: center;" id="qrcode"></div>
         </div>
       </div>
     
@@ -501,7 +499,6 @@ footer{
       <div class="gif-image">
         <img src="./assets/gif/stabilization.gif" alt="Focus on the ground" width="400"><br>
         <span>Focus on the ground and wave</span>
-
       </div>
     </div>
     <button type="button" id="place-button" class="pushable">PLACE</button>
@@ -581,7 +578,8 @@ footer{
         </div>
       </div>
     </footer>
-
+    <script src="./qrcode/qrcode.min.js"></script>
     <script type="module" src="ar/app.js"></script>
+    
   </body>
 </html>

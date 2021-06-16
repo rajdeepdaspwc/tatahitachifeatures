@@ -261,7 +261,32 @@ body{margin: 15px 0 0 0; text-align: center; background-color: #101010; user-sel
     margin-bottom: 10px;
     font-weight: 400;
 }
-
+.qrcode-overlay{
+    background-color: rgba(0,0,0);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+  }
+  .qrcode-overlay .qrcode-message{
+    padding: 20px;
+    border-radius: 4px;
+    background-color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100vw - 30px);
+    max-width: 500px;
+  }
+  #qrcode{
+    text-align: center;
+  }
+  #qrcode img{
+    display: inline-block !important;
+  }
 
   </style>
 </head>
@@ -341,6 +366,13 @@ body{margin: 15px 0 0 0; text-align: center; background-color: #101010; user-sel
 <button class="start" onclick="startClassify()">Start Analyzing</button>
 <button class="stop" onclick="stopClassify()">Stop Analyzing</button>
 
+<div class="qrcode-overlay">
+  <div class="qrcode-message">
+    <h3>This feature is applicable for smartphones only. Please scan the QR code to access the feature.</h3>
+    <div style="text-align: center;" id="qrcode"></div>
+  </div>
+</div>
+
 <div class="copyrights">
   <div class="row">
     <div class="col-sm-7 col-md-8">
@@ -388,14 +420,17 @@ body{margin: 15px 0 0 0; text-align: center; background-color: #101010; user-sel
 
 <style></style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="./qrcode/qrcode.min.js"></script>
 <script type="text/javascript">
+
+
 
 
   // function changeURL(){
   //   window.parent.location.href = "https://www.google.com";
   // }
 
-  
+  if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
 
   function getWindowWidth(){
     if(window.innerWidth < 769){
@@ -452,7 +487,7 @@ body{margin: 15px 0 0 0; text-align: center; background-color: #101010; user-sel
 
   var classifyImage = false;
 
-  var getUrlParameter = function getUrlParameter(sParam) {
+  function getUrlParameter(sParam) {
     var sPageURL = window.location.search.substring(1),
         sURLVariables = sPageURL.split('&'),
         sParameterName,
@@ -657,11 +692,34 @@ function cameraStart() {
     })
     .catch(function(error) {
         console.error("Oops. Something is broken.", error);
+        $(".overlay").fadeOut();
+        var qrcode = new QRCode("qrcode", {
+          text: "https://65.2.42.1/imgrecog.html?type=zaxis370",
+          width: 128,
+          height: 128,
+          colorDark : "#000000",
+          colorLight : "#ffffff",
+          correctLevel : QRCode.CorrectLevel.H
+        });
     });
 }
 
 // Start the video stream when the window loads
 window.addEventListener("load", cameraStart, false);
+
+}
+
+else{
+  $(".overlay").fadeOut();
+  var qrcode = new QRCode("qrcode", {
+    text: "https://65.2.42.1/imgrecog.html?type=zaxis370",
+    width: 128,
+    height: 128,
+    colorDark : "#000000",
+    colorLight : "#ffffff",
+    correctLevel : QRCode.CorrectLevel.H
+  });
+}
 
 </script>
 

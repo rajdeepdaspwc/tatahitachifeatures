@@ -477,3 +477,12 @@ class App {
 };
 
 window.app = new App();
+
+var qrcode = new QRCode("qrcode", {
+  text: "https://65.2.42.1/ar.html?model=zaxis370",
+  width: 128,
+  height: 128,
+  colorDark : "#000000",
+  colorLight : "#ffffff",
+  correctLevel : QRCode.CorrectLevel.H
+});
