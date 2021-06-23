@@ -451,11 +451,45 @@ footer{
 #qrcode img{
   display: inline-block !important;
 }
+.qrcode-overlay{
+    background-color: rgba(0,0,0);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    display: none;
+  }
+  .qrcode-overlay .qrcode-message{
+    padding: 20px;
+    border-radius: 4px;
+    background-color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100vw - 30px);
+    max-width: 500px;
+  }
+  #qrcode2{
+    text-align: center;
+  }
+  #qrcode2 img{
+    display: inline-block !important;
+  }
     </style>
     <link rel="stylesheet" type="text/css" href="./ar/app.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>    
   </head>
   <body>
+    <div class="qrcode-overlay">
+      <div class="qrcode-message">
+        <img src="assets/EdostLogoWithoutBorder.svg" alt="" width="150">
+        <h3>This feature is applicable for smartphones only. Please scan the QR code to access the feature.</h3>
+        <div style="text-align: center;" id="qrcode2"></div>
+      </div>
+    </div>
     <div class="wrapper">
     <div class="background-img"></div>
     <header class="clearfix">
@@ -488,9 +522,9 @@ footer{
           <p style="text-align: center;"><img src="./assets/icons/alert.png" width="50" alt="Error!"></p>
           <p>Your device or browser does not support AR features with WebXR.</p>
           <p>Please check whether your device has AR Core support by visiting this <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">supported devices</a> link.
-          <p>If listed, please update your chrome browser to the latest</p>
+          <p>If listed, please update your chrome browser to the latest and check if <a href="https://play.google.com/store/apps/details?id=com.google.ar.core">Google Play Services for AR</a> is installed or not.</p>
           </p>
-          <p><b>or scan this QR code with a supported device</b></p>
+          <p><b>and scan this QR code</b></p>
           <div style="text-align: center;" id="qrcode"></div>
         </div>
       </div>

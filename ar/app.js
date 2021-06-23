@@ -486,3 +486,19 @@ var qrcode = new QRCode("qrcode", {
   colorLight : "#ffffff",
   correctLevel : QRCode.CorrectLevel.H
 });
+
+function isMobileDevice() {
+  return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+};
+
+if(!isMobileDevice()){
+  $(".qrcode-overlay").fadeIn();
+  var qrcode2 = new QRCode("qrcode2", {
+    text: "https://65.2.42.1/ar.html?model=zaxis370",
+    width: 128,
+    height: 128,
+    colorDark : "#000000",
+    colorLight : "#ffffff",
+    correctLevel : QRCode.CorrectLevel.H
+  });
+}
