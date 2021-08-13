@@ -887,8 +887,7 @@ header .show-info{
 
 						var dracoLoader = new DRACOLoader();
 						dracoLoader.setDecoderPath('/js/libs/draco/');
-						//dracoLoader.setDecoderConfig({ type: 'js' });
-						dracoLoader.setWorkerLimit(10);
+						dracoLoader.setDecoderConfig({ type: 'js' });
 						var loader = new GLTFLoader().setPath(modelDetailsPath + getUrlParameter("model") + "/");
 						 loader.load( /* model */ model + '.glb', function(glb) {
 							//loader.load( "1.glb", function(glb) {
