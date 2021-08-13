@@ -302,6 +302,7 @@ class App {
 
       document.getElementById("zoom-in").addEventListener("click", this.onZoomIn);
       document.getElementById("zoom-out").addEventListener("click", this.onZoomOut);
+      document.getElementById("setToOriginal").addEventListener("click", this.setToOriginal);
 
       //this.xrSession.addEventListener("select", this.onRotateLeft);
     }
@@ -313,6 +314,7 @@ class App {
         document.getElementById("rotate-right").style.display = "none";
         document.getElementById("zoom-out").style.display = "none";
         document.getElementById("zoom-in").style.display = "none";
+        document.getElementById("setToOriginal").style.display = "none";
         $("#stabilization").hide();
      //    $(".instructions-overlay").fadeIn();
      //    $("footer").fadeIn();
@@ -339,6 +341,11 @@ class App {
 
     onZoomOut = () => {
     	this.scale = this.scale - this.scale / 10;
+    	current_object.scale.set(this.scale, this.scale, this.scale);
+    }
+
+    setToOriginal = () =>{
+      this.scale = 1;
     	current_object.scale.set(this.scale, this.scale, this.scale);
     }
 
@@ -435,6 +442,8 @@ class App {
         document.getElementById("rotate-right").style.display = "block";
         document.getElementById("zoom-out").style.display = "block";
         document.getElementById("zoom-in").style.display = "block";
+        document.getElementById("setToOriginal").style.display = "block";
+        
 
         
       }
