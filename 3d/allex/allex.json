@@ -32,9 +32,9 @@
             "dLight2" : [2.007, 8.119, -10.539]
         },
         { 
-            "fileName" : "zaxis370___",
+            "fileName" : "withouthandPackDraco",
             "iconName" : "excavator.svg",
-            "buttonText" : "4",
+            "buttonText" : "withouthandPackDraco",
             "description" : "<div>Axial piston motor with planetary reduction gear is bathed in oil.Swing circle is a single row.Swing parking brake is spring-set /hydraulic released disc type.</div> <br><div class='power'><img src='assets/icons/power-icon.png' width='25'> <b>Swing speed:</b> <span>10.7 rpm</span></div> <div class='weight'><img src='assets/icons/weight-icon.png' width='25'> <b>Swing torque:</b> <span>Every 1000hrs</span></div> <div class='bucket'><img src='assets/icons/bucket-icon.png' width='25'> <b>Maintenance Engine oil:</b> <span>500hrs</span></div> <div class='bucket'><img src='assets/icons/bucket-icon.png' width='25'> <b>Maintenance:</b> <span>1000hrs</span></div>",
             "scale" : [0.006,0.006,0.006],
             "camera" : [7,3,-5],
