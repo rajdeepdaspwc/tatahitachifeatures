@@ -322,7 +322,7 @@ class App {
     };
 
     rotation;
-    scale = .7;
+    scale = 1;
 
     onRotateRight = () => {
     	this.rotation = this.rotation + .1;
@@ -337,19 +337,19 @@ class App {
     onZoomIn = () => {
       this.scale = this.scale + this.scale / 10;
     	current_object.scale.set(this.scale, this.scale, this.scale);
-      $("#currentModelSize span").text(this.scale);
+      $("#currentModelSize span").text(math.round(this.scale * 100));
     }
 
     onZoomOut = () => {
     	this.scale = this.scale - this.scale / 10;
     	current_object.scale.set(this.scale, this.scale, this.scale);
-      $("#currentModelSize span").text(this.scale);
+      $("#currentModelSize span").text(math.round(this.scale * 100));
     }
 
     setToOriginal = () =>{
       this.scale = 1;
     	current_object.scale.set(this.scale, this.scale, this.scale);
-      $("#currentModelSize span").text("100");
+      $("#currentModelSize span").text(this.scale);
     }
 
   /** Place a sunflower when the screen is tapped. */
