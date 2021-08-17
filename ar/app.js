@@ -315,6 +315,7 @@ class App {
         document.getElementById("zoom-out").style.display = "none";
         document.getElementById("zoom-in").style.display = "none";
         document.getElementById("setToOriginal").style.display = "none";
+        document.getElementById("currentModelSize").style.display = "none";
         $("#stabilization").hide();
      //    $(".instructions-overlay").fadeIn();
      //    $("footer").fadeIn();
@@ -337,14 +338,14 @@ class App {
     onZoomIn = () => {
       this.scale = this.scale + this.scale / 10;
     	current_object.scale.set(this.scale, this.scale, this.scale);
-      $("#currentModelSize span").text("-");
-      //$("#currentModelSize span").text(math.round(this.scale * 100));
+      //$("#currentModelSize span").text("-");
+      $("#currentModelSize span").text((this.scale.toFixed(2) * 100));
     }
 
     onZoomOut = () => {
     	this.scale = this.scale - this.scale / 10;
     	current_object.scale.set(this.scale, this.scale, this.scale);
-      $("#currentModelSize span").text("+");
+      $("#currentModelSize span").text((this.scale.toFixed(2) * 100));
     }
 
     setToOriginal = () =>{
@@ -447,9 +448,7 @@ class App {
         document.getElementById("zoom-out").style.display = "block";
         document.getElementById("zoom-in").style.display = "block";
         document.getElementById("setToOriginal").style.display = "block";
-        
-
-        
+        document.getElementById("currentModelSize").style.display = "block";
       }
       this.environment = new RoomEnvironment();
       this.pmremGenerator = new THREE.PMREMGenerator( this.renderer );
