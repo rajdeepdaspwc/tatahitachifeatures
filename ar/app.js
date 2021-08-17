@@ -336,14 +336,14 @@ class App {
     }
 
     onZoomIn = () => {
-      this.scale = math.round(this.scale) + math.round(this.scale / 10);
+      this.scale = math.round(this.scale) + (math.round(this.scale) / 10);
     	current_object.scale.set(this.scale, this.scale, this.scale);
       //$("#currentModelSize span").text("-");
       $("#currentModelSize span").text((this.scale.toFixed(2) * 100));
     }
 
     onZoomOut = () => {
-    	this.scale = math.round(this.scale) + math.round(this.scale / 10);
+    	this.scale = math.round(this.scale) - (math.round(this.scale) / 10);
     	current_object.scale.set(this.scale, this.scale, this.scale);
       $("#currentModelSize span").text((this.scale.toFixed(2) * 100));
     }
