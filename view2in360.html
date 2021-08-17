@@ -906,7 +906,7 @@ header .show-info{
 										camera.position.set(ele.camera[0], ele.camera[1], ele.camera[2]);
 										// directionalLight1.position.set(ele.dLight1[0], ele.dLight1[1], ele.dLight1[2]).normalize();
 										// directionalLight2.position.set(ele.dLight2[0], ele.dLight2[1], ele.dLight2[2]).normalize();
-										current_object.position.set(0,0.8,0);
+										current_object.position.set(0,0,0);
 
 										return "";
 									}
@@ -996,7 +996,7 @@ header .show-info{
 				controls.minDistance = 2;
 				controls.maxDistance = 10;
 				controls.target.set(0, 0, -0.2);
-				controls.autoRotate = true;
+				controls.autoRotate = false;
 				controls.autoRotateSpeed = 10;
 				// controls.enableDamping = true;
 				// controls.dampingFactor = 0.05;
