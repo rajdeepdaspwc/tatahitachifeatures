@@ -52,17 +52,17 @@
   
       }
       #place-button, #replace-button{
-    position: absolute;
-    bottom: 22px;
+        position: absolute;
+    bottom: 72px;
     left: 50%;
     transform: translate(-50%, 0);
     font-size: 14px;
-    color: #fff;
+    color: #222;
     font-weight: bold;
-    width: 80px;
+    /* width: 80px; */
     padding: 7px;
     border-radius: 7px;
-    background-color: rgba(255,255,255, .3);
+    background-color: rgba(255,255,255,1);
     border: 3px double #fff;
   }
   #place-button .front {
@@ -71,8 +71,8 @@
 
   #rotate-left{
     position: absolute;
-    bottom: 22px;
-    left: 15px;
+    bottom: 70px;
+    right: 90px;
     border: none;
     font-size: 14px;
     color: #fff;
@@ -87,7 +87,7 @@
   #rotate-right{
     position: absolute;
     bottom: 70px;
-    left: 15px;
+    left: 90px;
     border: none;
     font-size: 14px;
     color: #fff;
@@ -97,14 +97,12 @@
     border: 3px double #fff;
     width: 37px;
     height: 37px;
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
   }
 
   #zoom-out{
     position: absolute;
-    bottom: 22px;
-    right: 15px;
+    bottom: 20px;
+    left: 90px;
     border: none;
     font-size: 18px;
     color: #fff;
@@ -119,8 +117,8 @@
 
   #zoom-in{
     position: absolute;
-    bottom: 70px;
-    right: 15px;
+    bottom: 20px;
+    right: 90px;
     border: none;
     font-size: 18px;
     color: #fff;
@@ -134,19 +132,34 @@
   }
   #setToOriginal{
     position: absolute;
-    bottom: 118px;
-    right: 15px;
+    top: 24px;
+    right: 25px;
     border: none;
-    font-size: 18px;
+    font-size: 28px;
     color: #fff;
     font-weight: bold;
     padding: 7px;
     border-radius: 50%;
-    background-color: rgba(255,255,255, .3);
-    border: 3px double #fff;
     width: 37px;
     height: 37px;
+    background-color: transparent;
   }
+  #setToOriginal span{
+    font-size: 12px;
+    top: -15px;
+    position: relative;
+}
+
+  #currentModelSize{
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 18px;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px rgba(0,0,0, .5);
+}
 
   .pushable{
     display: none;
@@ -559,8 +572,8 @@ footer{
     <button type="button" id="zoom-in" class="pushable">+</button>
 
     <button type="button" id="zoom-out" class="pushable">-</button>
-    <button type="button" id="setToOriginal" class="pushable">*</button>
-    
+    <button type="button" id="setToOriginal" class="pushable"><i class="fa fa-road" aria-hidden="true"></i><br><span>100%</span></button>
+    <span id="currentModelSize"><span>100</span>%</span>
     <div id="loading-screen" class="overlay">
       <div class="messagebox">
         <img src="assets/gif/ajax-loader.gif" alt="Loading ...">
