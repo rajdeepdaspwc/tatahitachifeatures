@@ -11,9 +11,9 @@
             "dLight2" : [2.007, 8.119, -10.539]
         },
         { 
-            "fileName" : "zx_1",
+            "fileName" : "Ex370_ThisWorksPackDraco",
             "iconName" : "excavator.svg",
-            "buttonText" : "ex_1",
+            "buttonText" : "Ex370_ThisWorks",
             "description" : "<ul><li>Comfortable operating environment.</li> <li>Operator seat designed for comfort</li> <li>Robust cab meeting OPG Top Guard Level 1</li> <li>New easy to use multifunctional monitor.</li></ul>",
             "scale" : [0.6,0.6,0.6],
             "camera" : [7,3,-5],
