@@ -351,7 +351,7 @@ class App {
     setToOriginal = () =>{
       this.scale = 1;
     	current_object.scale.set(this.scale, this.scale, this.scale);
-      $("#currentModelSize span").text(math.round(this.scale * 100));
+      $("#currentModelSize span").text(this.scale));
     }
 
   /** Place a sunflower when the screen is tapped. */
