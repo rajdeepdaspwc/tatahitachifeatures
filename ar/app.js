@@ -513,7 +513,7 @@ function isMobileDevice() {
 if(!isMobileDevice()){
   $(".qrcode-overlay").fadeIn();
   var qrcode2 = new QRCode("qrcode2", {
-    text: "https://65.2.42.1/ar.html?model=zaxis370",
+    text: "https://virtual.tatahitachi.co.in/ar.html?model=zaxis370",
     width: 128,
     height: 128,
     colorDark : "#000000",
