@@ -15,7 +15,7 @@ function RoomEnvironment() {
 	const boxMaterial = new THREE.MeshStandardMaterial();
 
 	const mainLight = new THREE.PointLight( 0xffffff, 5.0, 28, 2 );
-	mainLight.position.set( 0.418, 16.199, 0.300 );
+	mainLight.position.set( 3.033, 5.238, -6.524 );
 	scene.add( mainLight );
 
 	const room = new THREE.Mesh( geometry, roomMaterial );
