@@ -1081,104 +1081,16 @@ header .show-info{
 
 			function animate() {
 
-				//renderer.setAnimationLoop( render );
+				renderer.setAnimationLoop( render );
 				requestAnimationFrame(animate);
 				controls.update();
 
 			}
 
 			function render( timestamp, frame ) {
-
-				// if ( frame && isAR) {
-
-				// 	var referenceSpace = renderer.xr.getReferenceSpace();
-				// 	var session = renderer.xr.getSession();
-
-				// 	if ( hitTestSourceRequested === false ) {
-
-				// 		session.requestReferenceSpace( 'viewer' ).then( function ( referenceSpace ) {
-
-				// 			session.requestHitTestSource( { space: referenceSpace } ).then( function ( source ) {
-
-				// 				hitTestSource = source;
-
-				// 			} );
-
-				// 		} );
-
-				// 		session.addEventListener( 'end', function () {
-
-				// 			hitTestSourceRequested = false;
-				// 			hitTestSource = null;
-
-				// 			isAR = false;
-
-				// 			reticle.visible = false;
-
-				// 			var box = new THREE.Box3();
-				// 			box.setFromObject(current_object);
-				// 			box.center(controls.target);
-
-				// 			document.getElementById("place-button").style.display = "none";
-
-				// 		} );
-
-				// 		hitTestSourceRequested = true;
-
-				// 	}
-
-				// 	if ( hitTestSource ) {
-
-				// 		var hitTestResults = frame.getHitTestResults( hitTestSource );
-
-				// 		if ( hitTestResults.length ) {
-
-				// 			var hit = hitTestResults[ 0 ];
-
-				// 			document.getElementById("place-button").style.display = "block";
-
-				// 			reticle.visible = true;
-				// 			reticle.matrix.fromArray( hit.getPose( referenceSpace ).transform.matrix );
-
-				// 		} else {
-
-				// 			reticle.visible = false;
-
-				// 			document.getElementById("place-button").style.display = "none";
-
-				// 		}
-
-				// 	}
-
-				// }
 				stats.update();
 				renderer.render( scene, camera );
-
 			}
-
-			// $.ajax({
-   //          url: 'https://api.cegcpapa5m-tatahitachi1-d1-public.model-t.cc.commerce.ondemand.com/occ/v2/tatahitachi-spa/category/m23?fields=FULL&lang=en&curr=INR',
-   //          type: 'GET',
-   //          dataType: 'json',
-   //          headers: {
-   //              'header1': 'value1',
-   //              'header2': 'value2'
-   //          },
-   //          contentType: 'application/json; charset=utf-8',
-   //          success: function (result) {
-   //             // CallBack(result);  
-   //             console.log(result);
-   //          },
-   //          error: function (error) {
-                
-   //          }
-   //      });
-
-
-  //  $.load({url: "https://api.cegcpapa5m-tatahitach1-d1-public.model-t.cc.commerce.ondemand.com/occ/v2/tatahitachi-spa/category/m23?fields=FULL&lang=en&curr=INR", success: function(result){
-  //   $("#div1").html(result);
-  // }});
-
 		</script>
 	</body>
 </html>
