@@ -5,10 +5,12 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 		<meta name="theme-color" content="#317EFB"/>
-		<link rel="Shortcut Icon" type="image/x-icon" href="https://www.tatahitachi.co.in/favicon.ico" />
+		<link rel="Shortcut Icon" type="image/x-icon" href="./assets/icons/favIcon.jpg"/>
+		<link rel="icon" type="image/x-icon" media="all" href="./assets/icons/favIcon.jpg">
 		<link rel="stylesheet" href="css/font-awesome.min.css">
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		
 		<style>
 			body {
 	 background-color: #f1f1f1;
@@ -64,6 +66,9 @@
 	 position: relative !important;
 	 overflow: hidden;
 	 outline: none;
+}
+#container > div:not(.description-overlay) > div{
+	top: 85px !important;
 }
  #container .modelname {
 	 position: absolute;
@@ -485,8 +490,8 @@ canvas{
 }
 header .show-info{
 	position: fixed;
-	top: 102px;
-	right: 36px;
+	top: 75px;
+	right: 12px;
 	background-color: transparent;
 	border: 0;
 	cursor: pointer;
@@ -510,7 +515,7 @@ header .show-info{
 	}
 	header .show-info{
 		display: block;
-		animation: zoominoutsinglefeatured 1s infinite ;
+		/*animation: zoominoutsinglefeatured 1s infinite ; */
 	}	
 }
 
@@ -734,29 +739,24 @@ header .show-info{
 		<script type="module">
 
 			import * as THREE from './build/three.module.js';
-			//import { ARButton } from './jsm/webxr/ARButton.js';
-			//import { VRButton } from './jsm/webxr/VRButton.js';
-			//
+			import Stats from './jsm/libs/stats.module.js';
+			import { RoomEnvironment } from './jsm/environments/RoomEnvironment.js';
 			import { OrbitControls } from './jsm/controls/OrbitControls.js';
 			import { GLTFLoader } from './jsm/loaders/GLTFLoader.js';
-			//import { OBJLoader } from './jsm/loaders/OBJLoader.js';
-			//import { VRMLLoader } from './jsm/loaders/VRMLLoader.js';
 			import { DRACOLoader } from './jsm/loaders/DRACOLoader.js';
 			import { RGBELoader } from './jsm/loaders/RGBELoader.js';
 			import { RoughnessMipmapper } from './jsm/utils/RoughnessMipmapper.js';
 
 			var container;
+			var stats;
 			var camera, scene, renderer;
 			var controller;
 			var directionalLight1, directionalLight2, ambientLight;
-
 			var reticle, pmremGenerator, current_object, controls, isAR, envmap;
-
 			var hitTestSource = null;
 			var hitTestSourceRequested = false;
 			var currentModel;
 			var modelDetailsPath = "/3d/";
-			//alert(getHostUrl() + getPort() + modelDetailsPath + getUrlParameter("model") + "/" + getUrlParameter("model") + ".json");
 			var modelDetails;
 			getModelDetails();
 			populateSelection(modelDetails);
@@ -819,10 +819,6 @@ header .show-info{
 				JSON.parse(modelDetails).modelDetails.forEach(function(ele){
 					if(dataModel === ele.fileName){
 						$("#container .details").html(ele.description);
-						// $("#container .power span").html(ele.engine_power);
-						// $("#container .weight span").html(ele.operating_weight);
-						// $("#container .bucket span").html(ele.bucket_capacity);
-						// return "";
 					}
 				});
 			}
@@ -835,7 +831,6 @@ header .show-info{
 						<a class="ar-object" href="javascript:void(0)" data-model="${mod.fileName}"><span class="icon" style="background-image: url(assets/icons/${mod.iconName})"></span><span>${mod.buttonText}</span></a>
 					</li>`
 				});
-
 				$("footer .options").html(totalHtml);
 				$(".modellist").html(totalHtml);
 			}
@@ -851,198 +846,90 @@ header .show-info{
 				xhttp.send();
 			}
 
-			function arPlace(){
-				if ( reticle.visible ) {
-					current_object.position.setFromMatrixPosition(reticle.matrix);
-					current_object.visible = true;
-				}
-			}
-
-			
+			var environment = new RoomEnvironment();
+			var pmremGenerator = new THREE.PMREMGenerator( renderer );
+			scene.environment = pmremGenerator.fromScene( environment ).texture;
 			function loadModel(model){
 				controls.reset();
-				
-				new RGBELoader()
-					.setDataType(THREE.UnsignedByteType)
-					.setPath('textures/')
-					.load('quarry_01_1k.hdr', function(texture){
-
-						envmap = pmremGenerator.fromEquirectangular(texture).texture;
-
-						scene.environment = envmap;
-						texture.dispose();
-						pmremGenerator.dispose();
-						render();
-						
-
-						var dracoLoader = new DRACOLoader();
-						dracoLoader.setDecoderPath('/js/libs/draco/');
-						dracoLoader.setDecoderConfig({ type: 'js' });
-						var loader = new GLTFLoader().setPath(modelDetailsPath + getUrlParameter("model") + "/");
-						 loader.load( /* model */ model + '.glb', function(glb) {
-							//loader.load( "1.glb", function(glb) {
-							$(".overlay").fadeOut();
-							if(window.innerWidth > 768){
-								$(".description-overlay").show();
+				var dracoLoader = new DRACOLoader();
+				dracoLoader.setDecoderPath('/js/libs/draco/gltf/');
+				dracoLoader.setDecoderConfig({ type: 'js' });
+				var loader = new GLTFLoader().setPath(modelDetailsPath + getUrlParameter("model") + "/");
+					loader.load( /* model */ model + '.glb', function(glb) {
+					$(".overlay").fadeOut();
+					if(window.innerWidth > 768){
+						$(".description-overlay").show();
+					}
+					$("#container .modelname").text(getUrlParameter("model"));
+					writeDescription(model);
+					current_object = glb.scene;
+					if(modelDetails){
+						JSON.parse(modelDetails).modelDetails.forEach(function(ele){
+							if(model === ele.fileName){
+								current_object.scale.set(ele.scale[0], ele.scale[1], ele.scale[2]);
+								camera.position.set(ele.camera[0], ele.camera[1], ele.camera[2]);
+								current_object.position.set(0,0,0);
+								return "";
 							}
-							$("#container .modelname").text(getUrlParameter("model"));
-							writeDescription(model);
-							
-							current_object = glb.scene;
-							if(modelDetails){
-								JSON.parse(modelDetails).modelDetails.forEach(function(ele){
-									if(model === ele.fileName){
-										current_object.scale.set(ele.scale[0], ele.scale[1], ele.scale[2]);
-										camera.position.set(ele.camera[0], ele.camera[1], ele.camera[2]);
-										directionalLight1.position.set(ele.dLight1[0], ele.dLight1[1], ele.dLight1[2]).normalize();
-										directionalLight2.position.set(ele.dLight2[0], ele.dLight2[1], ele.dLight2[2]).normalize();
-
-										return "";
-									}
-								});
-								//console.log((JSON.parse(modelDetails).modelDetails));
-							} else {
-								current_object.scale.set(.65,.65,.65);
-							}
-							
-							scene.add(current_object);
-
-							arPlace();
-
-							var box = new THREE.Box3();
-							box.setFromObject(current_object);
-							box.center(controls.target);
-
-							controls.update();
-							render();
 						});
-						
-						loader.setDRACOLoader(dracoLoader);
-					});
+					} else {
+						current_object.scale.set(.65,.65,.65);
+					}
+					scene.add(current_object);
+					var box = new THREE.Box3();
+					box.setFromObject(current_object);
+					box.center(controls.target);
+				});
+				loader.setDRACOLoader(dracoLoader);
 			}
 
 			function init() {
 
 				container = document.createElement( 'div' );
 				document.getElementById("container").appendChild( container );
+				stats = new Stats();
+				container.appendChild( stats.dom );
 
 				scene = new THREE.Scene();
-				//scene.position.z = -3;
-				// if(getUrlParameter('model') !== currentModel){
-				// 	scene.position.z = -2;
-				// 	console.log(getUrlParameter('model') + currentModel);
-				// }
-				// else{
-				// 	scene.position.z = -3;
-				// 	console.log(getUrlParameter('model') + currentModel);
-				// }
-				
-				
+			
 				window.scene = scene;
 
 				camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.001, 200 );
 				camera.position.set(7,3,-5);
-			//	camera.position.set(4,3,-5); // Set position like this
-				//camera.position.set(.5,.1,-6); // Set position like this
 				camera.lookAt(new THREE.Vector3(0,0,0));
 
-				directionalLight1 = new THREE.DirectionalLight(0xffffff, 1);
-				directionalLight1.position.set(-0.371, 4.118, 7.111).normalize();
-				scene.add(directionalLight1);
-
-				directionalLight2 = new THREE.DirectionalLight(0xffffff, 1);
-				directionalLight2.position.set(2.007, 8.119, -10.539).normalize();
-				scene.add(directionalLight2);
-
-				ambientLight = new THREE.AmbientLight(0x777777, 1);
-				scene.add(ambientLight);
-
-				//
+				scene.fog = new THREE.Fog(0xeeeeee, 5, 70);
+				scene.background = new THREE.Color( 0xeeeeee );
+				var grid = new THREE.GridHelper( 100, 40, 0x000000, 0x000000 );
+				grid.material.opacity = 0.1;
+				grid.material.depthWrite = true;
+				grid.material.transparent = true;
+				scene.add(grid);
 
 				renderer = new THREE.WebGLRenderer( { antialias: true, alpha: true } );
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
-				renderer.xr.enabled = true;
+				//renderer.xr.enabled = true;
+				renderer.outputEncoding = THREE.sRGBEncoding;
+				renderer.toneMapping = THREE.ACESFilmicToneMapping;
+				renderer.toneMappingExposure = .5;
 				container.appendChild( renderer.domElement );
 
-				pmremGenerator = new THREE.PMREMGenerator(renderer);
-				pmremGenerator.compileEquirectangularShader();
+				//pmremGenerator = new THREE.PMREMGenerator(renderer);
+				//pmremGenerator.compileEquirectangularShader();
 
 				controls = new OrbitControls(camera, renderer.domElement);
 				controls.addEventListener('change', render);
-				controls.minDistance = 2;
-				controls.maxDistance = 10;
+				controls.minDistance = 5;
+				controls.maxDistance = 15;
 				controls.target.set(0, 0, -0.2);
-				controls.enableDamping = true;
-				controls.dampingFactor = 0.05;
-
-				//VR SETUP
-				//document.body.appendChild(VRButton.createButton(renderer));
-
-				//AR SETUP
-
-				let options = {
-					requiredFeatures: ['hit-test'],
-					optionalFeatures: ['dom-overlay'],
-				}
-
-				options.domOverlay = { root: document.getElementById('content')};
-
-				//document.body.appendChild( ARButton.createButton(renderer, options));
-
-				//document.body.appendChild( ARButton.createButton( renderer, { requiredFeatures: [ 'hit-test' ] } ) );
-
-				//
-
-				reticle = new THREE.Mesh(
-					new THREE.RingBufferGeometry( 0.15, 0.2, 32 ).rotateX( - Math.PI / 2 ),
-					new THREE.MeshBasicMaterial()
-				);
-				reticle.matrixAutoUpdate = false;
-				reticle.visible = false;
-				scene.add( reticle );
-				//scene.position.z = 0;
-
-				//
+				controls.autoRotate = false;
+				controls.autoRotateSpeed = 0;
+				//controls.enableDamping = true;
+				//controls.dampingFactor = .2;
 
 				window.addEventListener( 'resize', onWindowResize, false );
 
-				renderer.domElement.addEventListener('touchstart', function(e){
-					e.preventDefault();
-					touchDown=true;
-					touchX = e.touches[0].pageX;
-					touchY = e.touches[0].pageY;
-				}, false);
-
-				renderer.domElement.addEventListener('touchend', function(e){
-					e.preventDefault();
-					touchDown = false;
-				}, false);
-
-				renderer.domElement.addEventListener('touchmove', function(e){
-					e.preventDefault();
-					
-					if(!touchDown){
-						return;
-					}
-
-					deltaX = e.touches[0].pageX - touchX;
-					deltaY = e.touches[0].pageY - touchY;
-					touchX = e.touches[0].pageX;
-					touchY = e.touches[0].pageY;
-
-					rotateObject();
-
-				}, false);
-
-			}
-
-			var touchDown, touchX, touchY, deltaX, deltaY;
-
-			function rotateObject(){
-				if(current_object && reticle.visible){
-					current_object.rotation.y += deltaX / 100;
-				}
 			}
 
 			function onWindowResize() {
@@ -1054,107 +941,16 @@ header .show-info{
 
 			}
 
-			//
-
 			function animate() {
-
 				renderer.setAnimationLoop( render );
 				requestAnimationFrame(animate);
 				controls.update();
-
 			}
 
 			function render( timestamp, frame ) {
-
-				if ( frame && isAR) {
-
-					var referenceSpace = renderer.xr.getReferenceSpace();
-					var session = renderer.xr.getSession();
-
-					if ( hitTestSourceRequested === false ) {
-
-						session.requestReferenceSpace( 'viewer' ).then( function ( referenceSpace ) {
-
-							session.requestHitTestSource( { space: referenceSpace } ).then( function ( source ) {
-
-								hitTestSource = source;
-
-							} );
-
-						} );
-
-						session.addEventListener( 'end', function () {
-
-							hitTestSourceRequested = false;
-							hitTestSource = null;
-
-							isAR = false;
-
-							reticle.visible = false;
-
-							var box = new THREE.Box3();
-							box.setFromObject(current_object);
-							box.center(controls.target);
-
-							document.getElementById("place-button").style.display = "none";
-
-						} );
-
-						hitTestSourceRequested = true;
-
-					}
-
-					if ( hitTestSource ) {
-
-						var hitTestResults = frame.getHitTestResults( hitTestSource );
-
-						if ( hitTestResults.length ) {
-
-							var hit = hitTestResults[ 0 ];
-
-							document.getElementById("place-button").style.display = "block";
-
-							reticle.visible = true;
-							reticle.matrix.fromArray( hit.getPose( referenceSpace ).transform.matrix );
-
-						} else {
-
-							reticle.visible = false;
-
-							document.getElementById("place-button").style.display = "none";
-
-						}
-
-					}
-
-				}
-
+				stats.update();
 				renderer.render( scene, camera );
-
 			}
-
-			// $.ajax({
-   //          url: 'https://api.cegcpapa5m-tatahitachi1-d1-public.model-t.cc.commerce.ondemand.com/occ/v2/tatahitachi-spa/category/m23?fields=FULL&lang=en&curr=INR',
-   //          type: 'GET',
-   //          dataType: 'json',
-   //          headers: {
-   //              'header1': 'value1',
-   //              'header2': 'value2'
-   //          },
-   //          contentType: 'application/json; charset=utf-8',
-   //          success: function (result) {
-   //             // CallBack(result);  
-   //             console.log(result);
-   //          },
-   //          error: function (error) {
-                
-   //          }
-   //      });
-
-
-  //  $.load({url: "https://api.cegcpapa5m-tatahitach1-d1-public.model-t.cc.commerce.ondemand.com/occ/v2/tatahitachi-spa/category/m23?fields=FULL&lang=en&curr=INR", success: function(result){
-  //   $("#div1").html(result);
-  // }});
 
 		</script>
 	</body>
