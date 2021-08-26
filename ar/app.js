@@ -1,16 +1,9 @@
 import * as THREE from '../build/three.module.js';
-      //import { ARButton } from './jsm/webxr/ARButton.js';
-      //import { VRButton } from './jsm/webxr/VRButton.js';
-      import Stats from '../jsm/libs/stats.module.js';
-      import { RoomEnvironment } from '../jsm/environments/RoomEnvironment.js';
-      import { OrbitControls } from '../jsm/controls/OrbitControls.js';
-      import { GLTFLoader } from '../jsm/loaders/GLTFLoader.js';
-      //import { OBJLoader } from './jsm/loaders/OBJLoader.js';
-      //import { VRMLLoader } from './jsm/loaders/VRMLLoader.js';
-      import { DRACOLoader } from '../jsm/loaders/DRACOLoader.js';
-      import { RGBELoader } from '../jsm/loaders/RGBELoader.js';
+import { RoomEnvironment } from '../jsm/environments/RoomEnvironment.js';
+import { GLTFLoader } from '../jsm/loaders/GLTFLoader.js';
+import { DRACOLoader } from '../jsm/loaders/DRACOLoader.js';
 
-
+      
 function getUrlParameter(sParam) {
   var sPageURL = window.location.search.substring(1),
       sURLVariables = sPageURL.split('&'),
@@ -190,6 +183,7 @@ function onNoXRDevice() {
  * Query for WebXR support. If there's no support for the `immersive-ar` mode,
  * show an error.
  */
+
 $(".backbutton a").attr("href", $(".backbutton a").attr("href") + getUrlParameter("model"));
  function iOS() {
   return [
@@ -204,8 +198,11 @@ $(".backbutton a").attr("href", $(".backbutton a").attr("href") + getUrlParamete
   || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
 }
 if(iOS()){
-  $("#ARButtonIos").show();
-  $("#enter-ar").hide();
+  //$("#ARButtonIos").show();
+  //$("#enter-ar").hide();
+  $("body").addClass("unsupported");    
+  $("#unsupported-info .close-popup").hide();
+
 } else {
   $("#ARButtonIos").hide();
   $("#enter-ar").show();
