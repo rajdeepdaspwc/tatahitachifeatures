@@ -495,7 +495,7 @@ class App {
 window.app = new App();
 
 var qrcode = new QRCode("qrcode", {
-  text: "https://virtual.tatahitachi.co.in/ar.html?model=zaxis370",
+  text: "https://virtual.tatahitachi.co.in/ar.html?model=zx370",
   width: 128,
   height: 128,
   colorDark : "#000000",
@@ -510,7 +510,7 @@ function isMobileDevice() {
 if(!isMobileDevice()){
   $(".qrcode-overlay").fadeIn();
   var qrcode2 = new QRCode("qrcode2", {
-    text: "https://virtual.tatahitachi.co.in/ar.html?model=zaxis370",
+    text: "https://virtual.tatahitachi.co.in/ar.html?model=zx370",
     width: 128,
     height: 128,
     colorDark : "#000000",
