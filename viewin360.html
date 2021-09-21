@@ -882,7 +882,7 @@ header .show-info{
 					if(modelDetails){
 						JSON.parse(modelDetails).modelDetails.forEach(function(ele){
 							if(model === ele.fileName){
-								current_object.scale.set(ele.scale[0], ele.scale[1], ele.scale[2]);
+								current_object.scale.set(ele.scale[0], ele.scale[0], ele.scale[0]);
 								camera.position.set(ele.camera[0], ele.camera[1], ele.camera[2]);
 								current_object.position.set(0,0,0);
 								return "";
