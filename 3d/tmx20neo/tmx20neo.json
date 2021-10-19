@@ -1,0 +1,45 @@
+{
+    "modelDetails" : [
+        { 
+            "fileName" : "tmx20neo",
+            "iconName" : "excavator.svg",
+            "buttonText" : "Excavator",
+            "description" : "<div>The ZAXIS 370LCH GI Series excavator is designed and manufactured for working in granite, marble quarrying and other heavy duty applications. Retaining the ruggedness, a variant of the machine has been made for bulk excavation as well</div><h3>Specs:</h3><div class='power'><img src='assets/icons/power-icon.png' width='25'> <b>Engine power:</b> <span>250 PS</span></div> <div class='weight'><img src='assets/icons/weight-icon.png' width='25'> <b>Operating Weight:</b> <span>35400 kg</span></div> <div class='bucket'><img src='assets/icons/bucket-icon.png' width='25'> <b>Bucket Capacity:</b> <span>1.30 m³ - 2.5 m³</span></div>",
+            "scale" : [2,2,2],
+            "camera" : [9,3,-5],
+            "dLight1" : [-0.371, 4.118, 7.111],
+            "dLight2" : [2.007, 8.119, -10.539]
+        },
+        { 
+            "fileName" : "Engine_TMX20_NEOPackDraco",
+            "iconName" : "Cabin-48x48.svg",
+            "buttonText" : "Edgie",
+            "description" : "<ul><li>Comfortable operating environment.</li> <li>Operator seat designed for comfort</li> <li>Robust cab meeting OPG Top Guard Level 1</li> <li>New easy to use multifunctional monitor.</li></ul>",
+            "scale" : [7, 7, 7],
+            "camera" : [7,3,-5],
+            "dLight1" : [-0.371, 4.118, 7.111],
+            "dLight2" : [2.007, 8.119, -10.539]
+
+        },
+        { 
+            "fileName" : "Control_Valve_TMX20_NEOPackDraco",
+            "iconName" : "Engine-48x48.svg",
+            "buttonText" : "Control Valve",
+            "description" : "<div>The Isuzu AA-6HK1X engine, complies with EU Stage II and US EPA Tier 2 emission standards and  makes ZAXIS 370 GI a fuel thrifty excavator with reduce CO2 emissions .The ECO mode can further cut the consumption without sacrificing digging speed.</div> <h3>By optimal matching of operations:</h3><div class='power'><img src='assets/icons/power-icon.png' width='25'> <b>Rated power:</b> <span>184kW</span></div> <div class='weight'><img src='assets/icons/weight-icon.png' width='25'> <b>Maximum torque:</b> <span>873Nm</span></div> <div class='bucket'><img src='assets/icons/bucket-icon.png' width='25'> <b>Maintenance Engine oil:</b> <span>500hrs</span></div> <div class='bucket'><img src='assets/icons/bucket-icon.png' width='25'> <b>Engine oil filter:</b> <span>500hrs</span></div>",
+            "scale" : [12,12,12],
+            "camera" : [-11,3,-5],
+            "dLight1" : [-0.371, 4.118, 7.111],
+            "dLight2" : [2.007, 8.119, -10.539]
+        },
+        { 
+            "fileName" : "Swing_Device_TMX20_NEOPackDraco",
+            "iconName" : "swing-motor.svg",
+            "buttonText" : "Swing Motor",
+            "description" : "<div>Axial piston motor with planetary reduction gear is bathed in oil.Swing circle is a single row.Swing parking brake is spring-set /hydraulic released disc type.</div> <br><div class='power'><img src='assets/icons/power-icon.png' width='25'> <b>Swing speed:</b> <span>10.7 rpm</span></div> <div class='weight'><img src='assets/icons/weight-icon.png' width='25'> <b>Swing torque:</b> <span>Every 1000hrs</span></div> <div class='bucket'><img src='assets/icons/bucket-icon.png' width='25'> <b>Maintenance Engine oil:</b> <span>500hrs</span></div> <div class='bucket'><img src='assets/icons/bucket-icon.png' width='25'> <b>Maintenance:</b> <span>1000hrs</span></div>",
+            "scale" : [0.01,1,1],
+            "camera" : [7,3,-5],
+            "dLight1" : [-0.371, 4.118, 7.111],
+            "dLight2" : [2.007, 8.119, -10.539]
+        }
+    ]
+}
