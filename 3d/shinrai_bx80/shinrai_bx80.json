@@ -11,31 +11,31 @@
             "dLight2" : [2.007, 8.119, -10.539]
         },
         { 
-            "fileName" : "controlvalve",
+            "fileName" : "controlValve",
             "iconName" : "excavator.svg",
             "buttonText" : "Control Valve",
             "description" : "<div>The Shinrai BX80 Series excavator is designed and manufactured for working in granite, marble quarrying and other heavy duty applications. Retaining the ruggedness, a variant of the machine has been made for bulk excavation as well</div><h3>Specs:</h3><div class='power'><img src='assets/icons/power-icon.png' width='25'> <b>Engine power:</b> <span>250 PS</span></div> <div class='weight'><img src='assets/icons/weight-icon.png' width='25'> <b>Operating Weight:</b> <span>35400 kg</span></div> <div class='bucket'><img src='assets/icons/bucket-icon.png' width='25'> <b>Bucket Capacity:</b> <span>1.30 m³ - 2.5 m³</span></div>",
-            "scale" : [15,2,2],
+            "scale" : [1.5,2,2],
             "camera" : [7,3,-5],
             "dLight1" : [-0.371, 4.118, 7.111],
             "dLight2" : [2.007, 8.119, -10.539]
         },
         { 
-            "fileName" : "backvalve",
+            "fileName" : "backValve",
             "iconName" : "excavator.svg",
             "buttonText" : "Back Valve",
             "description" : "<div>The Shinrai BX80 Series excavator is designed and manufactured for working in granite, marble quarrying and other heavy duty applications. Retaining the ruggedness, a variant of the machine has been made for bulk excavation as well</div><h3>Specs:</h3><div class='power'><img src='assets/icons/power-icon.png' width='25'> <b>Engine power:</b> <span>250 PS</span></div> <div class='weight'><img src='assets/icons/weight-icon.png' width='25'> <b>Operating Weight:</b> <span>35400 kg</span></div> <div class='bucket'><img src='assets/icons/bucket-icon.png' width='25'> <b>Bucket Capacity:</b> <span>1.30 m³ - 2.5 m³</span></div>",
-            "scale" : [10,2,2],
+            "scale" : [2,2,2],
             "camera" : [7,3,-5],
             "dLight1" : [-0.371, 4.118, 7.111],
             "dLight2" : [2.007, 8.119, -10.539]
         },
         { 
-            "fileName" : "transmission",
+            "fileName" : "transmission_",
             "iconName" : "excavator.svg",
             "buttonText" : "Transmission",
             "description" : "<div>The Shinrai BX80 Series excavator is designed and manufactured for working in granite, marble quarrying and other heavy duty applications. Retaining the ruggedness, a variant of the machine has been made for bulk excavation as well</div><h3>Specs:</h3><div class='power'><img src='assets/icons/power-icon.png' width='25'> <b>Engine power:</b> <span>250 PS</span></div> <div class='weight'><img src='assets/icons/weight-icon.png' width='25'> <b>Operating Weight:</b> <span>35400 kg</span></div> <div class='bucket'><img src='assets/icons/bucket-icon.png' width='25'> <b>Bucket Capacity:</b> <span>1.30 m³ - 2.5 m³</span></div>",
-            "scale" : [8,2,2],
+            "scale" : [2,2,2],
             "camera" : [7,3,-5],
             "dLight1" : [-0.371, 4.118, 7.111],
             "dLight2" : [2.007, 8.119, -10.539]
