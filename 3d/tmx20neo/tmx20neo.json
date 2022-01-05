@@ -5,8 +5,8 @@
             "iconName" : "excavator.svg",
             "buttonText" : "Excavator",
             "description" : "<div><b>TMX 20 NEO</b> is a smart machine promising high power, high fuel efficiency, and high durability. Ensuring best in class performance and low running cost. Equipped with a reliable and powerful Japanese engine, improved structures, superior hydraulic and electricals. TMX 20 neo is a powerful yet quiet mini excavator.</div><h3>Specs:</h3><div class='power'><img src='assets/icons/power-icon.png' width='25'> <b>Engine power:</b> <span>27.4 HP</span></div> <div class='weight'><img src='assets/icons/weight-icon.png' width='25'> <b>Operating Weight:</b> <span>2300 KG</span></div> <div class='bucket'><img src='assets/icons/bucket-icon.png' width='25'> <b>Bucket Capacity:</b> <span>0.04 m³ - 0.07 m³</span></div>",
-            "scale" : [2,2,2],
-            "camera" : [9,3,-5],
+            "scale" : [3,2,2],
+            "camera" : [9,4,-11],
             "dLight1" : [-0.371, 4.118, 7.111],
             "dLight2" : [2.007, 8.119, -10.539]
         },
@@ -27,7 +27,7 @@
             "buttonText" : "Control Valve",
             "description" : "<h3>TMX 20 NEO - Control Valve:</h3><div>Reliable and powerful Japanese Engine with class leading power and low noise.Long service intervals to reduce the maintenance cost.</div>",
             "scale" : [1.5,12,12],
-            "camera" : [-11,3,-5],
+            "camera" : [-11,3,12],
             "dLight1" : [-0.371, 4.118, 7.111],
             "dLight2" : [2.007, 8.119, -10.539]
         },
