@@ -25,7 +25,7 @@
             "iconName" : "swing-motor.svg",
             "buttonText" : "Backhoe Valve",
             "description" : "<h3>Shinrai Prime - Backhoe Valve:</h3><div>Excellent hydraulic system to ensure optimum utilization of hydraulic and engine power.</div>",
-            "scale" : [2,2,2],
+            "scale" : [5,2,2],
             "camera" : [7,3,-5],
             "dLight1" : [-0.371, 4.118, 7.111],
             "dLight2" : [2.007, 8.119, -10.539]
