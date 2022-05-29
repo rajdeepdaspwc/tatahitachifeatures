@@ -1,0 +1,65 @@
+{
+    "modelDetails" : [
+        { 
+            "fileName" : "ex70prime",
+            "iconName" : "excavator.svg",
+            "buttonText" : "EX70",
+            "description" : "<h3>EX70</h3><div>Tata Hitachi’s EX 70 Super+ Series is a time tested, reliable, productive hydraulic excavator that operates proficiently in tight spaces while minimizing the operational costs.</div><h3>Specs:</h3><div class='power'><img src='assets/icons/power-icon.png' width='25'> <b>Engine Power:</b> <span>55PS @ 2000 rpm</span></div> <div class='weight'><img src='assets/icons/weight-icon.png' width='25'> <b>Operating Weight:</b> <span>7000 KG</span></div> <div class='bucket'><img src='assets/icons/bucket-icon.png' width='25'> <b>Bucket Capacity:</b> <span>0.10 m³ - 0.68m³</span></div>",
+            "scale" : [1.5,0.3,1.3],
+            "camera" : [9,3,-5],
+            "dLight1" : [-0.371, 4.118, 7.111],
+            "dLight2" : [2.007, 8.119, -10.539]
+        },
+        { 
+            "fileName" : "pump",
+            "iconName" : "pump.svg",
+            "buttonText" : "Pump",
+            "description" : "<h3>EX70 - Pump:</h3><div>Powered by Hitachi 's original Optimum Hydraulic system.Cross sensing summation system for better utilization of pumps improving its life.Absolute type hydraulic filter to protect the hydraulic system.</div>",
+            "scale" : [10, 1, 2],
+            "camera" : [7,3,-5],
+            "dLight1" : [-0.371, 4.118, 7.111],
+            "dLight2" : [2.007, 8.119, -10.539]
+
+        },
+        { 
+            "fileName" : "engine",
+            "iconName" : "Engine-48x48.svg",
+            "buttonText" : "Engine",
+            "description" : "<h3>EX70 - Engine:</h3><div>Powered by reliable and fuel efficient Tata 497 engine. Original Tata Hitachi technology for Auto Idle and Auto Deceleration for higher fuel efficiency. Stepper motor based precise engine speed control for dial type throttle.Different mode selection to suit different application.</div>",
+            "scale" : [1, 7, 7],
+            "camera" : [-11,3,-5],
+            "dLight1" : [-0.371, 4.118, 7.111],
+            "dLight2" : [2.007, 8.119, -10.539]
+        },
+        { 
+            "fileName" : "swing",
+            "iconName" : "swing-motor.svg",
+            "buttonText" : "Swing Motor",
+            "description" : "<h3>EX70 - Swing Motor:</h3><div>Reliable aggregates with low maintenance cost and longer life for better performance.</div>",
+            "scale" : [2, 10, 10],
+            "camera" : [7,3,-5],
+            "dLight1" : [-0.371, 4.118, 7.111],
+            "dLight2" : [2.007, 8.119, -10.539]
+        },
+        { 
+            "fileName" : "traveldevice",
+            "iconName" : "track-motor.svg",
+            "buttonText" : "Travel Device",
+            "description" : "<h3>EX70 - Travel Device:</h3><div>Reliable aggregates with low maintenance cost and longer life for better performance</div>",
+            "scale" : [1,12,12],
+            "camera" : [4,3,-5],
+            "dLight1" : [-0.371, 4.118, 7.111],
+            "dLight2" : [2.007, 8.119, -10.539]
+        },
+        { 
+            "fileName" : "controlvalve",
+            "iconName" : "control-valve.svg",
+            "buttonText" : "Control Valve",
+            "description" : "<h3>EX70 - Control Valve:</h3><div>Powered by Hitachi's original Optimum Hydraulic system.Original pilot circuit.Boom and Arm regeneration,holding valves for higher efficiency and safety.Spare spool for trouble free attachment operations.</div>",
+            "scale" : [1.5, 12, 12],
+            "camera" : [-7,3,-4],
+            "dLight1" : [-0.371, 4.118, 7.111],
+            "dLight2" : [2.007, 8.119, -10.539]
+        }
+    ]
+}
